@@ -1,0 +1,269 @@
+:root {
+  --headerbgcolor: lightblue;
+  --headercolor: darkblue;
+  --bgcolor: white;
+  --txtcolor: black;
+  --contentbgcolor: var(--headerbgcolor);
+  --linkcolor: var(--headercolor);
+  --bordercolor: var(--headercolor);
+  --footerbgcolor: var(--headerbgcolor);
+  --footercolor: var(--headercolor);
+  --tablebgcolor: var(--contentbgcolor);
+  --footerlink: black;
+  --visitcolor: black;
+  --visitedbgcolor: rgb(0, 217, 255);
+}
+
+html {
+  font-size: 100%;
+  font-family: Arial, sans-serif;
+  line-height: 1.5em;
+  color: var(--txtcolor);
+  background-color: var(--bgcolor);
+  vertical-align: baseline;
+  min-height: 100%;
+}
+
+body {
+  max-width: auto;
+  margin: auto;
+}
+
+.nascosto {
+  position: absolute;
+  left: -9999rem;
+}
+
+.none {
+  display: none;
+}
+
+a {
+  color: var(--linkcolor);
+}
+
+a:visited {
+  color: var(--visitcolor);
+}
+
+strong {
+  color: var(--headercolor);
+}
+
+
+a:hover {
+  text-decoration: underline;
+}
+
+/*header*/
+
+header {
+  background-color: var(--headerbgcolor);
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  color: var(--headercolor);
+  font-size: 2rem;
+}
+
+/*menu*/
+
+#menu {
+  background-color: var(--headerbgcolor);
+  color: var(--headercolor);
+  font-weight: bold;
+}
+
+#menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 2.5em;
+  display: flex;
+  justify-content: right;
+}
+
+#menu a {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box; 
+  height: auto;
+  padding: 0.5em 2em;
+  text-decoration: none;
+}
+
+#menu a:focus {
+  border-left: var(--txtcolor) solid 1px;
+  border-right: var(--txtcolor) solid 1px;
+}
+
+#menu a:hover {
+  background: var(--headercolor);
+  color: var(--headerbgcolor);
+}
+
+#current {
+  display: flex;
+  background: var(--headercolor);
+  color: var(--headerbgcolor);
+  height: auto;
+  padding: 0.5em 2em;
+
+}
+
+#menu a:visited {
+  background: var(--visitedbgcolor);
+  color: var(--txtcolor);
+}
+
+/*breadcrumb*/
+
+#breadcrumb {
+  background-color: var(--headercolor);
+  color: var(--headerbgcolor);
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+#breadcrumb ol {
+  display: flex;
+  margin: 0;
+}
+
+#breadcrumb li {
+  list-style: none;
+}
+
+#breadcrumb a {
+  color: var(--headerbgcolor);
+  padding: 0 0.3em;
+}
+
+#breadcrumb li+li::before {
+  content: '->';
+  margin: 0 1rem;
+}
+
+#breadcrumb a:visited {
+  color: var(--visitedbgcolor);
+  background: var(--headercolor);
+}
+
+/*main*/
+
+main {
+  display : flex;
+  margin: 2rem;
+  background-color: var(--contentbgcolor);
+  border-radius: 1em;
+}
+
+.mainSection {
+  padding: rem; 
+}
+
+main h1, .mainSection h1 {
+  margin: 2rem;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.mainSection h2 {
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.mainSection p {
+  padding: 1em;
+  font-size: 1.1rem;
+}
+
+#primo {
+  background-color: var(--contentbgcolor);
+  padding: 1rem;
+}
+
+/*torna-primo*/
+
+#torna-primo {
+  width: 15%;
+  text-align: center;
+  display: block;
+  margin:  auto;
+  color: var(--bgcolor);
+  background-color: var(--headercolor);
+}
+
+/*footer*/
+
+footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: var(--footerbgcolor);
+  color: var(--footercolor);
+  font-size: 0.8rem;
+  padding: 0.2rem;
+}
+
+footer a {
+  color: var(--footerlink);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer a:visited {
+  color: var(--footercolor);
+}
+
+footer dl {
+  min-width: 15rem;
+  padding: 4rem;
+  line-height: 3em;
+}
+
+footer dt {
+  float: left;
+  padding-right: 0.2rem;
+  font-weight: bold;
+}
+
+/*tabella*/
+
+table th, table td {
+  padding: 0rem;
+  border: 1px solid var(--bordercolor);
+  text-align: center;
+}
+
+table caption {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+#orari {
+  max-width: 30rem;
+  text-align: center;
+  margin: auto;
+}
+
+#orari caption {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#orari td {
+  min-width: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: var(--tablebgcolor);
+}
