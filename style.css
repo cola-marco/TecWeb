@@ -1,16 +1,17 @@
 :root {
-  --headerbgcolor: lightblue;
+  --headerbgcolor: rgb(200, 240, 255);
   --headercolor: darkblue;
   --bgcolor: white;
   --txtcolor: black;
   --contentbgcolor: var(--headerbgcolor);
-  --linkcolor: var(--headercolor);
+  --linkcolor: rgb(180, 0, 0);
+  --lighterlinkcolor: rgb(255, 140, 140);
   --bordercolor: var(--headercolor);
   --footerbgcolor: var(--headerbgcolor);
   --footercolor: var(--headercolor);
   --tablebgcolor: var(--contentbgcolor);
-  --footerlink: black;
-  --visitcolor: black;
+  --footerlink: var(--linkcolor);
+  --Visitedlink: black;
   --visitedbgcolor: rgb(0, 217, 255);
 }
 
@@ -43,7 +44,7 @@ a {
 }
 
 a:visited {
-  color: var(--visitcolor);
+  color: var(--Visitedlink);
 }
 
 strong {
@@ -137,12 +138,11 @@ header h1 {
 }
 
 #breadcrumb a {
-  color: var(--headerbgcolor);
-  padding: 0 0.3em;
+  color: var(--lighterlinkcolor);
 }
 
 #breadcrumb li+li::before {
-  content: '->';
+  content: '/';
   margin: 0 1rem;
 }
 
@@ -218,7 +218,7 @@ footer a:hover {
 }
 
 footer a:visited {
-  color: var(--footercolor);
+  color: var(--textcolor);
 }
 
 footer dl {
