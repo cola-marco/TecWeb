@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Sito della biblioteca di Padova.">
+    <meta name="keywords" content="Biblioteca , Padova , Libri, Recensioni">
+    <link rel="stylesheet" href="style.css" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="immagini/open-book-icon.png" type="immagine/x-icon">
+    <title>Catalogo</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Biblioteca</h1>
+    </header>
+
+    <nav id="menu" class="hamToggle" data-hambOn="false" aria-label="menù principale">
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="prenotazione.php">Prenota</a></li>
+            <li><a href="recensioni.php">Recensioni</a></li>
+            <li aria-current="page" id="current" lang="en">Catalogo</li>
+            <li><a href="login.php">Accedi</a></li>
+            <li><a href="admin.php" lang="en">Admin</a></li>
+        </ul>
+    </nav>
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li aria-current="page" lang="en">Catalogo</li>
+        </ol>
+    </nav>
+
+    <main class="catalogo">
+
+        <div class="section">
+            <button class="prev-button"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg></button>
+            <button class="next-button"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg></button>
+            <h2>Esempio</h2>
+            <ul>
+                <li class="card">
+                    <a href="esempio.php">
+                        <img src="Immagini/esempio libro.jpg" alt="">
+                        <h3>La fine e il principio</h3>
+                        <p>Antonio Scurati</p>
+                    </a>
+                </li>
+
+                <li class="card">
+                    <a href="esempio.php">
+                        <img src="Immagini/esempio libro.jpg" alt="">
+                        <h3>La fine e il principio</h3>
+                        <p>Antonio Scurati</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <a class="help" id="torna-primo" href="#primo">Torna su</a>
+    <footer>
+        <dl>
+            <dt> Telefono: </dt>
+            <dd><a href="tel:+39123456789">123456789</a> </dd>
+            <dt> <span lang="en">Email: </span> </dt>
+            <dd> <a href="mail:Biblioteca@biblioteca.it">Biblioteca@biblioteca.it</a> </dd>
+            <dt> Indirizzo: </dt>
+            <dd> <a href="https://maps.app.goo.gl">Via Luzzatti</a>
+            </dd>
+        </dl>
+
+        <p id="tabella" class="nascosto">La tabella contiene gli orari di apertura della biblioteca</p>
+        <table id="orari" aria-describedby="tabella">
+            <caption>Orari della biblioteca</caption>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th scope="col" abbr="Apre">Apertura</th>
+                    <th scope="col" abbr="Chiude">Chiusura</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" abbr="Mer">Lunedì</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row" abbr="Mer">Martedì</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                <tr>
+                    <th scope="row" abbr="Mer">Mercoledì</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                <tr>
+                    <th scope="row" abbr="Gio">Giovedì</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                <tr>
+                    <th scope="row" abbr="Ven">Venerdì</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                <tr>
+                    <th scope="row" abbr="Sab">Sabato</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                <tr>
+                    <th scope="row" abbr="Dom">Domenica</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+            </tbody>
+        </table>
+    </footer>
+</body>
+</html>

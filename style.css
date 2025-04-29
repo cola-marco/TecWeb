@@ -224,6 +224,75 @@ main h1, .mainSection h1 {
 
 }
 
+/*====================
+CATALOGO
+====================*/
+
+.catalogo{
+  display: block;
+}
+
+.catalogo ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+
+.catalogo li img{
+  width: 100%;
+  height: auto;
+}
+
+.catalogo li{
+  margin: 0.5em;
+}
+
+.catalogo h3{
+  margin: 0.5em 0 0 0;
+  padding: 0;
+}
+
+.catalogo p{
+  padding: 0;
+  margin: 0;
+}
+
+.catalogo h2{
+  margin: 0;
+  padding: 0.5em;
+}
+
+.prev-button, .next-button{
+  display: none;
+}
+
+@media screen and (max-width: 1000px){
+  .card[data-active]{
+    opacity: 1;
+  }
+
+  .catalogo ul{
+    position: relative;
+  }
+
+  .section{
+    position: relative;
+  }
+
+  .prev-button, .next-button{
+    display: block;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+  }
+
+  .next-button{
+    right: 0%;
+  }
+}
+
 /*footer*/
 
 footer {

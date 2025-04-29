@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <title>Biblioteca</title>
+    <meta name="description" content="Sito della biblioteca di Padova.">
+    <meta name="keywords" content="Biblioteca , Padova , Libri, Recensioni">
+    <link rel="stylesheet" href="style.css" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="immagini/open-book-icon.webp" type="immagine/x-icon">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Biblioteca</h1>
+    </header>
+
+    <nav id="menu" class="hamToggle" data-hambOn="false" aria-label="menù principale">
+        <ul>
+            <li aria-current="page" id="current" lang="en">Home</li>
+            <li><a href="catalogo.php">Catalogo</a></li>
+            <li><a href="recensioni.php">Recensioni</a></li>  
+            <li><a href="login.php" lang="en">Login</a></li>
+            <!--<li><a href="admin.php" lang="en">Admin</a></li>-->
+        </ul>
+    </nav>
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li aria-current="page" lang="en">Home</li>
+        </ol>
+    </nav>
+    <main id="primo">
+        <section class="mainSection">
+            <h1>Biblioteca</h1>
+            <p>Nel cuore di una piccola città, dove le strade si intrecciano come le pagine di un libro, si trova una biblioteca che ha visto crescere generazioni di lettori appassionati. Fondata secoli fa, quando le voci dei saggi e dei racconti popolavano le piazze e le biblioteche erano i luoghi di ritrovo dei pensatori, la nostra biblioteca ha sempre avuto un ruolo speciale. Ogni libro che ospita racconta una storia unica, e ogni angolo delle sue stanze racchiude il sapere di un tempo passato, ma anche le speranze e i sogni del futuro.
+Questa biblioteca non è solo un deposito di libri, ma un luogo dove le idee prendono vita. Si dice che le sue mura siano permeate dall’energia dei tanti lettori che l’hanno attraversata nel corso degli anni. Ogni visitatore che varca la soglia non è semplicemente un cliente: è un nuovo capitolo che si aggiunge alla grande narrazione che la biblioteca ha scritto nel corso dei decenni.
+Con il passare degli anni, la biblioteca ha saputo evolversi, abbracciando la tecnologia per continuare a servire la sua comunità. Da un antico edificio di pietra, è diventata un faro virtuale di conoscenza, accessibile a chiunque, ovunque si trovi. Il nostro sito web è la porta di accesso a questo mondo magico. Qui, puoi esplorare una vasta collezione di libri, articoli, risorse digitali e molto altro, con un semplice click. La nostra missione è quella di far scoprire a ogni visitatore nuove storie, nuove prospettive e nuovi mondi da esplorare.
+Ogni sezione del sito è stata progettata pensando a chi cerca non solo informazioni, ma anche emozioni. Con una navigazione semplice e intuitiva, puoi facilmente trovare il libro perfetto per te, prenotarlo e iniziare il tuo viaggio. Ma la biblioteca non è solo un luogo dove prendere in prestito libri: è anche un luogo dove puoi condividere le tue esperienze con gli altri, lasciando recensioni e partecipando a discussioni.
+La nostra biblioteca non è solo un contenitore di conoscenza, è una comunità viva che cresce ogni giorno. È un luogo dove la storia si incontra con il presente e il futuro, dove i sogni di ieri si intrecciano con quelli di domani, e dove ogni libro è un invito a sognare, a riflettere, a crescere.
+Unisciti a noi in questo viaggio di scoperta, perché la vera magia della lettura non risiede solo nelle pagine di un libro, ma in ciò che accade quando le leggi e le storie ti cambiano dentro. Benvenuto nella biblioteca del futuro, dove ogni lettore è il protagonista della propria avventura.
+            </p>
+        </section>
+    </main>
+    <a class="help" id="torna-primo" href="#primo">Torna su</a>
+    <footer>
+        <dl>
+            <dt> Chiamaci: </dt>
+            <dd><a href="tel:+391111111111">1111111111</a> </dd>
+            <dt> <span lang="en">Scrivici: </span> </dt>
+            <dd> <a href="mail:Biblioteca@biblioteca.it">Biblioteca@biblioteca.it</a> </dd>
+            <dt> Dove siamo: </dt>
+            <dd> <a href="https://maps.app.goo.gl">Via Luzzatti</a></dd>
+        </dl>
+
+        <p id="tabella" class="nascosto">La tabella contiene gli orari di apertura della biblioteca</p>
+        <table id="orari" aria-describedby="tabella">
+            <caption>Orari della biblioteca</caption>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th scope="col" abbr="Apre">Apertura</th>
+                    <th scope="col" abbr="Chiude">Chiusura</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" abbr="Mer">Lunedì</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row" abbr="Mer">Martedì</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                <tr>
+                    <th scope="row" abbr="Mer">Mercoledì</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                <tr>
+                    <th scope="row" abbr="Gio">Giovedì</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                <tr>
+                    <th scope="row" abbr="Ven">Venerdì</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                <tr>
+                    <th scope="row" abbr="Sab">Sabato</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                <tr>
+                    <th scope="row" abbr="Dom">Domenica</th>
+                    <td><time datetime="09:00">09:00</time></td>
+                    <td><time datetime="18:00">18:00</time></td>                </tr>
+            </tbody>
+        </table>
+    </footer>
+</body>
+
+</html>
