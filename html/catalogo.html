@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="it">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>Catalogo - Biblioteca</title>
     <meta name="description" content="Sito della biblioteca di Padova.">
     <meta name="keywords" content="Biblioteca , Padova , Libri, Recensioni">
     <link rel="stylesheet" href="style.css" media="screen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="immagini/open-book-icon.png" type="immagine/x-icon">
-    <title>Catalogo</title>
+    <link rel="icon" href="immagini/open-book-icon.webp" type="immagine/x-icon">
     <script src="script.js" defer></script>
 </head>
+
 <body>
     <header>
         <h1>Biblioteca</h1>
@@ -18,17 +19,18 @@
 
     <nav id="menu" class="hamToggle" data-hambOn="false" aria-label="menù principale">
         <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="prenotazione.php">Prenota</a></li>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="pagina" id="current">Catalogo</li>
             <li><a href="recensioni.php">Recensioni</a></li>
-            <li aria-current="page" id="current" lang="en">Catalogo</li>
-            <li><a href="login.php">Accedi</a></li>
-            <li><a href="admin.php" lang="en">Admin</a></li>
+            <li><a href="login.php" lang="en">Login</a></li>
+            <!--<li><a href="admin.php" lang="en">Admin</a></li>-->
+            
         </ul>
     </nav>
     <nav id="breadcrumb" aria-label="breadcrumb">
         <ol>
-            <li aria-current="page" lang="en">Catalogo</li>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="pagina">Catalogo</li>
         </ol>
     </nav>
 
@@ -61,13 +63,12 @@
     <a class="help" id="torna-primo" href="#primo">Torna su</a>
     <footer>
         <dl>
-            <dt> Telefono: </dt>
-            <dd><a href="tel:+39123456789">123456789</a> </dd>
-            <dt> <span lang="en">Email: </span> </dt>
+            <dt> Chiamaci: </dt>
+            <dd><a href="tel:+391111111111">1111111111</a> </dd>
+            <dt> <span lang="en">Scrivici: </span> </dt>
             <dd> <a href="mail:Biblioteca@biblioteca.it">Biblioteca@biblioteca.it</a> </dd>
-            <dt> Indirizzo: </dt>
-            <dd> <a href="https://maps.app.goo.gl">Via Luzzatti</a>
-            </dd>
+            <dt> Dove siamo: </dt>
+            <dd> <a href="https://maps.app.goo.gl">Via Luzzatti</a></dd>
         </dl>
 
         <p id="tabella" class="nascosto">La tabella contiene gli orari di apertura della biblioteca</p>
