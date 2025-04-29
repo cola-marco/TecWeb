@@ -170,7 +170,7 @@ header h1 {
 }
 
 #breadcrumb a:visited {
-  color: var(--visitedbgcolor);
+  color: var(--bgcolor);
   background: var(--headercolor);
 }
 
@@ -216,7 +216,8 @@ main h1, .mainSection h1 {
   padding: 0.5rem;
   text-align: center;
   display: block;
-  margin:  auto;
+  margin: auto;
+  margin-bottom:  0em;
   color: var(--bgcolor);
   background-color: var(--headercolor);
   border-top-left-radius: 1em;
