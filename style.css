@@ -19,6 +19,7 @@
   --footerlink: var(--linkcolor);
   --Visitedlink: black;
   --visitedbgcolor: rgb(0, 217, 255);
+  --errorcolor: var(--linkcolor);
 }
 
 html {
@@ -140,6 +141,10 @@ header h1 {
   border-top-left-radius: 1em;
 }
 
+/*hamburger menu*/
+
+
+
 /*breadcrumb*/
 
 #breadcrumb {
@@ -185,7 +190,7 @@ main {
 }
 
 .mainSection {
-  padding: rem; 
+  padding: 1rem; 
 }
 
 main h1, .mainSection h1 {
@@ -212,16 +217,26 @@ main h1, .mainSection h1 {
 /*torna-primo*/
 
 #torna-primo {
+
   width: fit-content;
   padding: 0.5rem;
   text-align: center;
   display: block;
   margin: auto;
   margin-bottom:  0em;
-  color: var(--bgcolor);
-  background-color: var(--headercolor);
+  color: var(--footercolor);
+  background-color: var(--footerbgcolor);
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
+  font-weight: bold;
+  border-right: var(--headercolor) solid 2px;
+  border-top: var(--headercolor) solid 2px;
+  border-left: var(--headercolor) solid 2px;  
+}
+
+#torna-primo:hover {
+  background: var(--headercolor);
+  color: var(--headerbgcolor);
 
 }
 
@@ -368,6 +383,85 @@ table {
   background-color: var(--tablebgcolor);
 }
 
+
+
+/*form*/
+
+.login-section {
+  line-height: normal;
+  width: 50%;
+  margin: auto;
+  padding: 2rem;
+  border: var(--headercolor) solid 2px;
+  background-color: var(--bgcolor);
+  border-radius: 1em;
+  min-width: 15rem;
+}
+
+
+.compilaform input {
+  width: auto;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: var(--headercolor) solid 1px;
+  border-radius: 0.5em;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#login-form button {
+  border: var(--headercolor) solid 1px;
+  font-weight: bold;
+  background-color: var(--headerbgcolor);
+  padding: 0.6em;
+  width: auto;
+  color: var(--linkcolor);
+  border-radius: 0.5em;
+}
+#login-form button:visited {
+  color: var(--Visitedlink);
+  background: var(--visitedbgcolor);
+}
+
+#login-form button:hover {
+  background-color: var(--headercolor);
+  color: var(--headerbgcolor);
+}
+
+#login-form button:focus {
+  outline: none;
+  border: var(--txtcolor) solid 3px;
+}
+
+
+.camporichiesto::after {
+  content: " *";
+  color: var(--errorcolor);
+  margin-left: 0.2em;
+}
+
+.error-msg {
+  font-size: 1rem;
+  color: var(--errorcolor);
+  min-height: 1em;
+  margin-bottom: 0.5rem;
+}
+
+.required-info {
+  font-size: 0.8rem;
+  color: var(--txtcolor);
+  margin: 0.5rem 0;
+}
+
+.required-info span {
+  color: var(--errorcolor);
+}
+
+
 /* Media queries per responsività */
 @media (max-width: 720px) {
   header, #menu, main {
@@ -376,7 +470,7 @@ table {
   }
 
   #menu {
-    padding: 0rem 0.5rem;
+    padding: 0rem;
   }
 
   main {
@@ -396,6 +490,11 @@ table {
     border: 1px solid var(--bordercolor);
     text-align: center;
   }
+  .login-section {
+    width: 70%;
+    padding: 1rem;
+    margin: 0.5rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -410,5 +509,16 @@ table {
 
   #menu a, #current {
     padding: 0.5em 0.5em;
+  }
+
+  main {
+    margin: 0.5rem 0rem;
+    padding: 0rem;
+  }
+
+  .login-section {
+    width: 90%;
+    padding: 1rem;
+    margin: 0rem;
   }
 }

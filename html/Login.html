@@ -30,22 +30,29 @@
     <nav id="breadcrumb" aria-label="breadcrumb">
         <ol>
             <li><a href="index.php" lang="en">Home</a></li>
-            <li aria-current="pagina">Login</li>
+            <li aria-current="page">Login</li>
         </ol>
     </nav>
-    <main id="primo" class="compila">
+    <main id="primo">
         <div class="login-section">
             <h1>Accedi alla Biblioteca</h1>
             <form id="login-form" class="compilaform" action="login.php" method="post">
-                <label for="username" class="camporichiesto" lang="en">Username</label>
-                <input type="text" id="username" name="username" placeholder="Inserisci il tuo username" 
-                    required minlength="3" aria-required="true">
+                <label for="username" class="camporichiesto">Nome utente</label>
+                <input type="text" id="username" name="username"
+                       placeholder="Inserisci il tuo username"
+                       required minlength="3" aria-required="true">
                 <span class="error-msg" aria-live="polite"></span>
+              
                 <label for="password" class="camporichiesto">Password</label>
-                <input type="password" id="password" name="password" required minlength="6" 
-                    placeholder="Inserisci la tua password" aria-required="true">
+                <input type="password" id="password" name="password"
+                       placeholder="Inserisci la tua password"
+                       required minlength="6" aria-required="true">
                 <span class="error-msg" aria-live="polite"></span>
-              <button type="submit">Accedi</button>
+              
+                <button type="submit">Accedi</button>
+
+                <p class="required-info">I campi contrassegnati con <span aria-hidden="true">*</span> sono obbligatori.</p>
+
             </form>
         </div>  
     </main>
