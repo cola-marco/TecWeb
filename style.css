@@ -204,22 +204,27 @@ CATALOGO
   display: block;
 }
 
-.catalogo ul{
+.card{
+  width: 30%;
+  margin: 0.5em;
+  scroll-snap-align: start;
+}
+
+.card img{
+  width: 100%;
+  height: auto;
+}
+
+
+.slider{
   list-style: none;
   display: flex;
   flex-direction: row;
   margin: 0;
   padding: 0;
-}
-
-.catalogo li img{
   width: 100%;
-  height: auto;
 }
 
-.catalogo li{
-  margin: 0.5em;
-}
 
 .catalogo h3{
   margin: 0.5em 0 0 0;
@@ -241,16 +246,25 @@ CATALOGO
 }
 
 @media screen and (max-width: 1000px){
+  .card{
+    opacity: 0.5;
+    inset: 0;
+  }
+  
   .card[data-active]{
     opacity: 1;
   }
 
-  .catalogo ul{
+  .slider{
     position: relative;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
   }
 
   .section{
     position: relative;
+    padding: 0 2em;
   }
 
   .prev-button, .next-button{
@@ -258,10 +272,16 @@ CATALOGO
     position: absolute;
     top: 50%;
     z-index: 2;
+    border: none;
+    cursor: pointer;
+  }
+
+  .prev-button{
+    left: 0;
   }
 
   .next-button{
-    right: 0%;
+    right: 0;
   }
 }
 
