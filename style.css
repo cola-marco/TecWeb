@@ -24,6 +24,11 @@ html {
   min-height: 100%;
 }
 
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body {
   max-width: auto;
   margin: auto;
@@ -205,14 +210,21 @@ CATALOGO
 }
 
 .card{
-  width: 30%;
-  margin: 0.5em;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
   scroll-snap-align: start;
+}
+
+.description{
+  margin: 0 0 0 0.5em;
+  flex: 1;
 }
 
 .card img{
   width: 100%;
   height: auto;
+  flex: 1;
 }
 
 
@@ -225,15 +237,28 @@ CATALOGO
   width: 100%;
 }
 
+.search-bar{
+  display: block;
+  width: 80%;
+  margin: auto;
+  outline: none;
+  border-radius: 2em;
+  height: 3em;
+  border: 1px solid black;
+  padding-left: 1em;
+  margin-top: 2em;
+  background-color: var(--headerbgcolor);
+  transition: all 0.15s;
+}
+
+.search-bar:focus{
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+  background-color: white;
+}
 
 .catalogo h3{
   margin: 0.5em 0 0 0;
   padding: 0;
-}
-
-.catalogo p{
-  padding: 0;
-  margin: 0;
 }
 
 .catalogo h2{
@@ -246,9 +271,8 @@ CATALOGO
 }
 
 @media screen and (max-width: 1000px){
-  .card{
-    opacity: 0.5;
-    inset: 0;
+  .card h4{
+    margin-bottom: 0.5em;
   }
   
   .card[data-active]{
@@ -256,15 +280,15 @@ CATALOGO
   }
 
   .slider{
+    display: flex;
+    flex-direction: column;
     position: relative;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
   }
 
   .section{
     position: relative;
-    padding: 0 2em;
+    padding: 0.5em 1em;
   }
 
   .prev-button, .next-button{
