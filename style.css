@@ -226,7 +226,7 @@ main h1, .mainSection h1 {
   display: block;
   margin: auto;
   margin-bottom:  0em;
-  color: var(--footercolor);
+  color: var(--linkcolor);
   background-color: var(--footerbgcolor);
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
@@ -234,12 +234,13 @@ main h1, .mainSection h1 {
   border-right: var(--headercolor) solid 2px;
   border-top: var(--headercolor) solid 2px;
   border-left: var(--headercolor) solid 2px;  
+  text-decoration: none;
 }
+
 
 #torna-primo:hover {
   background: var(--headercolor);
   color: var(--headerbgcolor);
-
 }
 
 /*====================
@@ -339,7 +340,7 @@ footer a:visited {
 }
 
 footer dl {
-margin: 0;
+  min-width: 15rem;
 }
 
 footer dt {
@@ -378,7 +379,6 @@ table caption {
 
 table {
   min-width: fit-content;
-  margin: auto;
   border-collapse: collapse;
   margin-top: 1rem;
   background-color: var(--tablebgcolor);
