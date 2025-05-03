@@ -316,11 +316,12 @@ CATALOGO
 footer {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   background-color: var(--footerbgcolor);
   color: var(--footercolor);
   font-size: 0.8rem;
-  padding: 0.2rem;
+  padding: 1rem 0; 
   border-top: 2px solid var(--bordercolor);
 }
 
@@ -338,8 +339,7 @@ footer a:visited {
 }
 
 footer dl {
-  min-width: 15rem;
-  padding-left: 3rem;
+margin: 0;
 }
 
 footer dt {
@@ -349,6 +349,7 @@ footer dt {
 }
 
 /*tabella*/
+
 
 table th, table td {
   padding-left: 2rem;
@@ -363,9 +364,7 @@ table caption {
 }
 
 #orari {
-  max-width: 30rem;
-  text-align: center;
-  margin: auto;
+  margin: 0;
 }
 
 #orari caption {
