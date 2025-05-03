@@ -183,6 +183,8 @@ header h1 {
 
 main {
   display : flex;
+  flex-direction: column;
+  align-items: center;
   margin: 2rem;
   background-color: var(--contentbgcolor);
   border-radius: 1em;
@@ -389,7 +391,7 @@ table {
 
 .login-section {
   line-height: normal;
-  width: 50%;
+  width: 60%;
   margin: auto;
   padding: 2rem;
   border: var(--headercolor) solid 2px;
@@ -416,6 +418,7 @@ table {
 #login-form button {
   border: var(--headercolor) solid 1px;
   font-weight: bold;
+  font-size: 1rem;
   background-color: var(--headerbgcolor);
   padding: 0.6em;
   width: auto;
@@ -461,6 +464,48 @@ table {
   color: var(--errorcolor);
 }
 
+/*registrazione*/
+
+.register-prompt {
+  width: 60%;                             
+  margin: 0.5rem auto;                  
+  padding: 0.5rem;                        
+  border: var(--headercolor) solid 2px;   
+  background-color: var(--bgcolor);    
+  border-radius: 1em;                   
+  text-align: center;          
+}
+
+.register-prompt p {
+  font-size: 1rem;
+  color: var(--txtcolor);
+}
+
+.register-prompt a {
+  display: inline-block;
+  padding: 0.6em 1.2em;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--linkcolor);
+  background-color: var(--headerbgcolor);
+  border-radius: 0.5em;
+  border: var(--headercolor) solid 1px;
+}
+
+.register-prompt a:hover {
+  background-color: var(--headercolor);
+  color: var(--headerbgcolor);    
+}
+
+.register-prompt a:visited {
+  background-color: var(--visitedbgcolor);
+  color: var(--Visitedlink);
+}
+
+.register-prompt a:focus {
+  outline: none;
+  border: var(--txtcolor) solid 3px;
+}
 
 /* Media queries per responsività */
 @media (max-width: 720px) {
@@ -495,6 +540,12 @@ table {
     padding: 1rem;
     margin: 0.5rem;
   }
+
+  .register-prompt {
+    width: 70%;
+    padding: 0.5rem;
+    margin: 0.5rem auto;
+  }
 }
 
 @media (max-width: 480px) {
@@ -520,5 +571,14 @@ table {
     width: 90%;
     padding: 1rem;
     margin: 0rem;
+  }
+  .register-prompt {
+    width: 90%;
+    padding: 0.5rem;
+    margin: 0.5rem auto;
+  }
+
+  .register-prompt a {
+    font-size: 0.9rem;
   }
 }
