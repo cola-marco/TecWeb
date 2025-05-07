@@ -117,13 +117,6 @@ header h1 {
   border-right: var(--txtcolor) solid 1px;
 }
 
-#menu a:hover {
-  background: var(--headercolor);
-  color: var(--headerbgcolor);
-  border-top-right-radius: 1em;
-  border-top-left-radius: 1em;
-}
-
 #current {
   display: flex;
   background: var(--headercolor);
@@ -135,8 +128,14 @@ header h1 {
 }
 
 #menu a:visited {
+  color: var(--Visitedlink);
   background: var(--visitedbgcolor);
-  color: var(--txtcolor);
+}
+
+#menu a:hover,
+#menu a:visited:hover {
+  background: var(--headercolor);
+  color: var(--headerbgcolor);
   border-top-right-radius: 1em;
   border-top-left-radius: 1em;
 }
@@ -424,6 +423,7 @@ table {
   color: var(--linkcolor);
   border-radius: 0.5em;
 }
+
 #login-form button:visited {
   color: var(--Visitedlink);
   background: var(--visitedbgcolor);
@@ -506,6 +506,13 @@ table {
   border: var(--txtcolor) solid 3px;
 }
 
+.register-prompt a:visited:hover,
+.register-prompt a:hover {
+  background-color: var(--headercolor);
+  color: var(--headerbgcolor);
+}
+
+
 /* Media queries per responsività */
 @media (max-width: 720px) {
   header, #menu, main {
@@ -549,7 +556,7 @@ table {
 
 @media (max-width: 480px) {
   header h1, main h1, .mainSection h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   footer {
@@ -564,6 +571,7 @@ table {
   main {
     margin: 0.5rem 0rem;
     padding: 0rem;
+    font-size: 0.8rem;
   }
 
   .login-section {

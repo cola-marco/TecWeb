@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Login - Biblioteca</title>
-    <meta name="description" content="Effettua il login al sito della biblioteca di Padova.">
-    <meta name="keywords" content="Biblioteca , Padova , Libri, Recensioni">
+    <title>Registrazione - Biblioteca</title>
+    <meta name="description" content="Registrati al sito della biblioteca di Padova.">
+    <meta name="keywords" content="Biblioteca, Padova, Registrazione, Account">
     <link rel="stylesheet" href="style.css" media="screen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="immagini/open-book-icon.webp" type="image/x-icon">
@@ -22,56 +22,74 @@
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="catalogo.php">Catalogo</a></li>
             <li><a href="recensioni.php">Recensioni</a></li>
-            <li aria-current="page" id="current" lang="en">Login</li>
-            <!--<li><a href="admin.php" lang="en">Admin</a></li>-->
-            
+            <li><a href="login.php">Login</a></li>
+            <li aria-current="page" id="current" lang="en">Registrati</li>
         </ul>
     </nav>
+
     <nav id="breadcrumb" aria-label="breadcrumb">
         <ol>
             <li><a href="index.php" lang="en">Home</a></li>
-            <li aria-current="page">Login</li>
+            <li><a href="login.php">Login</a></li>
+            <li aria-current="page">Registrati</li>
         </ol>
     </nav>
+
     <main id="primo">
         <div class="login-section">
-            <h1>Accedi alla Biblioteca</h1>
-            <form id="login-form" class="compilaform" action="login.php" method="post">
+            <h1>Crea il tuo account</h1>
+            <form id="login-form" class="compilaform" action="register.php" method="post">
                 <label for="username" class="camporichiesto">Nome utente</label>
                 <input type="text" id="username" name="username"
-                       placeholder="Inserisci il tuo username"
+                       placeholder="Scegli un username"
                        required minlength="3" aria-required="true">
                 <span class="error-msg" aria-live="polite"></span>
-              
+
+                <label for="email" class="camporichiesto">Email</label>
+                <input type="email" id="email" name="email"
+                       placeholder="Inserisci la tua email"
+                       required aria-required="true">
+                <span class="error-msg" aria-live="polite"></span>
+
                 <label for="password" class="camporichiesto">Password</label>
                 <input type="password" id="password" name="password"
-                       placeholder="Inserisci la tua password"
+                       placeholder="Crea una password"
                        required minlength="6" aria-required="true">
                 <span class="error-msg" aria-live="polite"></span>
-              
-                <button type="submit">Accedi</button>
 
-                <p class="required-info">I campi contrassegnati con <span aria-hidden="true">*</span> sono obbligatori.</p>
-            </form> 
-        </div> 
+                <label for="confirm-password" class="camporichiesto">Conferma password</label>
+                <input type="password" id="confirm-password" name="confirm-password"
+                       placeholder="Riscrivi la password"
+                       required minlength="6" aria-required="true">
+                <span class="error-msg" aria-live="polite"></span>
 
-        <div class="register-prompt">
-            <p>Non sei ancora registrato? <a href="register.php">Clicca qui per registrarti</a></p>
+                <button type="submit">Registrati</button>
+                <p class="required-info">
+                  I campi contrassegnati con <span aria-hidden="true">*</span> sono obbligatori.
+                </p>
+            </form>
         </div>
 
+        <div class="register-prompt">
+            <p>Hai già un account? <a href="login.php">Accedi qui</a></p>
+        </div>
     </main>
+
     <a class="help" id="torna-primo" href="#primo">Torna su</a>
+
     <footer>
         <dl>
-            <dt> Chiamaci: </dt>
-            <dd><a href="tel:+391111111111">1111111111</a> </dd>
-            <dt> <span lang="en">Scrivici: </span> </dt>
-            <dd> <a href="mailto:Biblioteca@biblioteca.it">Biblioteca@biblioteca.it</a> </dd>
-            <dt> Dove siamo: </dt>
-            <dd> <a href="https://maps.app.goo.gl">Via Luzzatti</a></dd>
+            <dt>Chiamaci:</dt>
+            <dd><a href="tel:+391111111111">1111111111</a></dd>
+            <dt>Scrivici:</dt>
+            <dd><a href="mailto:Biblioteca@biblioteca.it">Biblioteca@biblioteca.it</a></dd>
+            <dt>Dove siamo:</dt>
+            <dd><a href="https://maps.app.goo.gl">Via Luzzatti</a></dd>
         </dl>
 
-        <p id="tabella" class="nascosto">La tabella contiene gli orari di apertura della biblioteca</p>
+        <p id="tabella" class="nascosto">
+          La tabella contiene gli orari di apertura della biblioteca
+        </p>
         <table id="orari" aria-describedby="tabella">
             <caption>Orari della biblioteca</caption>
             <thead>
@@ -83,34 +101,40 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row" abbr="Mer">Lunedì</th>
+                    <th scope="row" abbr="Lun">Lunedì</th>
                     <td><time datetime="09:00">09:00</time></td>
                     <td><time datetime="18:00">18:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row" abbr="Mer">Martedì</th>
+                    <th scope="row" abbr="Mar">Martedì</th>
                     <td><time datetime="09:00">09:00</time></td>
-                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                    <td><time datetime="18:00">18:00</time></td>
+                </tr>
                 <tr>
                     <th scope="row" abbr="Mer">Mercoledì</th>
                     <td><time datetime="09:00">09:00</time></td>
-                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                    <td><time datetime="18:00">18:00</time></td>
+                </tr>
                 <tr>
                     <th scope="row" abbr="Gio">Giovedì</th>
                     <td><time datetime="09:00">09:00</time></td>
-                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                    <td><time datetime="18:00">18:00</time></td>
+                </tr>
                 <tr>
                     <th scope="row" abbr="Ven">Venerdì</th>
                     <td><time datetime="09:00">09:00</time></td>
-                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                    <td><time datetime="18:00">18:00</time></td>
+                </tr>
                 <tr>
                     <th scope="row" abbr="Sab">Sabato</th>
                     <td><time datetime="09:00">09:00</time></td>
-                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                    <td><time datetime="18:00">18:00</time></td>
+                </tr>
                 <tr>
                     <th scope="row" abbr="Dom">Domenica</th>
                     <td><time datetime="09:00">09:00</time></td>
-                    <td><time datetime="18:00">18:00</time></td>                </tr>
+                    <td><time datetime="18:00">18:00</time></td>
+                </tr>
             </tbody>
         </table>
     </footer>
