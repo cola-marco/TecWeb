@@ -212,7 +212,7 @@ CATALOGO
 .card{
   display: flex;
   flex-direction: row;
-  width: 100%;
+  /*width: 100%;*/
   scroll-snap-align: start;
   margin: 0.5em;
 }
@@ -220,6 +220,7 @@ CATALOGO
 .description{
   margin: 0 0 0 0.5em;
   flex: 1;
+  position: relative;
 }
 
 .card img{
@@ -265,10 +266,9 @@ CATALOGO
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
-
-.search-nav button:hover{
-
+  z-index: 2;
+  /*position: absolute;
+  right: 8.5em;*/
 }
 
 .search-bar:focus{
@@ -278,6 +278,40 @@ CATALOGO
 
 .prev-button, .next-button{
   display: none;
+}
+
+.save-button{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  vertical-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5em;
+}
+
+.save-button:checked{
+  background-color: aquamarine;
+}
+
+.save-button input{
+  display: none;
+}
+
+#star-container{
+  position: relative;
+}
+
+#star, #filled-star{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#filled-star{
+  opacity: 0;
 }
 
 @media screen and (max-width: 1000px){
