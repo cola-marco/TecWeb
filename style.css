@@ -280,7 +280,7 @@ CATALOGO
   display: none;
 }
 
-.save-button{
+.save-label{
   position: absolute;
   right: 0;
   bottom: 0;
@@ -290,13 +290,13 @@ CATALOGO
   cursor: pointer;
   border: none;
   border-radius: 0.5em;
+  height: 30px;
+  width: 30px;
+  z-index: 10;
 }
 
-.save-button:checked{
-  background-color: aquamarine;
-}
 
-.save-button input{
+#save-checkbox{
   display: none;
 }
 
@@ -312,6 +312,12 @@ CATALOGO
 
 #filled-star{
   opacity: 0;
+  z-index: 5;
+  transition: all 0.15s;
+}
+
+#save-checkbox:checked ~ #filled-star{
+  opacity: 1;
 }
 
 @media screen and (max-width: 1000px){
@@ -321,10 +327,6 @@ CATALOGO
   
   .card[data-active]{
     opacity: 1;
-  }
-
-  .slider{
-    
   }
 
   .section{
