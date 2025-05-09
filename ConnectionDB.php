@@ -1,7 +1,7 @@
 <?php 
 function connectDB() {
     $host = 'localhost';                         
-    $dbname = 'progettotecweb';          
+    $dbname = 'damartin';          
     $userdbname = 'root';          
     $passwordDB = '';
     try {
