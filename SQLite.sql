@@ -40,8 +40,8 @@ CREATE TABLE Libri (
     Pubblicazione DATE NOT NULL,
     Trama TEXT NOT NULL,
     Numero_copie INT DEFAULT 1, -- Numero delle copie disponibili in "magazzino"
-    FOREIGN KEY (Autore) REFERENCES Autori(ID_Autore) ON DELETE SET NULL,
-    FOREIGN KEY (Genere) REFERENCES Generi(Nome) ON DELETE SET NULL
+    FOREIGN KEY (Autore) REFERENCES Autori(ID_Autore) ON DELETE RESTRICT,
+    FOREIGN KEY (Genere) REFERENCES Generi(Nome) ON DELETE RESTRICT
 );
 
 -- Tabella lista prestiti
