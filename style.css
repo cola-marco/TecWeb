@@ -269,6 +269,15 @@ CATALOGO
   position: relative;
 }
 
+.right{
+  flex: 2;
+  padding-left: 0.5em;
+}
+
+.left{
+  flex: 1;
+}
+
 .card img{
   width: 100%;
   height: auto;
@@ -290,7 +299,7 @@ CATALOGO
 
 .search-bar{
   display: inline-block;
-  width: 80%;
+  width: 100%;
   outline: none;
   border-radius: 2em;
   height: 3em;
@@ -322,17 +331,12 @@ CATALOGO
   background-color: white;
 }
 
-.prev-button, .next-button{
-  display: none;
-}
-
 .save-label{
   position: absolute;
   right: 0;
   bottom: 0;
   display: flex;
   align-items: center;
-  vertical-align: center;
   cursor: pointer;
   border: none;
   border-radius: 0.5em;
