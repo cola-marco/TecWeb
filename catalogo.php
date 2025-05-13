@@ -19,6 +19,10 @@
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
+        $lista_libri = book_display($result);        
+    }
+    
+    function book_display($result){
         $lista_libri = "";
 
         foreach($result as $book){
@@ -54,8 +58,8 @@
 
             $lista_libri = $lista_libri . " " . $li;
         }
+        return $lista_libri;
     }
-    
 
     $DOM = str_replace('###LISTA###', $lista_libri, $DOM);
 
