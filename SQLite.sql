@@ -35,13 +35,14 @@ CREATE TABLE Libri (
     ID_Libro INT AUTO_INCREMENT PRIMARY KEY,
     Titolo VARCHAR(100) NOT NULL,
     Autore INT NOT NULL,
+    Image_path VARCHAR(50),
     Casa_Editrice VARCHAR(100) NOT NULL,
     Genere VARCHAR(100) NOT NULL,
     Pubblicazione DATE NOT NULL,
     Trama TEXT NOT NULL,
     Numero_copie INT DEFAULT 1, -- Numero delle copie disponibili in "magazzino"
-    FOREIGN KEY (Autore) REFERENCES Autori(ID_Autore) ON DELETE SET NULL,
-    FOREIGN KEY (Genere) REFERENCES Generi(Nome) ON DELETE SET NULL
+    FOREIGN KEY (Autore) REFERENCES Autori(ID_Autore) ON DELETE RESTRICT,
+    FOREIGN KEY (Genere) REFERENCES Generi(Nome) ON DELETE RESTRICT
 );
 
 -- Tabella lista prestiti
@@ -66,4 +67,37 @@ CREATE TABLE Wishlist (
 );
 
 
+INSERT INTO Libri (Titolo, Autore, Casa_Editrice, Genere, Pubblicazione) 
+VALUES ('Il nome della rosa', '1', 'Bompiani', 'Storico', 1980),
+('1984', '2', 'Secker & Warburg', 'Distopico', 1949),
+('Orgoglio e pregiudizio', '3', 'Thomas Egerton', 'Romantico', 1813),
+('Il signore degli anelli', '4', 'Allen & Unwin', 'Fantasy', 1954),
+('Cento anni di solitudine', '5', 'Sudamericana', 'Realismo Magico', 1967),
+('Il piccolo principe', '6', 'Reynal & Hitchcock', 'Fiaba', 1943),
+('Delitto e castigo', '7', 'The Russian Messenger', 'Psicologico', 1866),
+('La coscienza di Zeno', '8', 'Cappelli', 'Romanzo introspettivo', 1923),
+('Harry Potter e la pietra filosofale', '9', 'Bloomsbury', 'Fantasy', 1997),
+('Sulla strada', '10', 'Viking Press', 'Narrativa', 1957);
 
+INSERT INTO Autori (Nome, Cognome) VALUES
+('Umberto', 'Eco'),
+('George', 'Orwell'),
+('Jane', 'Austen'),
+('J.R.R.', 'Tolkien'),
+('Gabriel García', 'Márquez'),
+('Antoine de', 'Saint-Exupéry'),
+('Fëdor', 'Dostoevskij'),
+('Italo', 'Svevo'),
+('J.K.', 'Rowling'),
+('Jack', 'Kerouac');
+
+INSERT INTO Generi (Nome) VALUES
+('Storico'),
+('Distopico'),
+('Romantico'),
+('Fantasy'),
+('Realismo Magico'),
+('Fiaba'),
+('Psicologico'),
+('Romanzo introspettivo'),
+('Narrativa');

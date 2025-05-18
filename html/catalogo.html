@@ -35,38 +35,20 @@
     </nav>
 
     <nav class="search-nav">
-        <input type="search" class="search-bar" placeholder="Search">
-        <button type="submit" onkeydown="enter"><svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#3d3d3d"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></button>
+        <form action="search.php" class="search-form" method="post">
+            <input type="search" name="search" class="search-bar" placeholder="Search">
+            <button type="submit" onkeydown="enter"><svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#3d3d3d"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></button>
+        </form>
     </nav>
 
     <main class="catalogo">
-        
-        <div class="section" data-carousel>
-            <ul class="slider" data-slides>
-                <li class="card" data-active>
-                    <div>
-                        <img src="Immagini/esempio libro.jpg" alt="">
-                    </div>
-                    <div class="description">
-                        <a href="esempio.php?nome-libro"><h3>La fine e il principio</h3></a>
-                        <h4>Antonio Scurati</h4>
-                        <p>
-                            <strong>Sommario</strong>: Lorem ipsum dolor sit amet, consectetur adipisicing 
-                            elit. Non facere dolorum numquam hic aut. Eligendi 
-                            tempore commodi aut, itaque iure placeat ullam, illo 
-                            odit sequi a voluptatum saepe odio amet!
-                        </p>
+        <ul class="slider">
 
-                        <!-- <input type="checkbox" id="save-checkbox">
-                        <label for="save-checkbox" class="save-label"></label>
-                        <svg id="star" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#3d3d3d"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg>
-                        <svg id="filled-star" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#434343"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg> -->
-                    </div>
-                </li>
-            </ul>
-        </div>
+            ###LISTA###
 
+        </ul>
     </main>
+
     <a class="help" id="torna-primo" href="#primo">Torna su</a>
     <footer>
   
