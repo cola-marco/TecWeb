@@ -1,5 +1,5 @@
 <?php
-    require 'ConnectionDB.php';
+    require 'utils.php';
     $pdo = connectDB();
 
     $DOM = file_get_contents('html/libro.html');
