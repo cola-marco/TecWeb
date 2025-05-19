@@ -117,11 +117,6 @@ header h1 {
   text-decoration: none;
 }
 
-#menu a:focus {
-  border-left: var(--txtcolor) solid 1px;
-  border-right: var(--txtcolor) solid 1px;
-}
-
 #current {
   display: flex;
   background: var(--headercolor);
@@ -255,6 +250,10 @@ CATALOGO
   display: block;
 }
 
+.catalogo h2{
+  margin: 0.5em 0 0.5em 0.5em;
+}
+
 .card{
   display: flex;
   flex-direction: row;
@@ -270,7 +269,7 @@ CATALOGO
 }
 
 .right{
-  flex: 2;
+  flex: 4;
   padding-left: 0.5em;
 }
 
@@ -306,6 +305,7 @@ CATALOGO
   padding-left: 1em;
   background-color: transparent;
   transition: all 0.15s;
+  font-family: Arial, sans-serif;
 }
 
 .search-nav{
@@ -374,6 +374,14 @@ CATALOGO
   opacity: 1;
 }
 
+#no-libri{
+  margin: 0.5em 0 0.5em 0.7em;
+}
+
+.login-request{
+  margin-top: 1em;
+}
+
 @media screen and (max-width: 1000px){
   .card h4{
     margin-bottom: 0.5em;
@@ -390,7 +398,7 @@ CATALOGO
 
   .search-form{
     width: 100%;
-    margin: 0 0.5em;
+    margin: 0 1em;
   }
 }
 
