@@ -53,4 +53,37 @@ function book_display($result){
     }
     return $lista_libri;
 }
+
+function isLogged(){
+    if(isset($_SESSION['is_logged']) && $_SESSION['is_logged'] == true) return 1;
+    else if(isset($_SESSION['is_logged']) && $_SESSION['is_logged'] == false) return 0;
+    else return -1;
+}
+
+function displayBookInfo($DOM, $pdo, $id_libro){
+    $query = $pdo->prepare("SELECT * FROM Libri JOIN Autori WHERE Autore = ID_Autore AND ID_libro = :id_libro");
+    $query->bindParam(':id_libro', $id_libro, PDO::PARAM_INT);
+    $query->execute();
+
+    $book = $query->fetch(PDO::FETCH_ASSOC);
+    $titolo = $book["Titolo"];
+    $autore = $book["Nome"] . " " . $book["Cognome"];
+    $casa = $book["Casa_Editrice"];
+    $genere = $book["Genere"];
+    $pubblicazione = $book["Pubblicazione"];
+    //$trama = $book["Trama"];
+    $trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
+
+    $DOM = str_replace("###TITOLO###", $titolo, $DOM);
+    $DOM = str_replace('###IMG-PATH###', 'Immagini/esempio libro.jpg', $DOM);
+    $DOM = str_replace('###ID_LIBRO###', $id_libro, $DOM);
+    $DOM = str_replace('###TITOLO###', $titolo, $DOM);
+    $DOM = str_replace('###AUTORE###', $autore, $DOM);
+    $DOM = str_replace('###GENERE###', $genere, $DOM);
+    $DOM = str_replace('###CASA###', $casa, $DOM);
+    $DOM = str_replace('###PUBBLICAZIONE###', $pubblicazione, $DOM);
+    $DOM = str_replace('###TRAMA###', $trama, $DOM);
+
+    return $DOM;
+}
 ?>
