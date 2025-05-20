@@ -1,9 +1,9 @@
-DROP TABLE IF EXISTS Clienti;
-DROP TABLE IF EXISTS Autori;
-DROP TABLE IF EXISTS Generi;
-DROP TABLE IF EXISTS Libri;
-DROP TABLE IF EXISTS Prestiti;
 DROP TABLE IF EXISTS Wishlist;
+DROP TABLE IF EXISTS Prestiti;
+DROP TABLE IF EXISTS Libri;
+DROP TABLE IF EXISTS Generi;
+DROP TABLE IF EXISTS Autori;
+DROP TABLE IF EXISTS Clienti;
 
 -- Tabella dei Clienti
 CREATE TABLE Clienti (
@@ -38,7 +38,7 @@ CREATE TABLE Libri (
     Image_path VARCHAR(50),
     Casa_Editrice VARCHAR(100) NOT NULL,
     Genere VARCHAR(100) NOT NULL,
-    Pubblicazione DATE NOT NULL,
+    Pubblicazione INT NOT NULL,
     Trama TEXT NOT NULL,
     Numero_copie INT DEFAULT 1, -- Numero delle copie disponibili in "magazzino"
     FOREIGN KEY (Autore) REFERENCES Autori(ID_Autore) ON DELETE RESTRICT,
