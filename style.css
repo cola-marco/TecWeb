@@ -208,6 +208,7 @@ header input{
     transition: all 0.15s;
     align-items: center;
     text-align: center;
+    border-top: 1px solid var(--headercolor);
   }
 
   #vertical-menu a{
@@ -231,6 +232,8 @@ header input{
     text-align: center;
     align-items: center;
     padding: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
   }
 }
 
