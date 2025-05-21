@@ -18,11 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['ID_Cliente'] = $user['ID_Cliente'];
                 $_SESSION['is_logged_in'] = true; //per capire se è loggato o no
                 $_SESSION['ruolo'] = $user['Ruolo'];
-                if($user['Ruolo'] == 'Cliente')
-                    header("Location: index.php");
+                if($user['Ruolo'] == 'Cliente') {
+                    header("Location: index.php"); //viene mandato alla pagina principale 
+                    exit();
+                }
                /* else 
                     header("Location: admin.php"); quando sarà disponibile la pagina di admin */
-                exit();
             } else{
               /*  header("Location: permission_denied.php"); password sbagliata */
             }

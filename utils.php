@@ -86,4 +86,11 @@ function displayBookInfo($DOM, $pdo, $id_libro){
 
     return $DOM;
 }
+
+function pulisciInput($value){
+    $value = trim($value); //toglie spazi
+    $value = strip_tags($value); //rimossi tag html e php
+    $value = htmlentities($value); //converte caratteri speciali in entità html
+    return $value;
+}
 ?>

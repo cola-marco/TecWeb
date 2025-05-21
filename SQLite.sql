@@ -8,11 +8,7 @@ DROP TABLE IF EXISTS Clienti;
 -- Tabella dei Clienti
 CREATE TABLE Clienti (
     ID_Cliente INT AUTO_INCREMENT PRIMARY KEY,
-    Nome VARCHAR(100) NOT NULL,
-    Cognome VARCHAR(100) NOT NULL,
     Email VARCHAR(150) UNIQUE NOT NULL,
-    Telefono VARCHAR(15) UNIQUE  NOT NULL,
-    Indirizzo VARCHAR(100) NOT NULL,
     Username VARCHAR(100) UNIQUE NOT NULL,
     Pass VARCHAR(100) NOT NULL,
     Ruolo ENUM('Cliente', 'Admin') DEFAULT 'Cliente'
