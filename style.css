@@ -19,6 +19,7 @@
   --footerlink: var(--linkcolor);
   --Visitedlink: black;
   --visitedbgcolor: rgb(0, 217, 255);
+  --menubgcolor: rgb(185, 185, 185);
   --errorcolor: var(--linkcolor);
 }
 
@@ -209,12 +210,21 @@ header input{
     align-items: center;
     text-align: center;
     border-top: 1px solid var(--headercolor);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    background-color: var(--menubgcolor);
+  }
+
+  #vertical-menu .home{
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
   }
 
   #vertical-menu a{
     display: block;
     width: 100%;
     border-radius: none;
+    padding: 0.5em 2em;
   }
 
   #vertical-menu a:hover,
