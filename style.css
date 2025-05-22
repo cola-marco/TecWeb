@@ -92,10 +92,6 @@ header h1 {
   width: 100%;
 }
 
-.menu-container{
-  display: none;
-}
-
 header input{
   display: none;
 }
@@ -143,7 +139,11 @@ header input{
 
 /*menu*/
 
-#menu {
+.menu-container input, .menu-container label{
+  display: none;
+}
+
+/*#menu {
   background-color: var(--headerbgcolor);
   color: var(--headercolor);
   font-weight: bold;
@@ -169,6 +169,12 @@ header input{
   padding: 0.5em 2em;
   text-decoration: none;
 }
+  
+#menu a:visited {
+  color: var(--Visitedlink);
+  background: var(--visitedbgcolor);
+}
+*/
 
 #current {
   background: var(--headercolor);
@@ -179,13 +185,6 @@ header input{
   border-top-left-radius: 1em;
 }
 
-#menu a:visited {
-  color: var(--Visitedlink);
-  background: var(--visitedbgcolor);
-}
-
-#menu a:hover,
-#menu a:visited:hover, 
 #vertical-menu a:hover,
 #vertical-menu a:visited:hover{
   background: var(--headercolor);
@@ -199,7 +198,36 @@ header input{
   width: 100%;
 }
 
+#vertical-menu{
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 2.5em;
+  display: flex;
+  justify-content: right;
+}
+
+#vertical-menu a{
+  display: flex;
+  align-items: center;
+  box-sizing: border-box; 
+  height: auto;
+  padding: 0.5em 2em;
+  text-decoration: none;
+}
+
+#vertical-menu a:visited{
+  color: var(--Visitedlink);
+  background: var(--visitedbgcolor);
+}
+
 @media screen and (max-width: 1000px){
+  .menu-container label{
+    display: block;
+  }
+
+  
   #vertical-menu{
     display: none;
     height: 0;
@@ -232,11 +260,6 @@ header input{
     border-top-right-radius: 0;
     border-top-left-radius: 0;
   }
-
-  #menu{
-    display: none;
-  }
-
   
   #current{
     text-align: center;
