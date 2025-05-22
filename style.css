@@ -19,6 +19,7 @@
   --footerlink: var(--linkcolor);
   --Visitedlink: black;
   --visitedbgcolor: rgb(0, 217, 255);
+  --menubgcolor: rgb(185, 185, 185);
   --errorcolor: var(--linkcolor);
 }
 
@@ -75,7 +76,7 @@ a:hover {
 
 header {
   background-color: var(--headerbgcolor);
-  padding: 1rem;
+  /*padding: 1rem;*/
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,11 +87,63 @@ header h1 {
   color: var(--headercolor);
   font-size: 2rem;
   margin: 0;
+  padding: 0.5em;
+  text-align: left;
+  width: 100%;
+}
+
+header input{
+  display: none;
+}
+
+@media screen and (max-width: 1000px){
+  .menu-container{
+    display: block;
+  }
+  
+  header label{
+    display: block;
+  }
+
+  header label[for="hamb-button"]{
+    position: absolute;
+    top: -2.5em;
+    right: 1em;
+  }
+
+  header label[for="hamb-button"]:hover{
+    cursor: pointer;
+  }
+
+  #hamb-button:checked ~ #vertical-menu{
+    display: block;
+    height: 100%;
+    opacity: 1;
+  }
+
+  #close-icon{
+    display: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  #hamb-button:checked ~ #close-icon{
+    display: block;
+    opacity: 1;
+  }
+
+  #hamb-button:checked ~ #hamb-icon{
+    display: none;
+  }
 }
 
 /*menu*/
 
-#menu {
+.menu-container input, .menu-container label{
+  display: none;
+}
+
+/*#menu {
   background-color: var(--headerbgcolor);
   color: var(--headercolor);
   font-weight: bold;
@@ -116,9 +169,14 @@ header h1 {
   padding: 0.5em 2em;
   text-decoration: none;
 }
+  
+#menu a:visited {
+  color: var(--Visitedlink);
+  background: var(--visitedbgcolor);
+}
+*/
 
 #current {
-  display: flex;
   background: var(--headercolor);
   color: var(--headerbgcolor);
   height: auto;
@@ -127,18 +185,92 @@ header h1 {
   border-top-left-radius: 1em;
 }
 
-#menu a:visited {
-  color: var(--Visitedlink);
-  background: var(--visitedbgcolor);
-}
-
-#menu a:hover,
-#menu a:visited:hover {
+#vertical-menu a:hover,
+#vertical-menu a:visited:hover{
   background: var(--headercolor);
   color: var(--headerbgcolor);
   border-top-right-radius: 1em;
   border-top-left-radius: 1em;
 }
+
+.menu-container{
+  position: relative;
+  width: 100%;
+}
+
+#vertical-menu{
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 2.5em;
+  display: flex;
+  justify-content: right;
+}
+
+#vertical-menu a{
+  display: flex;
+  align-items: center;
+  box-sizing: border-box; 
+  height: auto;
+  padding: 0.5em 2em;
+  text-decoration: none;
+}
+
+#vertical-menu a:visited{
+  color: var(--Visitedlink);
+  background: var(--visitedbgcolor);
+}
+
+@media screen and (max-width: 1000px){
+  .menu-container label{
+    display: block;
+  }
+
+  
+  #vertical-menu{
+    display: none;
+    height: 0;
+    width: 100%;
+    list-style: none;
+    opacity: 0;
+    transition: all 0.15s;
+    align-items: center;
+    text-align: center;
+    border-top: 1px solid var(--headercolor);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    background-color: var(--menubgcolor);
+  }
+
+  #vertical-menu .home{
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+  }
+
+  #vertical-menu a{
+    display: block;
+    width: 100%;
+    border-radius: none;
+    padding: 0.5em 2em;
+  }
+
+  #vertical-menu a:hover,
+  #vertical-menu a:visited:hover{
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  
+  #current{
+    text-align: center;
+    align-items: center;
+    padding: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+}
+
+
 
 /*hamburger menu*/
 
@@ -605,7 +737,7 @@ table {
 
 
 /* Media queries per responsività */
-@media (max-width: 720px) {
+@media (max-width: 1000px) {
   header, #menu, main {
     flex-direction: column;
     align-items: center;
