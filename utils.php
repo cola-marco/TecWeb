@@ -55,8 +55,8 @@ function book_display($result){
 }
 
 function isLogged(){
-    if(isset($_SESSION['is_logged']) && $_SESSION['is_logged'] == true) return 1;
-    else if(isset($_SESSION['is_logged']) && $_SESSION['is_logged'] == false) return 0;
+    if(isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == true) return 1;
+    else if(isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == false) return 0;
     else return -1;
 }
 

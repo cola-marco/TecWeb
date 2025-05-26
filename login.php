@@ -2,11 +2,11 @@
     require 'utils.php';
     $pdo = connectDB();
 
-    /*if(!isset($_SESSION['is_logged'])){
+    if(!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] == false){
         $DOM = file_get_contents('html/login.html');
-    }*/
-    //else{
-        $_SESSION["ID_Cliente"] = 1;
+    }
+    else{
+        //$_SESSION["ID_Cliente"] = 1;
 
         $DOM = file_get_contents("html/area-riservata.html");
         $cliente = $_SESSION["ID_Cliente"];
@@ -41,6 +41,6 @@
         
         $DOM = str_replace('###LISTA-WISHLIST###', $wishlist, $DOM);
         $DOM = str_replace('###DATI-PERSONALI###', $personal_data, $DOM);
-    //}
+    }
     echo $DOM;
 ?>
