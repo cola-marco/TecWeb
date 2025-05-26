@@ -93,4 +93,25 @@ function pulisciInput($value){
     $value = htmlentities($value); //converte caratteri speciali in entità html
     return $value;
 }
+
+function isSaved($pdo, $id, $user){
+    $query = $pdo->prepare("SELECT * FROM Wishlist WHERE Cliente = :user");
+    $query->bindParam(':user', $user, PDO::PARAM_STR);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($result as $book) if($book["Libro"] == $id) return true;
+    return false;
+}
+
+function addToWishlist($pdo, $user, $id_libro){
+    if(!isSaved($pdo, $id_libro, $user)){
+        $query = $pdo->prepare("INSERT INTO Wishlist (Cliente, Libro) VALUES (:user, :id_libro)");
+        $query->bindParam(':user', $user, PDO::PARAM_STR);
+        $query->bindParam(':id_libro', $id_libro, PDO::PARAM_STR);
+        $result = $query->execute();
+
+        return $result;
+    }
+}
 ?>
