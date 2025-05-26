@@ -6,7 +6,6 @@
     $DOM = file_get_contents('html/libro.html');
     if (!isset($_GET["id_libro"])) {
         header("location: catalogo.php");
-        exit();
     }
 
     $id_libro = $_GET["id_libro"];
