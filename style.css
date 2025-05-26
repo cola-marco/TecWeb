@@ -347,6 +347,46 @@ main h1, .mainSection h1 {
   padding: 1rem;
 }
 
+.user-area{
+  display: flex;
+  flex-direction: row;
+  vertical-align: top;
+  align-items: flex-start;
+}
+
+.wishlist{
+  flex: 2;
+  overflow-y: auto;
+  /*border: 1px solid black;
+  border-radius: 1em;
+  padding: 0.5em;*/
+  height: 60vh;
+  margin-right: 1em;
+  width: 100%;
+}
+
+.personal-data{
+  flex: 1;
+  list-style-position: inside;
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+}
+
+@media screen and (max-width: 1000px){
+  .user-area{
+    flex-direction: column;
+  }
+
+  .personal-data, .wishlist{
+    text-align: left;
+  }
+
+  .wishlist{
+    margin-right: 0;
+  }
+}
+
 /*torna-primo*/
 
 #torna-primo {
