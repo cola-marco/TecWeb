@@ -15,22 +15,11 @@ function connectDB() {
     }
 }
 
-function book_display($result){
+function book_display($result, $li_template){
     $lista_libri = "";
 
     foreach($result as $book){
-        $li = '
-        <li class="card">
-            <div>
-                <img src="###IMG-PATH###" alt="">
-            </div>
-            <div class="description">
-                <a href="libro.php?id_libro=###ID_LIBRO###"><h3>###TITOLO###</h3></a>
-                <h4>###AUTORE###</h4>
-                <p><strong>Trama</strong>:###TRAMA###</p>
-            </div>
-        </li>
-        ';
+        $li = $li_template;
 
         $titolo = $autore = $casa = $genere = $pubblicazione = $trama = "";
 
@@ -92,5 +81,37 @@ function pulisciInput($value){
     $value = strip_tags($value); //rimossi tag html e php
     $value = htmlentities($value); //converte caratteri speciali in entità html
     return $value;
+}
+
+function isSaved($pdo, $id, $user){
+    $query = $pdo->prepare("SELECT * FROM Wishlist WHERE Cliente = :user");
+    $query->bindParam(':user', $user, PDO::PARAM_STR);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($result as $book) if($book["Libro"] == $id) return true;
+    return false;
+}
+
+function addToWishlist($pdo, $user, $id_libro){
+    if(!isSaved($pdo, $id_libro, $user)){
+        $query = $pdo->prepare("INSERT INTO Wishlist (Cliente, Libro) VALUES (:user, :id_libro)");
+        $query->bindParam(':user', $user, PDO::PARAM_STR);
+        $query->bindParam(':id_libro', $id_libro, PDO::PARAM_STR);
+        $result = $query->execute();
+
+        return $result;
+    }
+}
+
+function deleteFromWishlist($pdo, $user, $id_libro){
+    if(isSaved($pdo, $id_libro, $user)){
+        $query = $pdo->prepare("DELETE FROM Wishlist WHERE Cliente = :user AND Libro = :id_libro");
+        $query->bindParam(':user', $user, PDO::PARAM_STR);
+        $query->bindParam(':id_libro', $id_libro, PDO::PARAM_STR);
+        $result = $query->execute();
+
+        return $result;
+    }
 }
 ?>
