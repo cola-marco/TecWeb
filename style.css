@@ -356,13 +356,17 @@ main h1, .mainSection h1 {
 
 .wishlist{
   flex: 2;
-  overflow-y: auto;
   /*border: 1px solid black;
   border-radius: 1em;
   padding: 0.5em;*/
-  height: 60vh;
+  
   margin-right: 1em;
   width: 100%;
+}
+
+.wishlist ul{
+  overflow-y: auto;
+  height: 60vh;
 }
 
 .personal-data{
@@ -371,6 +375,10 @@ main h1, .mainSection h1 {
   width: 100%;
   height: 100%;
   vertical-align: top;
+}
+
+.hidden-confirm{
+  display: none;
 }
 
 @media screen and (max-width: 1000px){
@@ -773,6 +781,24 @@ table {
 .register-prompt a:hover {
   background-color: var(--headercolor);
   color: var(--headerbgcolor);
+}
+
+.delete-form{
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+}
+
+.delete-button{
+  background-color: rgb(231, 63, 63);
+  border: none;
+  border-radius: 0.5em;
+  width: 100%;
+  height: 100%;
+}
+
+.delete-button:hover{
+  cursor: pointer;
 }
 
 
