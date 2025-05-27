@@ -22,7 +22,20 @@
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
    
-        $lista_libri = book_display($result);        
+        $li = '
+        <li class="card">
+            <div>
+                <img src="###IMG-PATH###" alt="">
+            </div>
+            <div class="description">
+                <a href="libro.php?id_libro=###ID_LIBRO###"><h3>###TITOLO###</h3></a>
+                <h4>###AUTORE###</h4>
+                <p><strong>Trama</strong>:###TRAMA###</p>
+            </div>
+        </li>
+        ';
+
+        $lista_libri = book_display($result, $li);        
     }
 
     $DOM = str_replace('###LISTA###', $lista_libri, $DOM);

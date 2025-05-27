@@ -23,7 +23,7 @@
 
             if(isset($_POST["wish"]) && $_POST["wish"] == true){
                 $insert = addToWishlist($pdo, $user, $id_libro);
-                if($insert == true) $DOM = str_replace('<form action="#" method="post"><button type="submit" name="wish" value="true"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg></button></form>', "<p>Libro salvato!</p>", $DOM);
+                if($insert == true) $DOM = str_replace('<form action="#" method="post"><button type="submit" name="wish" value="true"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg></button></form>', '<p>Libro salvato nella tua <a href="login.php">wishlist</a>.</p>', $DOM);
                 else echo $insert;
             }
         } 

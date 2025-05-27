@@ -15,22 +15,11 @@ function connectDB() {
     }
 }
 
-function book_display($result){
+function book_display($result, $li_template){
     $lista_libri = "";
 
     foreach($result as $book){
-        $li = '
-        <li class="card">
-            <div>
-                <img src="###IMG-PATH###" alt="">
-            </div>
-            <div class="description">
-                <a href="libro.php?id_libro=###ID_LIBRO###"><h3>###TITOLO###</h3></a>
-                <h4>###AUTORE###</h4>
-                <p><strong>Trama</strong>:###TRAMA###</p>
-            </div>
-        </li>
-        ';
+        $li = $li_template;
 
         $titolo = $autore = $casa = $genere = $pubblicazione = $trama = "";
 
@@ -107,6 +96,17 @@ function isSaved($pdo, $id, $user){
 function addToWishlist($pdo, $user, $id_libro){
     if(!isSaved($pdo, $id_libro, $user)){
         $query = $pdo->prepare("INSERT INTO Wishlist (Cliente, Libro) VALUES (:user, :id_libro)");
+        $query->bindParam(':user', $user, PDO::PARAM_STR);
+        $query->bindParam(':id_libro', $id_libro, PDO::PARAM_STR);
+        $result = $query->execute();
+
+        return $result;
+    }
+}
+
+function deleteFromWishlist($pdo, $user, $id_libro){
+    if(isSaved($pdo, $id_libro, $user)){
+        $query = $pdo->prepare("DELETE FROM Wishlist WHERE Cliente = :user AND Libro = :id_libro");
         $query->bindParam(':user', $user, PDO::PARAM_STR);
         $query->bindParam(':id_libro', $id_libro, PDO::PARAM_STR);
         $result = $query->execute();

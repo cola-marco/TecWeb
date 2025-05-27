@@ -3,13 +3,10 @@
     $pdo = connectDB();
     session_start();
 
-    //echo $_SESSION['is_logged_in'];
-
     if(!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] == false){
         $DOM = file_get_contents('html/login.html');
     }
     else{
-        //$_SESSION["ID_Cliente"] = 1;
 
         $DOM = file_get_contents("html/area-riservata.html");
         $cliente = $_SESSION["ID_Cliente"];
@@ -19,7 +16,23 @@
         $result = $wishlist_query->fetchAll(PDO::FETCH_ASSOC);
 
         if(count($result) > 0){
-            $wishlist = book_display($result);
+            $li = '
+                <li class="card">
+                    <div>
+                        <img src="###IMG-PATH###" alt="">
+                    </div>
+                    <div class="description">
+                        <a href="libro.php?id_libro=###ID_LIBRO###"><h3>###TITOLO###</h3></a>
+                        <h4>###AUTORE###</h4>
+                        <p><strong>Trama</strong>:###TRAMA###</p>
+
+                        <form action="#" method="post" class="delete-form">
+                            <button type="submit" name="delete-from-wishlist" value="###ID_LIBRO###" class="delete-button"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
+                        </form>
+                    </div>
+                </li>';
+
+            $wishlist = book_display($result, $li);
         }
         else{
             $wishlist = "<p>Nessun libro salvato, se ne vuoi salvarne alcuni vai al <a href=\"catalogo.php\">catalogo</a>.</p>";
@@ -40,6 +53,12 @@
         }
         else{
             $personal_data = "Nessun cliente";
+        }
+
+        if(isset($_POST["delete-from-wishlist"]) && $_POST["delete-from-wishlist"] > 0){
+            $delete = deleteFromWishlist($pdo, $cliente, $_POST["delete-from-wishlist"]);
+            if($delete) header("Location: login.php");
+            exit();
         }
         
         $DOM = str_replace('###LISTA-WISHLIST###', $wishlist, $DOM);
