@@ -670,7 +670,8 @@ table {
 }
 
 
-.compilaform input {
+.compilaform input,
+.compilaform textarea{
   width: auto;
   padding: 0.5rem;
   margin: 0.5rem 0;
@@ -876,5 +877,126 @@ table {
 
   .register-prompt a {
     font-size: 0.9rem;
+  }
+}
+
+
+/*Aggiungi Libro */ 
+
+#add-section {
+  line-height: normal;
+  width: 60%;
+  margin: auto;
+  padding: 2rem;
+  border: var(--headercolor) solid 2px;
+  background-color: var(--bgcolor);
+  border-radius: 1em;
+  min-width: 15rem;
+}
+
+#add-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--headercolor);
+  text-align: center;
+}
+
+
+#add-book-section {
+  display: flex;
+  flex-direction: column;
+}
+#add-book-section input,
+#add-book-section textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.6rem 0;
+  border-radius: 0.5em;
+  font-family: inherit;
+}
+
+#add-book-section textarea {
+  min-height: 8em;
+  resize: vertical;
+}
+
+#add-book-section input:focus,
+#add-book-section textarea:focus {
+  outline: 3px solid var(--linkcolor);
+  outline-offset: 2px;
+}
+
+#add-book-section button {
+  width: auto;
+  align-self: center;
+  padding: 0.8rem 2rem;
+  margin-top: 1rem;
+  background-color: var(--headerbgcolor);
+  color: var(--linkcolor);
+  border: 2px solid var(--headercolor);
+  border-radius: 0.5em;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+#add-book-section button:hover,
+#add-book-section button:focus {
+  background-color: var(--headercolor);
+  color: var(--headerbgcolor);
+  outline: none;
+}
+
+#add-book-section .error-msg {
+  font-size: 0.9rem;
+  color: var(--errorcolor);
+  min-height: 1.2em;
+  margin-bottom: 0.4rem;
+}
+
+#add-book-section .required-info {
+  font-size: 0.8rem;
+  color: var(--txtcolor);
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  #add-section {
+    width: 95%;
+    padding: 1rem;
+  }
+  #add-section h3 {
+    font-size: 1.6rem;
+  }
+  #add-book-section button {
+    width: 100%;
+  }
+}
+
+#logout-btn {
+  margin: 1rem;
+  padding: 0.8rem 2rem;
+  background-color: var(--headerbgcolor);
+  color: var(--linkcolor);
+  border: 2px solid var(--headercolor);
+  border-radius: 0.5em;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#logout-btn:hover,
+#logout-btn:focus {
+  background-color: var(--headercolor);
+  color: var(--headerbgcolor);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  #logout-btn {
+    width: 90%;
+    max-width: 300px;
   }
 }
