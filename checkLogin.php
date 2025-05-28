@@ -18,12 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['ID_Cliente'] = $user['ID_Cliente'];
                 $_SESSION['is_logged_in'] = true; //per capire se è loggato o no
                 $_SESSION['ruolo'] = $user['Ruolo'];
+                $_SESSION['created'] = time();
                 if($user['Ruolo'] == 'Cliente') {
                     header("Location: index.php"); //viene mandato alla pagina principale 
                     exit();
                 }
-               /* else 
+                /* else 
                     header("Location: admin.php"); quando sarà disponibile la pagina di admin */
+                if(isset($_SESSION['created']) && (time() - $_SESSION['created'] > 60)){
+                    session_unset();
+                    session_destroy();
+                }
             } else{
               /*  header("Location: permission_denied.php"); password sbagliata */
             }

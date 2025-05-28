@@ -3,11 +3,10 @@
     $pdo = connectDB();
     session_start();
 
-    if(!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] == false){
+    if(!isset($_SESSION['is_logged_in']) || isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == false){
         $DOM = file_get_contents('html/login.html');
     }
     else{
-
         $DOM = file_get_contents("html/area-riservata.html");
         $cliente = $_SESSION["ID_Cliente"];
         $wishlist_query = $pdo->prepare("SELECT * FROM Wishlist, Libri, Clienti, Autori WHERE Libro = ID_libro AND Autore = ID_Autore AND Cliente = :cliente");
@@ -44,7 +43,7 @@
         $personal_result = $personal_query->fetch(PDO::FETCH_ASSOC);
 
 
-        if(count($personal_result) > 0){
+        if($personal_result && count($personal_result) > 0){
             $personal_data = "<li> Username: " .  $personal_result["Username"] . "</li>";
             $personal_data = $personal_data . "<li> Nome:". $personal_result["Nome"] ."</li>";
             $personal_data = $personal_data . "<li> Cognome: ". $personal_result["Cognome"] ."</li>";
@@ -64,5 +63,6 @@
         $DOM = str_replace('###LISTA-WISHLIST###', $wishlist, $DOM);
         $DOM = str_replace('###DATI-PERSONALI###', $personal_data, $DOM);
     }
+    //echo $_SESSION["created"];
     echo $DOM;
 ?>
