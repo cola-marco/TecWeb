@@ -10,8 +10,8 @@ function connectDB() {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch (PDOException $e) {
-        echo "Connessione fallita: " . $e->getMessage();
-        exit(); //se connessione al database è fallita esce dal flusso 
+        //echo "Connessione fallita: " . $e->getMessage();
+        return null; //se connessione al database è fallita esce dal flusso 
     }
 }
 
@@ -113,5 +113,28 @@ function deleteFromWishlist($pdo, $user, $id_libro){
 
         return $result;
     }
+}
+
+function tab_book_display($result, $tr_template){
+    $tab_libri = "";
+
+    foreach($result as $book){
+        $tr = $tr_template;
+
+        $id_libro = $titolo = $autore = $anno = "";
+
+        $id_libro = $book["ID_Libro"];
+        $titolo = $book["Titolo"];
+        $autore = $book["Nome"] . " " . $book["Cognome"];
+        $anno = $book["Pubblicazione"];
+
+        $tr = str_replace('{{ID_Libro}}', $id_libro, $tr);
+        $tr = str_replace('{{Titolo}}', $titolo, $tr);
+        $tr = str_replace('{{Autore}}', $autore, $tr);
+        $tr = str_replace('{{Anno}}', $anno, $tr);
+
+        $tab_libri = $tab_libri . " " . $tr;
+    }
+    return $tab_libri;
 }
 ?>

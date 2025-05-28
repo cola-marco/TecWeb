@@ -46,26 +46,22 @@
                     <th scope="col">ID</th>
                     <th scope="col">Titolo</th>
                     <th scope="col">Autore</th>
+                    <th scope="col">Anno di pubblicazione</th>
                     <th scope="col">Modifica</th>
                     <th scope="col">eliminare</th>         
                 </tr>
             </thead>
             <tbody>
-<!-- libriAdmin_start -->
-<tr>
-  <th scope="row">{{ID_Libro}}</th>
-  <td>{{Titolo}}</td>
-  <td>{{Autore}}</td>
-  <td>{{Anno}}</td>
-  <td><a href="editBook.php?id={{ID_Libro}}">Modifica</a></td>
-  <td><a href="deleteBook.php?id={{ID_Libro}}" onclick="return confirm('Confermi eliminazione?')">Elimina</a></td>
-</tr>
-<!-- libriAdmin_end -->
 
-</tbody>
+                ###BODY_TABELLA###
+
+            </tbody>
 
         </table>
     </main>
+    <div class="db-error">
+            ###ERRORE_DB###
+    </div>
 
     <a class="help" id="torna-primo" href="#primo">Torna su</a>
     
