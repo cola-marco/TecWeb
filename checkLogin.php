@@ -22,8 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: index.php"); //viene mandato alla pagina principale 
                     exit();
                 }
-               /* else 
-                    header("Location: admin.php"); quando sarà disponibile la pagina di admin */
+                else { //login admin
+                    header("Location: admin.php");
+                }
             } else{
               /*  header("Location: permission_denied.php"); password sbagliata */
             }
