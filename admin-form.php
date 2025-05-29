@@ -3,10 +3,12 @@
     session_start();
 
     $DOM = file_get_contents('html/admin-form.html');
-    $titolo = $autore = $casa_editrice = $genere = $anno = $trama = $n_copie = '';
+    $id_libro = $titolo = $autore = $casa_editrice = $genere = $anno = $trama = $n_copie = '';
     if(isset($_GET['id'])){ //id settato quindi form per modifica
         $DOM = str_replace('{{Azione}}', 'Modifica', $DOM);
         $id_libro = $_GET['id'];
+        $form_action = 'manageBook.php?id=' . urlencode($id_libro);
+        $DOM = str_replace('{{FormAction}}', $form_action, $DOM);
         $pdo = connectDB();
         if($pdo){
             $stmt = $pdo->prepare("SELECT * FROM Libri JOIN Autori WHERE ID_Libro = :id_libro AND Autore = ID_Autore");
@@ -20,7 +22,7 @@
                 $anno = $result["Pubblicazione"];
                 $trama = $result["Trama"];
                 $n_copie = $result["Numero_copie"];
-
+                
                 $DOM = str_replace('{{Titolo}}', $titolo, $DOM);
                 $DOM = str_replace('{{Autore}}', $autore, $DOM);
                 $DOM = str_replace('{{Casa_Editrice}}', $casa_editrice, $DOM);
@@ -40,6 +42,8 @@
     }
     else { //form per l'aggiunta di un libro
         $DOM = str_replace('{{Azione}}', 'Aggiungi', $DOM);
+        $form_action = 'manageBook.php';
+        $DOM = str_replace('{{FormAction}}', $form_action, $DOM);
         $DOM = str_replace('{{Titolo}}', $titolo, $DOM);
         $DOM = str_replace('{{Autore}}', $autore, $DOM);
         $DOM = str_replace('{{Casa_Editrice}}', $casa_editrice, $DOM);
