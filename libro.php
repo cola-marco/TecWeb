@@ -1,4 +1,5 @@
 <?php
+    include "templates/header.php";
     require 'utils.php';
     $pdo = connectDB();
     session_start();
@@ -31,4 +32,5 @@
         
         echo $DOM;
     }
+    include "templates/footer.php";
 ?>
