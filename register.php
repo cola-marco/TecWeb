@@ -1,4 +1,5 @@
 <?php
+    include "templates/header.php";
     $DOM = file_get_contents('html/register.html');
     /* $usernameErr = '';
     $emailErr = '';
@@ -9,4 +10,5 @@
     $DOM = str_replace('###PASS_ERROR###', $passErr, $DOM);
     $DOM = str_replace('###CONFPASS_ERROR###', $confpassErr, $DOM);  prima idea per non far visualizzare i segnaposti*/
     echo $DOM;
+    include "templates/footer.php";
 ?>

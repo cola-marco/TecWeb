@@ -1,4 +1,5 @@
 <?php
+    include "templates/header.php";
     require 'utils.php';
     $pdo = connectDB();
 
@@ -40,4 +41,5 @@
 
     $DOM = str_replace('###LISTA###', $lista_libri, $DOM);
     echo $DOM;
+    include "templates/footer.php";
 ?>
