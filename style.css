@@ -80,7 +80,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 header h1 {
@@ -96,44 +95,39 @@ header input{
   display: none;
 }
 
+#hamb-button{
+  display: none;
+}
+
+
 @media screen and (max-width: 1000px){
+
   .menu-container{
     display: block;
   }
-  
-  header label{
+
+  #hamb-button{
     display: block;
-  }
-
-  header label[for="hamb-button"]{
-    position: absolute;
-    top: -2.5em;
-    right: 1em;
-  }
-
-  header label[for="hamb-button"]:hover{
-    cursor: pointer;
-  }
-
-  #hamb-button:checked ~ #vertical-menu{
-    display: block;
-    height: 100%;
-    opacity: 1;
+    position: relative;
   }
 
   #close-icon{
-    display: none;
-    opacity: 0;
+    transition: opacity 0.15s;
+    position: absolute;
     transition: opacity 0.15s;
   }
 
-  #hamb-button:checked ~ #close-icon{
-    display: block;
-    opacity: 1;
+  #close-icon[data-open="false"]{
+    opacity: 0;
   }
 
-  #hamb-button:checked ~ #hamb-icon{
-    display: none;
+  #hamb-icon{
+    position: absolute;
+    transition: opacity 0.15s;
+  }
+
+  #hamb-icon[data-open="true"]{
+    opacity: 0;
   }
 }
 
@@ -228,8 +222,7 @@ header input{
   }
 
   
-  #vertical-menu{
-    display: none;
+  #vertical-menu[data-open="false"]{
     height: 0;
     width: 100%;
     list-style: none;
@@ -241,6 +234,10 @@ header input{
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
     background-color: var(--menubgcolor);
+  }
+
+  #vertical-menu[data-open="false"]{
+    height: auto;
   }
 
   #vertical-menu .home{
@@ -805,15 +802,6 @@ table {
 
 /* Media queries per responsività */
 @media (max-width: 1000px) {
-  header, #menu, main {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #menu {
-    padding: 0rem;
-  }
-
   main {
     margin: 1rem;
   }
