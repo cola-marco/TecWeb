@@ -11,12 +11,12 @@
         $DOM = str_replace('{{FormAction}}', $form_action, $DOM);
         $pdo = connectDB();
         if($pdo){
-            $stmt = $pdo->prepare("SELECT * FROM Libri JOIN Autori WHERE ID_Libro = :id_libro AND Autore = ID_Autore");
+            $stmt = $pdo->prepare("SELECT * FROM Libri WHERE ID_Libro = :id_libro");
             $stmt->bindParam(':id_libro', $id_libro, PDO::PARAM_INT);
             if($stmt->execute()){ //query eseguita correttamente
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 $titolo = $result["Titolo"];
-                $autore = $result["Nome"] . " " . $result["Cognome"];
+                $autore = $result["Autore"];
                 $casa_editrice = $result["Casa_Editrice"];
                 $genere = $result["Genere"];
                 $anno = $result["Pubblicazione"];

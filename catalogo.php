@@ -14,7 +14,7 @@
         $DOM = str_replace('###ERRORE_DB###', $error, $DOM);
     }
     else{
-        $query = $pdo->prepare("SELECT * FROM Libri JOIN Autori WHERE Autore = ID_Autore");
+        $query = $pdo->prepare("SELECT * FROM Libri");
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
    

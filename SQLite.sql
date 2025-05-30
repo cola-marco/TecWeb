@@ -14,6 +14,7 @@ CREATE TABLE Clienti (
     Ruolo ENUM('Cliente', 'Admin') DEFAULT 'Cliente'
 );
 
+/*
 -- Tabella per gli Autori
 CREATE TABLE Autori (
     ID_Autore INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,7 +25,7 @@ CREATE TABLE Autori (
 -- Tabella per i Generi
 CREATE TABLE Generi (
     Nome VARCHAR(100) PRIMARY KEY
-);
+); */
 
 -- Tabella lista Libri
 CREATE TABLE Libri (
@@ -37,8 +38,8 @@ CREATE TABLE Libri (
     Pubblicazione DATE NOT NULL,
     Trama TEXT NOT NULL,
     Numero_copie INT DEFAULT 1, -- Numero delle copie disponibili in "magazzino"
-    FOREIGN KEY (Autore) REFERENCES Autori(ID_Autore) ON DELETE RESTRICT,
-    FOREIGN KEY (Genere) REFERENCES Generi(Nome) ON DELETE RESTRICT
+    /*FOREIGN KEY (Autore) REFERENCES Autori(ID_Autore) ON DELETE RESTRICT,
+    FOREIGN KEY (Genere) REFERENCES Generi(Nome) ON DELETE RESTRICT*/
 );
 
 -- Tabella lista prestiti
@@ -62,6 +63,7 @@ CREATE TABLE Wishlist (
     FOREIGN KEY (Libro) REFERENCES Libri(ID_Libro) ON DELETE CASCADE
 );
 
+/*
 INSERT INTO Autori (Nome, Cognome) VALUES
 ('Umberto', 'Eco'),
 ('George', 'Orwell'),
@@ -84,17 +86,17 @@ INSERT INTO Generi (Nome) VALUES
 ('Psicologico'),
 ('Romanzo introspettivo'),
 ('Narrativa');
-
+*/
 
 INSERT INTO Libri (Titolo, Autore, Casa_Editrice, Genere, Pubblicazione, Trama) VALUES 
-('Il nome della rosa', 1, 'Bompiani', 'Storico', 1980, 'Un monaco francescano indaga su misteriosi omicidi in un monastero medievale, tra segreti e verità scomode.'),
-('1984', 2, 'Secker & Warburg', 'Distopico', 1949, 'In un futuro totalitario, un uomo cerca la verità in una società oppressa dal Grande Fratello.'),
-('Orgoglio e pregiudizio', 3, 'Thomas Egerton', 'Romantico', 1813, 'La storia di Elizabeth Bennet e del suo difficile rapporto con il signor Darcy, tra orgoglio e pregiudizi.'),
-('Il signore degli anelli', 4, 'Allen & Unwin', 'Fantasy', 1954, 'Un gruppo di eroi parte per distruggere un anello magico e salvare la Terra di Mezzo dalle tenebre.'),
-('Cento anni di solitudine', 5, 'Sudamericana', 'Realismo Magico', 1967, 'La saga della famiglia Buendía in un villaggio immaginario ricco di eventi magici e simbolici.'),
-('Il piccolo principe', 6, 'Reynal & Hitchcock', 'Fiaba', 1943, 'Un aviatore incontra un bambino proveniente da un altro pianeta che gli insegna il senso della vita.'),
-('Delitto e castigo', 7, 'The Russian Messenger', 'Psicologico', 1866, 'Un giovane studente commette un omicidio e affronta le conseguenze morali del suo gesto.'),
-('La coscienza di Zeno', 8, 'Cappelli', 'Romanzo introspettivo', 1923, 'Il protagonista racconta la propria vita attraverso sedute psicoanalitiche, cercando un senso alla sua esistenza.'),
-('Harry Potter e la pietra filosofale', 9, 'Bloomsbury', 'Fantasy', 1997, 'Un ragazzo scopre di essere un mago e inizia la sua avventura nella scuola di magia di Hogwarts.'),
-('Sulla strada', 10, 'Viking Press', 'Narrativa', 1957, 'Il racconto di un viaggio on the road negli Stati Uniti, simbolo della beat generation.');
+('Il nome della rosa', 'Umberto Eco', 'Bompiani', 'Storico', 1980, 'Un monaco francescano indaga su misteriosi omicidi in un monastero medievale, tra segreti e verità scomode.'),
+('1984', 'George Orwell', 'Secker & Warburg', 'Distopico', 1949, 'In un futuro totalitario, un uomo cerca la verità in una società oppressa dal Grande Fratello.'),
+('Orgoglio e pregiudizio', 'Jane Austin', 'Thomas Egerton', 'Romantico', 1813, 'La storia di Elizabeth Bennet e del suo difficile rapporto con il signor Darcy, tra orgoglio e pregiudizi.'),
+('Il signore degli anelli', 'J.R.R. Tolkien', 'Allen & Unwin', 'Fantasy', 1954, 'Un gruppo di eroi parte per distruggere un anello magico e salvare la Terra di Mezzo dalle tenebre.'),
+('Cento anni di solitudine', 'Gabriel Garcìa Màrquez', 'Sudamericana', 'Realismo Magico', 1967, 'La saga della famiglia Buendía in un villaggio immaginario ricco di eventi magici e simbolici.'),
+('Il piccolo principe', 'Antoine de Saint-Exupéry', 'Reynal & Hitchcock', 'Fiaba', 1943, 'Un aviatore incontra un bambino proveniente da un altro pianeta che gli insegna il senso della vita.'),
+('Delitto e castigo', 'Fëdor Dostoevskij', 'The Russian Messenger', 'Psicologico', 1866, 'Un giovane studente commette un omicidio e affronta le conseguenze morali del suo gesto.'),
+('La coscienza di Zeno', 'Italo Svevo', 'Cappelli', 'Romanzo introspettivo', 1923, 'Il protagonista racconta la propria vita attraverso sedute psicoanalitiche, cercando un senso alla sua esistenza.'),
+('Harry Potter e la pietra filosofale', 'J.K. Rowling', 'Bloomsbury', 'Fantasy', 1997, 'Un ragazzo scopre di essere un mago e inizia la sua avventura nella scuola di magia di Hogwarts.'),
+('Sulla strada', 'Jack Kerouac', 'Viking Press', 'Narrativa', 1957, 'Il racconto di un viaggio on the road negli Stati Uniti, simbolo della beat generation.');
 

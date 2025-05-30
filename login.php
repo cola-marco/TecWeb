@@ -13,7 +13,7 @@
     else{
         $DOM = file_get_contents("html/area-riservata.html");
         $cliente = $_SESSION["ID_Cliente"];
-        $wishlist_query = $pdo->prepare("SELECT * FROM Wishlist, Libri, Clienti, Autori WHERE Libro = ID_libro AND Autore = ID_Autore AND Cliente = :cliente");
+        $wishlist_query = $pdo->prepare("SELECT * FROM Wishlist, Libri, Clienti WHERE Libro = ID_libro AND Cliente = :cliente");
         $wishlist_query->bindParam(':cliente', $cliente, PDO::PARAM_STR);
         $wishlist_query->execute();
         $result = $wishlist_query->fetchAll(PDO::FETCH_ASSOC);

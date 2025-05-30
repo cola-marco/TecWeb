@@ -24,7 +24,7 @@ function book_display($result, $li_template){
         $titolo = $autore = $casa = $genere = $pubblicazione = $trama = "";
 
         $titolo = $book["Titolo"];
-        $autore = $book["Nome"] . " " . $book["Cognome"];
+        $autore = $book["Autore"];
         $casa = $book["Casa_Editrice"];
         $genere = $book["Genere"];
         $pubblicazione = $book["Pubblicazione"];
@@ -50,13 +50,13 @@ function isLogged(){
 }
 
 function displayBookInfo($DOM, $pdo, $id_libro){
-    $query = $pdo->prepare("SELECT * FROM Libri JOIN Autori WHERE Autore = ID_Autore AND ID_libro = :id_libro");
+    $query = $pdo->prepare("SELECT * FROM Libri WHERE ID_libro = :id_libro");
     $query->bindParam(':id_libro', $id_libro, PDO::PARAM_INT);
     $query->execute();
 
     $book = $query->fetch(PDO::FETCH_ASSOC);
     $titolo = $book["Titolo"];
-    $autore = $book["Nome"] . " " . $book["Cognome"];
+    $autore = $book["Autore"];
     $casa = $book["Casa_Editrice"];
     $genere = $book["Genere"];
     $pubblicazione = $book["Pubblicazione"];
@@ -125,7 +125,7 @@ function tab_book_display($result, $tr_template){
 
         $id_libro = $book["ID_Libro"];
         $titolo = $book["Titolo"];
-        $autore = $book["Nome"] . " " . $book["Cognome"];
+        $autore = $book["Autore"];
         $anno = $book["Pubblicazione"];
 
         $tr = str_replace('{{ID_Libro}}', $id_libro, $tr);

@@ -18,7 +18,7 @@
         exit();
     }
     else { //collegamento al db andato a buon fine e fatto login come admin
-        $stmt = $pdo->prepare("SELECT * FROM Libri JOIN Autori WHERE Autore = ID_Autore");
+        $stmt = $pdo->prepare("SELECT * FROM Libri");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
