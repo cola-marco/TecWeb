@@ -379,6 +379,11 @@ main h1, .mainSection h1 {
   text-decoration: none;
 }
 
+#torna-su, #skip-to-main{
+  text-indent: -9999px;
+  height: 0;
+}
+
 
 #torna-primo:hover {
   background: var(--headercolor);
@@ -438,7 +443,7 @@ CATALOGO
   scroll-behavior: smooth;
 }
 
-.search-bar{
+#search-bar{
   display: inline-block;
   width: 100%;
   outline: none;
@@ -476,6 +481,10 @@ CATALOGO
   margin-right: 2em;
   background-color: rgb(200, 200, 200);
   border-radius: 2em;
+}
+
+label[for="search-bar"], label[for="submit-button"]{
+  text-indent: -9999px;
 }
 
 .save-label{
