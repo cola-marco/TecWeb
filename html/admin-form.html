@@ -62,7 +62,7 @@
                 <input
                 type="text"
                 id="autore"
-                name="Autore"
+                name="autore"
                 value="{{Autore}}"
                 required
                 minlength="1"
@@ -71,13 +71,11 @@
                 data-required-msg="Inserisci l’autore del libro">
                 <span id="err-autore" class="error-msg" aria-live="assertive"><autoreError/></span>
 
-                <label for="image_path">Copertina <span aria-hidden="true">*</span></label>
                 <input
                 type="file"
                 id="image_path"
-                name="Image_path"
+                name="image_path"
                 accept=".jpg,.jpeg,.png,.webp"
-                required
                 aria-describedby="err-image"
                 data-required-msg="Carica l’immagine di copertina">
                 <span id="err-image" class="error-msg" aria-live="assertive"><imageError/></span>
@@ -86,7 +84,7 @@
                 <input
                 type="text"
                 id="casa_editrice"
-                name="Casa_Editrice"
+                name="casa_editrice"
                 value="{{Casa_Editrice}}"
                 required
                 minlength="1"
@@ -99,7 +97,7 @@
                 <input
                 type="text"
                 id="genere"
-                name="Genere"
+                name="genere"
                 value="{{Genere}}"
                 required
                 minlength="1"
@@ -112,7 +110,7 @@
                 <input
                 type="number"
                 id="pubblicazione"
-                name="Pubblicazione"
+                name="pubblicazione"
                 value="{{Pubblicazione}}"
                 required
                 min="1000"
@@ -125,7 +123,7 @@
                 <label for="trama">Trama <span aria-hidden="true">*</span></label>
                 <textarea
                 id="trama"
-                name="Trama"
+                name="trama"
                 required
                 rows="4"
                 maxlength="1000"
@@ -137,7 +135,7 @@
                 <input
                 type="number"
                 id="numero_copie"
-                name="Numero_copie"
+                name="numero_copie"
                 value="{{Numero_copie}}"
                 required
                 min="1"

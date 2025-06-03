@@ -1,6 +1,4 @@
 DROP TABLE IF EXISTS Clienti;
-DROP TABLE IF EXISTS Autori;
-DROP TABLE IF EXISTS Generi;
 DROP TABLE IF EXISTS Libri;
 DROP TABLE IF EXISTS Prestiti;
 DROP TABLE IF EXISTS Wishlist;
@@ -14,32 +12,17 @@ CREATE TABLE Clienti (
     Ruolo ENUM('Cliente', 'Admin') DEFAULT 'Cliente'
 );
 
-/*
--- Tabella per gli Autori
-CREATE TABLE Autori (
-    ID_Autore INT AUTO_INCREMENT PRIMARY KEY,
-    Nome VARCHAR(100) NOT NULL,
-    Cognome VARCHAR(100) NOT NULL
-);
-
--- Tabella per i Generi
-CREATE TABLE Generi (
-    Nome VARCHAR(100) PRIMARY KEY
-); */
-
 -- Tabella lista Libri
 CREATE TABLE Libri (
     ID_Libro INT AUTO_INCREMENT PRIMARY KEY,
     Titolo VARCHAR(100) NOT NULL,
-    Autore INT NOT NULL,
+    Autore VARCHAR(100) NOT NULL,
     Image_path VARCHAR(50),
     Casa_Editrice VARCHAR(100) NOT NULL,
     Genere VARCHAR(100) NOT NULL,
-    Pubblicazione DATE NOT NULL,
+    Pubblicazione INT NOT NULL,
     Trama TEXT NOT NULL,
     Numero_copie INT DEFAULT 1, -- Numero delle copie disponibili in "magazzino"
-    /*FOREIGN KEY (Autore) REFERENCES Autori(ID_Autore) ON DELETE RESTRICT,
-    FOREIGN KEY (Genere) REFERENCES Generi(Nome) ON DELETE RESTRICT*/
 );
 
 -- Tabella lista prestiti
@@ -62,31 +45,6 @@ CREATE TABLE Wishlist (
     FOREIGN KEY (Cliente) REFERENCES Clienti(ID_Cliente) ON DELETE CASCADE,
     FOREIGN KEY (Libro) REFERENCES Libri(ID_Libro) ON DELETE CASCADE
 );
-
-/*
-INSERT INTO Autori (Nome, Cognome) VALUES
-('Umberto', 'Eco'),
-('George', 'Orwell'),
-('Jane', 'Austen'),
-('J.R.R.', 'Tolkien'),
-('Gabriel García', 'Márquez'),
-('Antoine de', 'Saint-Exupéry'),
-('Fëdor', 'Dostoevskij'),
-('Italo', 'Svevo'),
-('J.K.', 'Rowling'),
-('Jack', 'Kerouac');
-
-INSERT INTO Generi (Nome) VALUES
-('Storico'),
-('Distopico'),
-('Romantico'),
-('Fantasy'),
-('Realismo Magico'),
-('Fiaba'),
-('Psicologico'),
-('Romanzo introspettivo'),
-('Narrativa');
-*/
 
 INSERT INTO Libri (Titolo, Autore, Casa_Editrice, Genere, Pubblicazione, Trama) VALUES 
 ('Il nome della rosa', 'Umberto Eco', 'Bompiani', 'Storico', 1980, 'Un monaco francescano indaga su misteriosi omicidi in un monastero medievale, tra segreti e verità scomode.'),
