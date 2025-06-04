@@ -22,19 +22,21 @@
             WHERE Autore = ID_Autore");
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-   
+
         $li = '
-        <li class="card">
-            <div>
-                <img src="###IMG-PATH###" alt="">
-            </div>
-            <div class="description">
-                <a href="libro.php?id_libro=###ID_LIBRO###"><h3>###TITOLO###</h3></a>
-                <h4>###AUTORE###</h4>
-                <p><strong>Trama</strong>:###TRAMA###</p>
-            </div>
-        </li>
-        ';
+            <li class="card">
+                <div>
+                    <img src="###IMG-PATH###" alt="">
+                </div>
+                <div class="description">
+                    <div>
+                        <a href="libro.php?id_libro=###ID_LIBRO###"><h3>###TITOLO###</h3></a>
+                        <h4>###AUTORE###</h4>
+                        <p><strong>Trama</strong>:###TRAMA###</p>
+                    </div>
+                </div>    
+            </li>
+            ';
 
         $lista_libri = book_display($result, $li);        
     }
