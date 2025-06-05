@@ -429,6 +429,10 @@ CATALOGO
   flex: 1;
 }
 
+.right ul{
+  list-style-position: inside
+}
+
 .card img{
   width: 100%;
   height: auto;
@@ -943,7 +947,7 @@ table {
 }
 
 #logout-btn {
-  margin: 1em 1em 0 1em;
+  margin: 1em 0 0 0;
   padding: 0.8rem 2rem;
   background-color: var(--headerbgcolor);
   color: var(--linkcolor);
@@ -962,9 +966,15 @@ table {
   outline: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   #logout-btn {
-    width: 90%;
+    width: 100%;
     max-width: 300px;
+  }
+
+  #logout-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 }

@@ -35,6 +35,7 @@
         }
         else if(isLogged() == 0 || isLogged() == -1) $DOM = str_replace('###STAR###', '<p class="login-request">Per salvare un libro nella tua wishlist ti preghiamo di <a href="login.php">accedere</a>.</p>', $DOM);            
         echo $DOM;
+
     }
     include "templates/footer.php";
 ?>
