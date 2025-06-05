@@ -38,6 +38,7 @@
                 $DOM = str_replace('<userError/>', $userError, $DOM);
                 echo $DOM;
             }
+        }
         else {
             //errore di connessione al db
         }
