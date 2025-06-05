@@ -1,5 +1,5 @@
 <?php
-
+    include "templates/header.php";
     require 'utils.php';
     session_start();
 
@@ -301,4 +301,5 @@
         }
 
     }
+    include "templates/footer.php";
 ?>
