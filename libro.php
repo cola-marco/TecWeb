@@ -6,7 +6,7 @@
 
     $DOM = file_get_contents('html/libro.html');
     $id_libro = $_GET["id_libro"];
-    $user = $_SESSION["ID_Cliente"];
+    
     
     if (!isset($_GET["id_libro"])) {
         header("location: catalogo.php");
@@ -15,6 +15,7 @@
         $DOM = displayBookInfo($DOM, $pdo, $id_libro);
 
         if(isLogged() == 1){
+            $user = $_SESSION["ID_Cliente"];
             if($_SESSION['ruolo'] == 'admin') $DOM = str_replace('###STAR###', '', $DOM);
 
             if(isSaved($pdo, $id_libro, $user)){
@@ -30,7 +31,7 @@
                 else echo $insert;
             }
         } 
-        else if(isLogged() == 0 || isLogged() == -1) $DOM = str_replace('<button type="submit">###STAR###</button>', '<p class="login-request">Per salvare un libro nella tua wishlist ti preghiamo di <a href="login.php">accedere</a>.</p>', $DOM);    
+        else if(isLogged() == 0 || isLogged() == -1) $DOM = str_replace('###STAR###', '<p class="login-request">Per salvare un libro nella tua wishlist ti preghiamo di <a href="login.php">accedere</a>.</p>', $DOM);    
         
         echo $DOM;
     }

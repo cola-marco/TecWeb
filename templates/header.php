@@ -6,7 +6,7 @@
     $pages = [
         'index.php' => ['text' => 'Home', 'class' => ''],
         'catalogo.php' => ['text' => 'Catalogo', 'class' => ''],
-        'login.php' => ['text' => 'Login', 'class' => '', 'lang' => 'en']
+        'login.php' => ['text' => 'Accedi', 'class' => '', 'lang' => 'it']
     ];
 
     // Menu dinamico
