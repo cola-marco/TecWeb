@@ -2,7 +2,8 @@
 
     require "utils.php";
     session_start();
-    $DOM = file_get_contents('html/login.html');
+    include "templates/header.php"; 
+    $DOM = file_get_contents('html/Login.html');
 
     $userError = $passError = '';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -32,11 +33,13 @@
                     $passError .= '<li>Password errata</li>';
                     $DOM = str_replace('<passError/>', $passError, $DOM);
                     echo $DOM;
+                    include "templates/footer.php";
                 }
             } else { //user non trovato
                 $userError .= '<li>Username non esistente</li>';
                 $DOM = str_replace('<userError/>', $userError, $DOM);
                 echo $DOM;
+                include "templates/footer.php";
             }
         }
         else {
