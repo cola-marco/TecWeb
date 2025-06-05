@@ -137,4 +137,17 @@ function tab_book_display($result, $tr_template){
     }
     return $tab_libri;
 }
+
+function check_session_timeout(){
+    if(isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == true){ //controllo se l'utente è loggato 
+        if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+            // ultima richeista 30 minuti fa
+            session_unset();     // array di sessione svuotato
+            session_destroy();  // distruzione dati di sessione
+            header("Location: login.php");
+            exit();   //se un utente era loggato ma è passato troppo tempo, lo rimando alla pagina di login
+        }
+    $_SESSION['LAST_ACTIVITY'] = time();  //aggiorno il dato temporale dell'ultima attività
+    }
+}
 ?>

@@ -2,10 +2,11 @@
     require 'utils.php';
     $pdo = connectDB();
     session_start();
+    check_session_timeout();
 
     $DOM = file_get_contents('html/libro.html');
     $id_libro = $_GET["id_libro"];
-    $user = $_SESSION["ID_Cliente"];
+    $user = $_SESSION["ID_Cliente"] ?? '';
     
     if (!isset($_GET["id_libro"])) {
         header("location: catalogo.php");
@@ -14,7 +15,10 @@
         $DOM = displayBookInfo($DOM, $pdo, $id_libro);
 
         if(isLogged() == 1){
-            if(isSaved($pdo, $id_libro, $user)){
+            if($_SESSION['ruolo'] == 'Admin'){
+                $DOM = str_replace('###STAR###', "", $DOM);
+            }
+            else if(isSaved($pdo, $id_libro, $user)){
                 $DOM = str_replace('###STAR###', "<p>Questo libro è già all'interno della tua <a href='login.php'>wishlist</a>.</p>", $DOM);
             }
             else{
@@ -27,7 +31,9 @@
                 else echo $insert;
             }
         } 
-        else if(isLogged() == 0 || isLogged() == -1) $DOM = str_replace('<button type="submit">###STAR###</button>', '<p class="login-request">Per salvare un libro nella tua wishlist ti preghiamo di <a href="login.php">accedere</a>.</p>', $DOM);    
+        else if(isLogged() == 0 || isLogged() == -1) {
+            $DOM = str_replace('###STAR###', '<p class="login-request">Per salvare un libro nella tua wishlist ti preghiamo di <a href="login.php">accedere</a>.</p>', $DOM);
+        }    
         
         echo $DOM;
     }

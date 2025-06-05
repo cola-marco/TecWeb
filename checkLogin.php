@@ -1,6 +1,9 @@
 <?php
 require "utils.php";
 session_start();
+$DOM = file_get_contents('html/login.html');
+
+$userError = $passError = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdo = connectDB();
@@ -26,10 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: admin.php");
                 }
             } else{
-              /*  header("Location: permission_denied.php"); password sbagliata */
+                $passError .= '<li>Password errata</li>';
+                $DOM = str_replace('<passError/>', $passError, $DOM);
+                echo $DOM;
             }
         } else {
-           /* header("Location: permission_denied.php"); non esiste l'username inserito*/
+            $userError .= '<li>Username non esistente</li>';
+            $DOM = str_replace('<userError/>', $userError, $DOM);
+            echo $DOM;
         }
     }
 }
