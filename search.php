@@ -9,7 +9,7 @@
     if(isset($_POST['search'])){
         $search = '%' . $_POST['search'] . '%';
 
-        $query = $pdo->prepare("SELECT * FROM Libri JOIN Autori ON Libri.Autore = Autori.ID_Autore WHERE LOWER(CONCAT(Titolo,' ',Nome,' ',Cognome)) LIKE LOWER(:search)");
+        $query = $pdo->prepare("SELECT * FROM Libri WHERE LOWER(CONCAT(Titolo,' ',Autore)) LIKE LOWER(:search)");
         $query->bindParam(':search', $search, PDO::PARAM_STR);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);

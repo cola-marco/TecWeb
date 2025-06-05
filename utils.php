@@ -10,8 +10,8 @@ function connectDB() {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch (PDOException $e) {
-        echo "Connessione fallita: " . $e->getMessage();
-        exit(); //se connessione al database è fallita esce dal flusso 
+        //echo "Connessione fallita: " . $e->getMessage();
+        return null; //se connessione al database è fallita esce dal flusso 
     }
 }
 
@@ -24,7 +24,7 @@ function book_display($result, $li_template){
         $titolo = $autore = $casa = $genere = $pubblicazione = $trama = "";
 
         $titolo = $book["Titolo"];
-        $autore = $book["Nome"] . " " . $book["Cognome"];
+        $autore = $book["Autore"];
         $casa = $book["Casa_Editrice"];
         $genere = $book["Genere"];
         $pubblicazione = $book["Pubblicazione"];
@@ -50,13 +50,13 @@ function isLogged(){
 }
 
 function displayBookInfo($DOM, $pdo, $id_libro){
-    $query = $pdo->prepare("SELECT * FROM Libri JOIN Autori WHERE Autore = ID_Autore AND ID_libro = :id_libro");
+    $query = $pdo->prepare("SELECT * FROM Libri WHERE ID_libro = :id_libro");
     $query->bindParam(':id_libro', $id_libro, PDO::PARAM_INT);
     $query->execute();
 
     $book = $query->fetch(PDO::FETCH_ASSOC);
     $titolo = $book["Titolo"];
-    $autore = $book["Nome"] . " " . $book["Cognome"];
+    $autore = $book["Autore"];
     $casa = $book["Casa_Editrice"];
     $genere = $book["Genere"];
     $pubblicazione = $book["Pubblicazione"];
@@ -113,5 +113,28 @@ function deleteFromWishlist($pdo, $user, $id_libro){
 
         return $result;
     }
+}
+
+function tab_book_display($result, $tr_template){
+    $tab_libri = "";
+
+    foreach($result as $book){
+        $tr = $tr_template;
+
+        $id_libro = $titolo = $autore = $anno = "";
+
+        $id_libro = $book["ID_Libro"];
+        $titolo = $book["Titolo"];
+        $autore = $book["Autore"];
+        $anno = $book["Pubblicazione"];
+
+        $tr = str_replace('{{ID_Libro}}', $id_libro, $tr);
+        $tr = str_replace('{{Titolo}}', $titolo, $tr);
+        $tr = str_replace('{{Autore}}', $autore, $tr);
+        $tr = str_replace('{{Anno}}', $anno, $tr);
+
+        $tab_libri = $tab_libri . " " . $tr;
+    }
+    return $tab_libri;
 }
 ?>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <title>Catalogo - Biblioteca</title>
+    <meta name="description" content="Sito della biblioteca di Padova.">
+    <meta name="keywords" content="Biblioteca , Padova , Libri, Recensioni">
+    <link rel="stylesheet" href="style.css" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="immagini/open-book-icon.webp" type="image/x-icon">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Biblioteca</h1>
+        <div class="menu-container">
+            <input type="checkbox" id="hamb-button">
+            <label for="hamb-button" id="hamb-icon"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></label>
+            <label for="hamb-button" id="close-icon"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></label>
+            
+            <ul id="vertical-menu">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="catalogo.php">Catalogo</a></li>
+                <!--<li><a href="recensioni.php">Recensioni</a></li>-->  
+                <li aria-current="page" id="current" lang="en">Admin</li>
+            </ul>
+        </div>
+    </header>
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li><a href="admin.php" lang="en">Admin</a></li>
+            <li aria-current="page" lang="en">Gestione Libri</li>
+        </ol>
+    </nav>
+
+    <main id="primo">
+        <h2>Gestione catalogo</h2>
+
+        <div id="add-section" class="contenitoreCompilazione">
+            <h3>{{Azione}} Libro</h3>
+            <form id="add-book-section" class="compilaform" action="{{FormAction}}" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Dati del libro</legend>
+
+                <label for="titolo">Titolo <span aria-hidden="true">*</span></label>
+                <input
+                type="text"
+                id="titolo"
+                name="titolo"
+                value="{{Titolo}}"
+                required
+                minlength="1"
+                maxlength="30"
+                aria-describedby="err-titolo"
+                data-required-msg="Inserisci il titolo del libro">
+                <span id="err-titolo" class="error-msg" aria-live="assertive"><titoloError/></span>
+
+                <label for="autore">Autore <span aria-hidden="true">*</span></label>
+                <input
+                type="text"
+                id="autore"
+                name="autore"
+                value="{{Autore}}"
+                required
+                minlength="1"
+                maxlength="30"
+                aria-describedby="err-autore"
+                data-required-msg="Inserisci l’autore del libro">
+                <span id="err-autore" class="error-msg" aria-live="assertive"><autoreError/></span>
+
+                <input
+                type="file"
+                id="image_path"
+                name="image_path"
+                accept=".jpg,.jpeg,.png,.webp"
+                aria-describedby="err-image"
+                data-required-msg="Carica l’immagine di copertina">
+                <span id="err-image" class="error-msg" aria-live="assertive"><imageError/></span>
+
+                <label for="casa_editrice">Casa Editrice <span aria-hidden="true">*</span></label>
+                <input
+                type="text"
+                id="casa_editrice"
+                name="casa_editrice"
+                value="{{Casa_Editrice}}"
+                required
+                minlength="1"
+                maxlength="30"
+                aria-describedby="err-casa"
+                data-required-msg="Inserisci la casa editrice">
+                <span id="err-casa" class="error-msg" aria-live="assertive"><casaedError/></span>
+
+                <label for="genere">Genere <span aria-hidden="true">*</span></label>
+                <input
+                type="text"
+                id="genere"
+                name="genere"
+                value="{{Genere}}"
+                required
+                minlength="1"
+                maxlength="30"
+                aria-describedby="err-genere"
+                data-required-msg="Inserisci il genere del libro">
+                <span id="err-genere" class="error-msg" aria-live="assertive"><genereError/></span>
+
+                <label for="pubblicazione">Anno di pubblicazione <span aria-hidden="true">*</span></label>
+                <input
+                type="number"
+                id="pubblicazione"
+                name="pubblicazione"
+                value="{{Pubblicazione}}"
+                required
+                min="1000"
+                max="2025"
+                step="1"
+                aria-describedby="err-pubblicazione"
+                data-required-msg="Inserisci l’anno di pubblicazione">
+                <span id="err-pubblicazione" class="error-msg" aria-live="assertive"><annopubbError/></span>
+
+                <label for="trama">Trama <span aria-hidden="true">*</span></label>
+                <textarea
+                id="trama"
+                name="trama"
+                required
+                rows="4"
+                maxlength="1000"
+                aria-describedby="err-trama"
+                data-required-msg="Inserisci la trama del libro">{{Trama}}</textarea>
+                <span id="err-trama" class="error-msg" aria-live="assertive"><tramaError/></span>
+
+                <label for="numero_copie">Numero copie <span aria-hidden="true">*</span></label>
+                <input
+                type="number"
+                id="numero_copie"
+                name="numero_copie"
+                value="{{Numero_copie}}"
+                required
+                min="1"
+                step="1"
+                aria-describedby="err-copie"
+                data-required-msg="Inserisci il numero di copie disponibili">
+                <span id="err-copie" class="error-msg" aria-live="assertive"><ncopieError/></span>
+            </fieldset>
+
+            <button type="submit">Aggiungi</button>
+            <p class="required-info">I campi contrassegnati con <span aria-hidden="true">*</span> sono obbligatori.</p>
+            </form>
+
+
+        </div>
+    </main>
+
+    <a class="help" id="torna-primo" href="#primo">Torna su</a>
+    
+</body>
+</html>

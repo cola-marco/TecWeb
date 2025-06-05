@@ -1,57 +1,43 @@
 <?php
-include "templates/header.php";
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+    require 'utils.php';
+    session_start();
+    $pdo = connectDB();
 
-session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header('Location: index.php');
-    exit;
-}
+    $DOM = file_get_contents('html/admin.html');
+    if(!$pdo){
+        $error = "
+            <h2>OOOPS</h2>
+            <p>Se vedi questo messaggio c'è un errore server</p>
+        ";
+        $tabella_libri = '';
+        $DOM = str_replace('###BODY_TABELLA###', $tabella_libri, $DOM);
+        $DOM = str_replace('###ERRORE_DB###', $error, $DOM);
+    }
+    else if (!isset($_SESSION['ID_Cliente']) || $_SESSION['ruolo'] !== 'Admin') {
+        header('Location: index.php');
+        exit();
+    }
+    else { //collegamento al db andato a buon fine e fatto login come admin
+        $stmt = $pdo->prepare("SELECT * FROM Libri");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$templatePath = __DIR__ . '/admin.html';
-$dbPath       = __DIR__ . '/biblioteca.db';
+        $tr = '
+        <tr>
+            <th scope="row">{{ID_Libro}}</th>
+            <td>{{Titolo}}</td>
+            <td>{{Autore}}</td>
+            <td>{{Anno}}</td>
+            <td><a href="admin-form.php?id={{ID_Libro}}">Modifica</a></td>
+            <td><a href="deleteBook.php?id={{ID_Libro}}" onclick="return confirm("Confermi eliminazione?")">Elimina</a></td>
+        </tr>
+        ';   
+        $error = '';
+        $tabella_libri = tab_book_display($result, $tr);    
+        $DOM = str_replace('###BODY_TABELLA###', $tabella_libri, $DOM);
+        $DOM = str_replace('###ERRORE_DB###', $error, $DOM);
+    }
 
-if (!file_exists($templatePath)) {
-    die("Template non trovato: $templatePath");
-}
-$html = file_get_contents($templatePath);
+    echo $DOM;
 
-if (!file_exists($dbPath)) {
-    die("Database non trovato: $dbPath");
-}
-try {
-    $pdo = new PDO('sqlite:' . $dbPath);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Errore connessione DB: " . $e->getMessage());
-}
-
-$stmt = $pdo->query('SELECT id, titolo, autore, anno_pubblicazione FROM libri ORDER BY titolo');
-$books = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-if (!preg_match('/<!--\s*libriAdmin_start\s*-->([\s\S]*?)<!--\s*libriAdmin_end\s*-->/i', $html, $matches)) {
-    die('Markers libriAdmin_start/end non trovati in admin.html');
-}
-$rowTemplate = $matches[1];
-
-$fullContent = '';
-foreach ($books as $b) {
-    $row = $rowTemplate;
-    $row = str_replace('{{ID_Libro}}', htmlspecialchars($b['id']), $row);
-    $row = str_replace('{{Titolo}}', htmlspecialchars($b['titolo']), $row);
-    $row = str_replace('{{Autore}}', htmlspecialchars($b['autore']), $row);
-    $row = str_replace('{{Anno}}', (int)$b['anno_pubblicazione'], $row);
-    $fullContent .= $row;
-}
-
-$html = preg_replace(
-    '/<!--\s*libriAdmin_start\s*-->[\s\S]*?<!--\s*libriAdmin_end\s*-->/i',
-    "<!-- libriAdmin_start -->\n" . $fullContent . "<!-- libriAdmin_end -->",
-    $html
-);
-
-echo $html;
-include "templates/footer.php";
 ?>
