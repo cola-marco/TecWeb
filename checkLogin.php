@@ -14,26 +14,20 @@
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 if (password_verify($password, $user['Pass'])){
 
-                    $_SESSION['username'] = $username; //salva username e id_cliente in sessione
-                    $_SESSION['ID_Cliente'] = $user['ID_Cliente'];
-                    $_SESSION['is_logged_in'] = true; //per capire se è loggato o no
-                    $_SESSION['ruolo'] = $user['Ruolo'];
-                    $_SESSION['created'] = time();
-                    if($user['Ruolo'] == 'Cliente') {
-                        header("Location: index.php"); //viene mandato alla pagina principale 
-                        exit();
-                    }
-                    /* else 
-                        header("Location: admin.php"); quando sarà disponibile la pagina di admin */
-                    if(isset($_SESSION['created']) && (time() - $_SESSION['created'] > 60)){
-                        session_unset();
-                        session_destroy();
-                    }
-                } else{
-                /*  header("Location: permission_denied.php"); password sbagliata */
+
+                $_SESSION['username'] = $username; //salva username e id_cliente in sessione
+                $_SESSION['ID_Cliente'] = $user['ID_Cliente'];
+                $_SESSION['is_logged_in'] = true; //per capire se è loggato o no
+                $_SESSION['ruolo'] = $user['Ruolo'];
+                if($user['Ruolo'] == 'Cliente') {
+                    header("Location: index.php"); //viene mandato alla pagina principale 
+                    exit();
                 }
-            } else {
-            /* header("Location: permission_denied.php"); non esiste l'username inserito*/
+                else { //login admin
+                    header("Location: admin.php");
+                }
+            } else{
+              /*  header("Location: permission_denied.php"); password sbagliata */
             }
         }
     }
