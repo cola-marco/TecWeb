@@ -943,7 +943,7 @@ table {
 }
 
 #logout-btn {
-  margin: 1rem;
+  margin: 1em 1em 0 1em;
   padding: 0.8rem 2rem;
   background-color: var(--headerbgcolor);
   color: var(--linkcolor);

@@ -46,4 +46,6 @@
             //errore di connessione al db
         }
     }
+    
+}
 ?>
