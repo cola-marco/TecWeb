@@ -3,6 +3,7 @@
     require 'utils.php';
     $pdo = connectDB();
     session_start();
+    check_session_timeout();
 
     if(!isset($_SESSION['is_logged_in']) || isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == false){
         $DOM = file_get_contents('html/login.html');

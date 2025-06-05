@@ -2,6 +2,8 @@
     include "templates/header.php";
     require 'utils.php';
     $pdo = connectDB();
+    session_start();
+    check_session_timeout();
 
     $DOM = file_get_contents('html/catalogo.html');
     

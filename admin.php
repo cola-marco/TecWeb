@@ -3,7 +3,7 @@
     require 'utils.php';
     session_start();
     $pdo = connectDB();
-
+    include "templates/header.php"; 
     $DOM = file_get_contents('html/admin.html');
     if(!$pdo){
         $error = "

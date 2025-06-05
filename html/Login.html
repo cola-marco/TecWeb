@@ -11,14 +11,14 @@
                 <label for="username" class="camporichiesto">Nome utente</label>
                 <input type="text" id="username" name="username"
                        placeholder="Inserisci il tuo username"
-                       required minlength="3">
-                <span class="error-msg" aria-live="polite"></span>
+                       required minlength="3" aria-required="true">
+                <span class="error-msg" aria-live="polite"><userError/></span>
               
                 <label for="password" class="camporichiesto">Password</label>
                 <input type="password" id="password" name="password"
                        placeholder="Inserisci la tua password"
-                       required minlength="6">
-                <span class="error-msg" aria-live="polite"></span>
+                       required minlength="6" aria-required="true">
+                <span class="error-msg" aria-live="polite"><passError/></span>
               
                 <button type="submit">Accedi</button>
 
