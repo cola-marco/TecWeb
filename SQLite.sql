@@ -1,7 +1,8 @@
+
 DROP TABLE IF EXISTS Clienti;
 DROP TABLE IF EXISTS Libri;
 DROP TABLE IF EXISTS Prestiti;
-DROP TABLE IF EXISTS Wishlist;
+
 
 -- Tabella dei Clienti
 CREATE TABLE Clienti (

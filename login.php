@@ -1,4 +1,5 @@
 <?php
+    include "templates/header.php";
     require 'utils.php';
     $pdo = connectDB();
     session_start();
@@ -66,4 +67,5 @@
     }
     //echo $_SESSION["created"];
     echo $DOM;
+    include "templates/footer.php";
 ?>
