@@ -411,8 +411,12 @@ CATALOGO
 }
 
 .description{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 0 0 0 0.5em;
   flex: 1;
+  height: auto;
   position: relative;
 }
 
@@ -483,7 +487,7 @@ CATALOGO
   border-radius: 2em;
 }
 
-label[for="search-bar"], label[for="submit-button"]{
+label[for="search-bar"], label[for="submit-button"], label[for="delete-button"]{
   text-indent: -9999px;
 }
 
@@ -757,20 +761,21 @@ table {
 }
 
 .delete-form{
-  position: absolute;
+  display: flex;
+  justify-content: flex-end;
   bottom: 0.5em;
   right: 0.5em;
 }
 
-.delete-button{
+#delete-button{
   background-color: rgb(231, 63, 63);
   border: none;
   border-radius: 0.5em;
-  width: 100%;
+  width: 25%;
   height: 100%;
 }
 
-.delete-button:hover{
+#delete-button:hover{
   cursor: pointer;
 }
 

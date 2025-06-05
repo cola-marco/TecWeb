@@ -15,6 +15,8 @@
         $DOM = displayBookInfo($DOM, $pdo, $id_libro);
 
         if(isLogged() == 1){
+            if($_SESSION['ruolo'] == 'admin') $DOM = str_replace('###STAR###', '', $DOM);
+
             if(isSaved($pdo, $id_libro, $user)){
                 $DOM = str_replace('###STAR###', "<p>Questo libro è già all'interno della tua <a href='login.php'>wishlist</a>.</p>", $DOM);
             }

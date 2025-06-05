@@ -18,23 +18,29 @@
         $query = $pdo->prepare("SELECT * FROM Libri");
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-   
+
         $li = '
-        <li class="card">
-            <div>
-                <img src="###IMG-PATH###" alt="">
-            </div>
-            <div class="description">
-                <a href="libro.php?id_libro=###ID_LIBRO###"><h3>###TITOLO###</h3></a>
-                <h4>###AUTORE###</h4>
-                <p><strong>Trama</strong>:###TRAMA###</p>
-            </div>
-        </li>
-        ';
+            <li class="card">
+                <div>
+                    <img src="###IMG-PATH###" alt="">
+                </div>
+                <div class="description">
+                    <div>
+                        <a href="libro.php?id_libro=###ID_LIBRO###"><h3>###TITOLO###</h3></a>
+                        <h4>###AUTORE###</h4>
+                        <p><strong>Trama</strong>:###TRAMA###</p>
+                    </div>
+                </div>    
+            </li>
+            ';
+
+        $lista_libri = book_display($result, $li);        
+
         $error = '';
         $lista_libri = book_display($result, $li);    
         $DOM = str_replace('###LISTA###', $lista_libri, $DOM);
         $DOM = str_replace('###ERRORE_DB###', $error, $DOM);
+
     }
 
     echo $DOM;
