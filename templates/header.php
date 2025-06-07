@@ -1,13 +1,19 @@
 <?php
+    session_start();
     $currentPage = basename($_SERVER['PHP_SELF']);
     $headerTemplate = file_get_contents('./html/templates/header.html');
 
     // mappatura delle pagine
     $pages = [
-        'index.php' => ['text' => 'Home', 'class' => ''],
+        'index.php' => ['text' => 'Home', 'class' => '', 'lang' => 'en'],
         'catalogo.php' => ['text' => 'Catalogo', 'class' => ''],
-        'login.php' => ['text' => 'Accedi', 'class' => '', 'lang' => 'it']
+        'login.php' => ['text' => 'Accedi', 'class' => '', 'lang' => 'en']
     ];
+
+    // Aggiungi "Registrati" SOLO se l'utente NON è loggato
+    if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
+        $pages['register.php'] = ['text' => 'Registrati', 'class' => '', 'lang' => 'en'];
+    }
 
     // Menu dinamico
     $menuItems = '';
