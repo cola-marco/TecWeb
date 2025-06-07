@@ -1,9 +1,15 @@
 <?php 
 function connectDB() {
+    /*$host = 'localhost';                         
+    $dbname = 'damartin';         
+    $userdbname = 'damartin';          
+    $passwordDB = 'Doo3ieD4yoS7ienu';*/
+
     $host = 'localhost';                         
-    $dbname = 'progettotecweb';          
+    $dbname = 'progettotecweb';         
     $userdbname = 'root';          
     $passwordDB = '';
+
     try {
         $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
         $pdo = new PDO($dsn, $userdbname, $passwordDB);
@@ -32,7 +38,7 @@ function book_display($result, $li_template){
         //$trama = $book["Trama"];
         $trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
 
-        $li = str_replace('###IMG-PATH###', 'Immagini/esempio libro.jpg', $li);
+        $li = str_replace('###IMG-PATH###', 'Immagini/default_book_cover.png', $li);
         $li = str_replace('###ID_LIBRO###', $id_libro, $li);
         $li = str_replace('###TITOLO###', $titolo, $li);
         $li = str_replace('###AUTORE###', $autore, $li);
@@ -44,7 +50,7 @@ function book_display($result, $li_template){
 }
 
 function isLogged(){
-    if(isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == true) return 1;
+    if(isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == true && isset($_SESSION['ID_Cliente'])) return 1;
     else if(isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == false) return 0;
     else return -1;
 }
@@ -64,7 +70,7 @@ function displayBookInfo($DOM, $pdo, $id_libro){
     $trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
 
     $DOM = str_replace("###TITOLO###", $titolo, $DOM);
-    $DOM = str_replace('###IMG-PATH###', 'Immagini/esempio libro.jpg', $DOM);
+    $DOM = str_replace('###IMG-PATH###', 'Immagini/default_book_cover.png', $DOM);
     $DOM = str_replace('###ID_LIBRO###', $id_libro, $DOM);
     $DOM = str_replace('###TITOLO###', $titolo, $DOM);
     $DOM = str_replace('###AUTORE###', $autore, $DOM);

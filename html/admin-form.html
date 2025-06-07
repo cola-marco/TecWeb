@@ -6,7 +6,7 @@
     </ol>
 </nav>
 
-<main id="primo">
+<main id="contenuto">
     <h2>Gestione catalogo</h2>
 
     <div id="add-section" class="contenitoreCompilazione">
@@ -26,7 +26,7 @@
             maxlength="30"
             aria-describedby="err-titolo"
             data-required-msg="Inserisci il titolo del libro">
-            <span id="err-titolo" class="error-msg" aria-live="assertive"><titoloError/></span>
+            <span id="err-titolo" class="error-msg" aria-live="assertive">###titoloError###</span>
 
             <label for="autore">Autore <span aria-hidden="true">*</span></label>
             <input
@@ -39,7 +39,7 @@
             maxlength="30"
             aria-describedby="err-autore"
             data-required-msg="Inserisci l’autore del libro">
-            <span id="err-autore" class="error-msg" aria-live="assertive"><autoreError/></span>
+            <span id="err-autore" class="error-msg" aria-live="assertive">###autoreError###</span>
 
             <input
             type="file"
@@ -47,8 +47,9 @@
             name="image_path"
             accept=".jpg,.jpeg,.png,.webp"
             aria-describedby="err-image"
-            data-required-msg="Carica l’immagine di copertina">
-            <span id="err-image" class="error-msg" aria-live="assertive"><imageError/></span>
+            data-required-msg="Carica l’immagine di copertina"
+            aria-label="Carica l’immagine di copertina">
+            <span id="err-image" class="error-msg" aria-live="assertive">###imageError###</span>
 
             <label for="casa_editrice">Casa Editrice <span aria-hidden="true">*</span></label>
             <input
@@ -61,7 +62,7 @@
             maxlength="30"
             aria-describedby="err-casa"
             data-required-msg="Inserisci la casa editrice">
-            <span id="err-casa" class="error-msg" aria-live="assertive"><casaedError/></span>
+            <span id="err-casa" class="error-msg" aria-live="assertive">###casaedError###</span>
 
             <label for="genere">Genere <span aria-hidden="true">*</span></label>
             <input
@@ -74,7 +75,7 @@
             maxlength="30"
             aria-describedby="err-genere"
             data-required-msg="Inserisci il genere del libro">
-            <span id="err-genere" class="error-msg" aria-live="assertive"><genereError/></span>
+            <span id="err-genere" class="error-msg" aria-live="assertive">###genereError###</span>
 
             <label for="pubblicazione">Anno di pubblicazione <span aria-hidden="true">*</span></label>
             <input
@@ -88,7 +89,7 @@
             step="1"
             aria-describedby="err-pubblicazione"
             data-required-msg="Inserisci l’anno di pubblicazione">
-            <span id="err-pubblicazione" class="error-msg" aria-live="assertive"><annopubbError/></span>
+            <span id="err-pubblicazione" class="error-msg" aria-live="assertive">###annopubbError###</span>
 
             <label for="trama">Trama <span aria-hidden="true">*</span></label>
             <textarea
@@ -99,7 +100,7 @@
             maxlength="1000"
             aria-describedby="err-trama"
             data-required-msg="Inserisci la trama del libro">{{Trama}}</textarea>
-            <span id="err-trama" class="error-msg" aria-live="assertive"><tramaError/></span>
+            <span id="err-trama" class="error-msg" aria-live="assertive">###tramaError###</span>
 
             <label for="numero_copie">Numero copie <span aria-hidden="true">*</span></label>
             <input
@@ -112,7 +113,7 @@
             step="1"
             aria-describedby="err-copie"
             data-required-msg="Inserisci il numero di copie disponibili">
-            <span id="err-copie" class="error-msg" aria-live="assertive"><ncopieError/></span>
+            <span id="err-copie" class="error-msg" aria-live="assertive">###ncopieError###</span>
         </fieldset>
 
         <button type="submit">Aggiungi</button>
@@ -123,4 +124,3 @@
     </div>
 </main>
 
-<a class="help" id="torna-primo" href="#primo">Torna su</a>

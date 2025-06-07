@@ -23,7 +23,7 @@ CREATE TABLE Libri (
     Genere VARCHAR(100) NOT NULL,
     Pubblicazione INT NOT NULL,
     Trama TEXT NOT NULL,
-    Numero_copie INT DEFAULT 1, -- Numero delle copie disponibili in "magazzino"
+    Numero_copie INT DEFAULT 1 -- Numero delle copie disponibili in "magazzino"
 );
 
 -- Tabella lista prestiti

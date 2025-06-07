@@ -7,6 +7,8 @@
 
     if(!isset($_SESSION['is_logged_in']) || isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == false){
         $DOM = file_get_contents('html/login.html');
+        $DOM = str_replace('###passError###', '', $DOM);
+        $DOM = str_replace('###userError###', '', $DOM);
     }
     else if($_SESSION['ruolo'] == 'Admin') {
         header("Location: admin.php");
