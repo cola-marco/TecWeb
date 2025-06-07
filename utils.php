@@ -1,14 +1,14 @@
 <?php 
 function connectDB() {
-    $host = 'localhost';                         
+    /*$host = 'localhost';                         
     $dbname = 'damartin';         
     $userdbname = 'damartin';          
-    $passwordDB = 'Doo3ieD4yoS7ienu';
+    $passwordDB = 'Doo3ieD4yoS7ienu';*/
 
-    /*$host = 'localhost';                         
+    $host = 'localhost';                         
     $dbname = 'progettotecweb';         
     $userdbname = 'root';          
-    $passwordDB = '';*/
+    $passwordDB = '';
 
     try {
         $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";

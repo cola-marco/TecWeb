@@ -289,14 +289,14 @@
             $DOM = str_replace('{{Trama}}', $trama, $DOM);
             $DOM = str_replace('{{Numero_copie}}', $n_copie, $DOM);
 
-            $DOM = str_replace('<titoloError/>', $titoloErr, $DOM);
-            $DOM = str_replace('<autoreError/>', $autoreErr, $DOM);
-            $DOM = str_replace('<imageError/>', $imageErr, $DOM);
-            $DOM = str_replace('<casaedError/>', $casaErr, $DOM);
-            $DOM = str_replace('<genereError/>', $genereErr, $DOM);
-            $DOM = str_replace('<annopubbError/>', $annoErr, $DOM);
-            $DOM = str_replace('<tramaError/>', $tramaErr, $DOM);
-            $DOM = str_replace('<ncopieError/>', $ncopieErr, $DOM);
+            $DOM = str_replace('###titoloError###', $titoloErr, $DOM);
+            $DOM = str_replace('###autoreError###', $autoreErr, $DOM);
+            $DOM = str_replace('###imageError###', $imageErr, $DOM);
+            $DOM = str_replace('###casaedError###', $casaErr, $DOM);
+            $DOM = str_replace('###genereError###', $genereErr, $DOM);
+            $DOM = str_replace('###annopubbError###', $annoErr, $DOM);
+            $DOM = str_replace('###tramaError###', $tramaErr, $DOM);
+            $DOM = str_replace('###ncopieError###', $ncopieErr, $DOM);
             echo($DOM);
         }
 
