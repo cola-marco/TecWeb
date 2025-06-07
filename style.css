@@ -305,7 +305,7 @@ main h1, .mainSection h1 {
   font-size: 1.1rem;
 }
 
-#primo {
+#contenuto {
   background-color: var(--contentbgcolor);
   padding: 1rem;
 }

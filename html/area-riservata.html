@@ -1,31 +1,29 @@
-    <nav id="breadcrumb" aria-label="breadcrumb">
-        <ol>
-            <li><a href="index.php" lang="en">Home</a></li>
-            <li aria-current="page">Login</li>
-        </ol>
-    </nav>
+<nav id="breadcrumb" aria-label="breadcrumb">
+    <ol>
+        <li><a href="index.php" lang="en">Home</a></li>
+        <li aria-current="page">Login</li>
+    </ol>
+</nav>
 
-    
 
-    <main id="primo" class="user-area">
-        <div class="wishlist">
-            <h2>Wishlist</h2>
-            <p class="hidden-confirm">Libro eliminato con successo!</p>
-            <ul>
-                ###LISTA-WISHLIST###
-            </ul>
-        </div>
 
-        <div class="personal-data">
-            <h2>Dati Personali</h2>
-            <ul>
-                ###DATI-PERSONALI###
-            </ul>
+<main id="contenuto" class="user-area">
+    <div class="wishlist">
+        <h2>Wishlist</h2>
+        <p class="hidden-confirm">Libro eliminato con successo!</p>
+        <ul>
+            ###LISTA-WISHLIST###
+        </ul>
+    </div>
 
-            <form id="logout-form" class="compilaform" action="logout.php" method="post">
-                <button type="submit" id="logout-btn">Logout</button>
-            </form>
-        </div>
-    </main>
+    <div class="personal-data">
+        <h2>Dati Personali</h2>
+        <ul>
+            ###DATI-PERSONALI###
+        </ul>
 
-    <a class="help" id="torna-primo" href="#primo">Torna su</a>
+        <form id="logout-form" class="compilaform" action="logout.php" method="post">
+            <button type="submit" id="logout-btn">Logout</button>
+        </form>
+    </div>
+</main>

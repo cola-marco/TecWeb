@@ -1,50 +1,48 @@
-    <nav id="breadcrumb" aria-label="breadcrumb">
-        <ol>
-            <li><a href="index.php" lang="en">Home</a></li>
-            <li><a href="login.php">Login</a></li>
-            <li aria-current="page">Registrati</li>
-        </ol>
-    </nav>
+<nav id="breadcrumb" aria-label="breadcrumb">
+    <ol>
+        <li><a href="index.php" lang="en">Home</a></li>
+        <li><a href="login.php">Login</a></li>
+        <li aria-current="page">Registrati</li>
+    </ol>
+</nav>
 
-    <main id="primo">
-        <div class="login-section">
-            <h1>Crea il tuo account</h1>
-            <form id="login-form" class="compilaform" action="checkRegister.php" method="post">
-                <label for="username" class="camporichiesto">Nome utente</label>
-                <input type="text" id="username" name="username"
-                       placeholder="Scegli un username"
-                       required minlength="3" aria-required="true">
-                <span class="error-msg" aria-live="polite"><userError/></span>
+<main id="contenuto">
+    <div class="login-section">
+        <h1>Crea il tuo account</h1>
+        <form id="login-form" class="compilaform" action="checkRegister.php" method="post">
+            <label for="username" class="camporichiesto">Nome utente</label>
+            <input type="text" id="username" name="username"
+                    placeholder="Scegli un username"
+                    required minlength="3" aria-required="true">
+            <span class="error-msg" aria-live="polite"><userError/></span>
 
-                <label for="email" class="camporichiesto">Email</label>
-                <input type="email" id="email" name="email"
-                       placeholder="Inserisci la tua email"
-                       required aria-required="true">
-                <span class="error-msg" aria-live="polite"><emailError/></span>
+            <label for="email" class="camporichiesto">Email</label>
+            <input type="email" id="email" name="email"
+                    placeholder="Inserisci la tua email"
+                    required aria-required="true">
+            <span class="error-msg" aria-live="polite"><emailError/></span>
 
-                <label for="password" class="camporichiesto">Password</label>
-                <input type="password" id="password" name="password"
-                       placeholder="Crea una password"
-                       required minlength="6" aria-required="true">
-                <span class="error-msg" aria-live="polite"><passError/></span>
+            <label for="password" class="camporichiesto">Password</label>
+            <input type="password" id="password" name="password"
+                    placeholder="Crea una password"
+                    required minlength="6" aria-required="true">
+            <span class="error-msg" aria-live="polite"><passError/></span>
 
-                <label for="confirm-password" class="camporichiesto">Conferma password</label>
-                <input type="password" id="confirm-password" name="confirm-password"
-                       placeholder="Riscrivi la password"
-                       required minlength="6" aria-required="true">
-                <span class="error-msg" aria-live="polite"><confpassError/></span>
+            <label for="confirm-password" class="camporichiesto">Conferma password</label>
+            <input type="password" id="confirm-password" name="confirm-password"
+                    placeholder="Riscrivi la password"
+                    required minlength="6" aria-required="true">
+            <span class="error-msg" aria-live="polite"><confpassError/></span>
 
-                <button type="submit">Registrati</button>
-                <p class="required-info">
-                  I campi contrassegnati con <span aria-hidden="true">*</span> sono obbligatori.
-                </p>
-            </form>
-        </div>
+            <button type="submit">Registrati</button>
+            <p class="required-info">
+                I campi contrassegnati con <span aria-hidden="true">*</span> sono obbligatori.
+            </p>
+        </form>
+    </div>
 
-        <div class="register-prompt">
-            <p>Hai già un account? <a href="login.php">Accedi qui</a></p>
-        </div>
-    </main>
-
-    <a class="help" id="torna-primo" href="#primo">Torna su</a>
+    <div class="register-prompt">
+        <p>Hai già un account? <a href="login.php">Accedi qui</a></p>
+    </div>
+</main>
 

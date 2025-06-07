@@ -1,9 +1,8 @@
 <?php
-
+    include "templates/header.php";
     require "utils.php";
     session_start();
-    include "templates/header.php"; 
-    $DOM = file_get_contents('html/Login.html');
+    $DOM = file_get_contents('html/login.html');
 
     $userError = $passError = '';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -31,19 +30,19 @@
                     }
                 } else{ //password errata 
                     $passError .= '<li>Password errata</li>';
-                    $DOM = str_replace('<passError/>', $passError, $DOM);
-                    echo $DOM;
                     include "templates/footer.php";
                 }
             } else { //user non trovato
                 $userError .= '<li>Username non esistente</li>';
-                $DOM = str_replace('<userError/>', $userError, $DOM);
-                echo $DOM;
-                include "templates/footer.php";
             }
         }
         else {
             //errore di connessione al db
         }
+        $DOM = str_replace('###passError###', $passError, $DOM);
+        $DOM = str_replace('###userError###', $userError, $DOM);
+        echo $DOM;
+        include "templates/footer.php";
     }
+    
 ?>

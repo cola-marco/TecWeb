@@ -1,4 +1,5 @@
 <?php
+    include "templates/header.php";
     require 'utils.php';
     
     $pdo = connectDB();
@@ -32,8 +33,11 @@
             $lista_libri = book_display($result, $li);
         } 
 
+        $error = '';
         $DOM = str_replace('###LISTA###', $lista_libri, $DOM);
         $DOM = str_replace('<h2>Catalogo</h2>', '<h2>Catalogo - Risultati Ricerca</h2>', $DOM);
+        $DOM = str_replace('###ERRORE_DB###', $error, $DOM);
         echo $DOM;
+        include "templates/footer.php";
     }
 ?>

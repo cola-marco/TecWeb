@@ -1,34 +1,33 @@
-    <nav id="breadcrumb" aria-label="breadcrumb">
-        <ol>
-            <li><a href="index.php" lang="en">Home</a></li>
-            <li aria-current="page">Login</li>
-        </ol>
-    </nav>
-    <main id="contenuto">
-        <div class="login-section">
-            <h1>Accedi alla Biblioteca</h1>
-            <form id="login-form" class="compilaform" action="checkLogin.php" method="post">
-                <label for="username" class="camporichiesto">Nome utente</label>
-                <input type="text" id="username" name="username"
-                       placeholder="Inserisci il tuo username"
-                       required minlength="3" aria-required="true">
-                <span class="error-msg" aria-live="polite"><userError/></span>
-              
-                <label for="password" class="camporichiesto">Password</label>
-                <input type="password" id="password" name="password"
-                       placeholder="Inserisci la tua password"
-                       required minlength="6" aria-required="true">
-                <span class="error-msg" aria-live="polite"><passError/></span>
-              
-                <button type="submit">Accedi</button>
+<nav id="breadcrumb" aria-label="breadcrumb">
+    <ol>
+        <li><a href="index.php" lang="en">Home</a></li>
+        <li aria-current="page">Login</li>
+    </ol>
+</nav>
+<main id="contenuto">
+    <div class="login-section">
+        <h1>Accedi alla Biblioteca</h1>
+        <form id="login-form" class="compilaform" action="checkLogin.php" method="post">
+            <label for="username" class="camporichiesto">Nome utente</label>
+            <input type="text" id="username" name="username"
+                    placeholder="Inserisci il tuo username"
+                    required minlength="3" >
+            <span class="error-msg" aria-live="polite">###userError###</span>
+            
+            <label for="password" class="camporichiesto">Password</label>
+            <input type="password" id="password" name="password"
+                    placeholder="Inserisci la tua password"
+                    required minlength="6">
+            <span class="error-msg" aria-live="polite">###passError###</span>
+            
+            <button type="submit">Accedi</button>
 
-                <p class="required-info">I campi contrassegnati con <span aria-hidden="true">*</span> sono obbligatori.</p>
-            </form> 
-        </div> 
+            <p class="required-info">I campi contrassegnati con <span aria-hidden="true">*</span> sono obbligatori.</p>
+        </form> 
+    </div> 
 
-        <div class="register-prompt">
-            <p>Non sei ancora registrato? <a href="register.php">Clicca qui per registrarti</a></p>
-        </div>
+    <div class="register-prompt">
+        <p>Non sei ancora registrato? <a href="register.php">Clicca qui per registrarti</a></p>
+    </div>
 
-    </main>
-    <a class="help" id="torna-primo" href="#skip-to-main">Torna su</a>
+</main>
