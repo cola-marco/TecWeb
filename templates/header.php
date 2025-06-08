@@ -7,13 +7,16 @@
     $pages = [
         'index.php' => ['text' => 'Home', 'class' => '', 'lang' => 'en'],
         'catalogo.php' => ['text' => 'Catalogo', 'class' => ''],
-        'login.php' => ['text' => 'Accedi', 'class' => '']
     ];
 
-    // Aggiungi "Registrati" SOLO se l'utente NON è loggato
-    if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
+    // Aggiungi "Registrati" SOLO se l'utente NON è loggato + Area Personale dinamica 
+    if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
+        $pages['admin.php'] = ['text' => 'Area Personale', 'class' => ''];
+    } else {
+        $pages['login.php'] = ['text' => 'Area Personale', 'class' => ''];
         $pages['register.php'] = ['text' => 'Registrati', 'class' => '', 'lang' => 'en'];
     }
+
 
     // Menu dinamico
     $menuItems = '';
