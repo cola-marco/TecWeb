@@ -1,7 +1,7 @@
 <?php
     include "templates/header.php";
     require 'utils.php';
-    session_start();
+    //session_start();
 
     $DOM = file_get_contents("html/admin-form.html");
     $formValido = true;
@@ -267,14 +267,14 @@
             $DOM = str_replace('{{Trama}}', $trama, $DOM);
             $DOM = str_replace('{{Numero_copie}}', $n_copie, $DOM);
 
-            $DOM = str_replace('<titoloError/>', $titoloErr, $DOM);
-            $DOM = str_replace('<autoreError/>', $autoreErr, $DOM);
-            $DOM = str_replace('<imageError/>', $imageErr, $DOM);
-            $DOM = str_replace('<casaedError/>', $casaErr, $DOM);
-            $DOM = str_replace('<genereError/>', $genereErr, $DOM);
-            $DOM = str_replace('<annopubbError/>', $annoErr, $DOM);
-            $DOM = str_replace('<tramaError/>', $tramaErr, $DOM);
-            $DOM = str_replace('<ncopieError/>', $ncopieErr, $DOM);
+            $DOM = str_replace('###titoloError###', $titoloErr, $DOM);
+            $DOM = str_replace('###autoreError###', $autoreErr, $DOM);
+            $DOM = str_replace('###imageError###', $imageErr, $DOM);
+            $DOM = str_replace('###casaedError###', $casaErr, $DOM);
+            $DOM = str_replace('###genereError###', $genereErr, $DOM);
+            $DOM = str_replace('###annopubbError###', $annoErr, $DOM);
+            $DOM = str_replace('###tramaError###', $tramaErr, $DOM);
+            $DOM = str_replace('###ncopieError###', $ncopieErr, $DOM);
             echo($DOM);
         }
         else if (!$formValido && !isset($_GET['id'])) { //form non valido nel caso di aggiunta

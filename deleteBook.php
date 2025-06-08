@@ -1,6 +1,6 @@
 <?php
     require 'utils.php';
-    session_start();
+    //session_start();
     $pdo = connectDB();
 
     if(!$pdo){

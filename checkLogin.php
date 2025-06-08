@@ -1,7 +1,7 @@
 <?php
     include "templates/header.php";
     require "utils.php";
-    session_start();
+    //session_start();
     $DOM = file_get_contents('html/login.html');
 
     $userError = $passError = '';

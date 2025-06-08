@@ -1,6 +1,6 @@
 <?php
     require 'utils.php';
-    session_start();
+    //session_start();
     check_session_timeout();
     include "templates/header.php";  
     $DOM = file_get_contents('html/index.html');
