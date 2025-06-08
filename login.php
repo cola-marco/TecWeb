@@ -11,10 +11,14 @@
         $DOM = str_replace('###userError###', '', $DOM);
     }
     else if($_SESSION['ruolo'] == 'Admin') {
+        $_SESSION['user_role'] = 'Admin';
+
         header("Location: admin.php");
         exit();
     }
     else{
+        $_SESSION['user_role'] = 'cliente';
+
         $DOM = file_get_contents("html/area-riservata.html");
         $cliente = $_SESSION["ID_Cliente"];
         $wishlist_query = $pdo->prepare("SELECT * FROM Wishlist

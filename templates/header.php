@@ -9,9 +9,13 @@
         'catalogo.php' => ['text' => 'Catalogo', 'class' => ''],
     ];
 
-    // Aggiungi "Registrati" SOLO se l'utente NON è loggato + Area Personale dinamica 
+    // Aggiungi "Registrati" SOLO se l'utente NON è loggato + Area Personale dinamica e divisione per ruoli
     if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
-        $pages['admin.php'] = ['text' => 'Area Personale', 'class' => ''];
+        if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
+            $pages['admin.php'] = ['text' => 'Area Personale', 'class' => ''];
+        } else {
+            $pages['login.php'] = ['text' => 'Area Personale', 'class' => ''];
+        }
     } else {
         $pages['login.php'] = ['text' => 'Area Personale', 'class' => ''];
         $pages['register.php'] = ['text' => 'Registrati', 'class' => '', 'lang' => 'en'];
