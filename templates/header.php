@@ -7,7 +7,7 @@
     $pages = [
         'index.php' => ['text' => 'Home', 'class' => '', 'lang' => 'en'],
         'catalogo.php' => ['text' => 'Catalogo', 'class' => ''],
-        'login.php' => ['text' => 'Accedi', 'class' => '', 'lang' => 'en']
+        'login.php' => ['text' => 'Accedi', 'class' => '']
     ];
 
     // Aggiungi "Registrati" SOLO se l'utente NON è loggato
