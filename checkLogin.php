@@ -21,7 +21,7 @@
                     $_SESSION['is_logged_in'] = true; //per capire se è loggato o no
                     $_SESSION['ruolo'] = $user['Ruolo'];
                     if($user['Ruolo'] == 'Cliente') {
-                        header("Location: index.php"); //viene mandato alla pagina principale 
+                        header("Location: login.php"); //viene mandato alla pagina di login 
                         exit();
                     }
                     else { //login admin
