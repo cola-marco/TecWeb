@@ -3,8 +3,8 @@
     require "utils.php";
     //session_start();
     $DOM = file_get_contents('html/login.html');
-
     $userError = $passError = '';
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdo = connectDB();
         if($pdo){
@@ -13,6 +13,7 @@
             $stmt = $pdo->prepare("SELECT * FROM Clienti WHERE Username = :username");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
             $stmt->execute();
+
             if ($stmt->rowCount() > 0) {
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 if (password_verify($password, $user['Pass'])){
@@ -20,11 +21,14 @@
                     $_SESSION['ID_Cliente'] = $user['ID_Cliente'];
                     $_SESSION['is_logged_in'] = true; //per capire se è loggato o no
                     $_SESSION['ruolo'] = $user['Ruolo'];
+
                     if($user['Ruolo'] == 'Cliente') {
-                        header("Location: index.php"); //viene mandato alla pagina principale 
+                        $_SESSION['user_role'] = 'cliente';
+                        header("Location: login_cliente.php"); //viene mandato alla pagina login cliente 
                         exit();
                     }
                     else { //login admin
+                        $_SESSION['user_role'] = 'Admin';
                         header("Location: admin.php");
                         exit();
                     }

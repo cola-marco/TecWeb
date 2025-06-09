@@ -14,11 +14,10 @@
         if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
             $pages['admin.php'] = ['text' => 'Area Personale', 'class' => ''];
         } else {
-            $pages['login.php'] = ['text' => 'Area Personale', 'class' => ''];
+            $pages['login_cliente.php'] = ['text' => 'Area Personale', 'class' => ''];
         }
     } else {
         $pages['login.php'] = ['text' => 'Area Personale', 'class' => ''];
-        $pages['register.php'] = ['text' => 'Registrati', 'class' => '', 'lang' => 'en'];
     }
 
 
