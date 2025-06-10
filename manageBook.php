@@ -33,7 +33,7 @@
             $autoreErr .= '<li>Autore non può contenere soli spazi</li>';
             $formValido = false;
         }
-        else if(!preg_match("/^[\p{L}\s'\-]+$/u", $autore)){ //regex non permette numeri e caratteri strani
+        else if(!preg_match("/^[\p{L}\s'\-\.]+$/u", $autore)){ //regex non permette numeri e caratteri strani
             $autoreErr .= '<li>Autore non può contenere numeri o caratteri speciali</li>';
             $formValido = false;
         }
@@ -47,7 +47,7 @@
             mkdir($uploadDir, 0755, true); // crea la cartella se non esiste
         }
 
-        $imagePath = 'Immagini/esempio libro.jpg'; // default
+        $imagePath = 'Immagini/default_book_cover.png'; // default
 
         if (isset($_FILES['image_path']) && $_FILES['image_path']['error'] !== UPLOAD_ERR_NO_FILE) {
             $imageLoaded = true;
@@ -267,14 +267,14 @@
             $DOM = str_replace('{{Trama}}', $trama, $DOM);
             $DOM = str_replace('{{Numero_copie}}', $n_copie, $DOM);
 
-            $DOM = str_replace('<titoloError/>', $titoloErr, $DOM);
-            $DOM = str_replace('<autoreError/>', $autoreErr, $DOM);
-            $DOM = str_replace('<imageError/>', $imageErr, $DOM);
-            $DOM = str_replace('<casaedError/>', $casaErr, $DOM);
-            $DOM = str_replace('<genereError/>', $genereErr, $DOM);
-            $DOM = str_replace('<annopubbError/>', $annoErr, $DOM);
-            $DOM = str_replace('<tramaError/>', $tramaErr, $DOM);
-            $DOM = str_replace('<ncopieError/>', $ncopieErr, $DOM);
+            $DOM = str_replace('###titoloError###', $titoloErr, $DOM);
+            $DOM = str_replace('###autoreError###', $autoreErr, $DOM);
+            $DOM = str_replace('###imageError###', $imageErr, $DOM);
+            $DOM = str_replace('###casaedError###', $casaErr, $DOM);
+            $DOM = str_replace('###genereError###', $genereErr, $DOM);
+            $DOM = str_replace('###annopubbError###', $annoErr, $DOM);
+            $DOM = str_replace('###tramaError###', $tramaErr, $DOM);
+            $DOM = str_replace('###ncopieError###', $ncopieErr, $DOM);
             echo($DOM);
         }
         else if (!$formValido && !isset($_GET['id'])) { //form non valido nel caso di aggiunta
