@@ -35,8 +35,8 @@ function book_display($result, $li_template){
         $genere = $book["Genere"];
         $pubblicazione = $book["Pubblicazione"];
         $id_libro = $book["ID_Libro"];
-        //$trama = $book["Trama"];
-        $trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
+        $trama = $book["Trama"];
+        //$trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
 
         $li = str_replace('###IMG-PATH###', 'Immagini/default_book_cover.png', $li);
         $li = str_replace('###ID_LIBRO###', $id_libro, $li);
@@ -66,8 +66,8 @@ function displayBookInfo($DOM, $pdo, $id_libro){
     $casa = $book["Casa_Editrice"];
     $genere = $book["Genere"];
     $pubblicazione = $book["Pubblicazione"];
-    //$trama = $book["Trama"];
-    $trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
+    $trama = $book["Trama"];
+    //$trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
 
     $DOM = str_replace("###TITOLO###", $titolo, $DOM);
     $DOM = str_replace('###IMG-PATH###', 'Immagini/default_book_cover.png', $DOM);

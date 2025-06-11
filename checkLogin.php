@@ -1,7 +1,7 @@
 <?php
     include "templates/header.php";
     require "utils.php";
-    session_start();
+    //session_start();
     $DOM = file_get_contents('html/login.html');
 
     $userError = $passError = '';
@@ -21,7 +21,7 @@
                     $_SESSION['is_logged_in'] = true; //per capire se è loggato o no
                     $_SESSION['ruolo'] = $user['Ruolo'];
                     if($user['Ruolo'] == 'Cliente') {
-                        header("Location: index.php"); //viene mandato alla pagina principale 
+                        header("Location: login.php"); //viene mandato alla pagina di login 
                         exit();
                     }
                     else { //login admin

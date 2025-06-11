@@ -2,7 +2,7 @@
     include "templates/header.php";
     require 'utils.php';
     $pdo = connectDB();
-    session_start();
+    //session_start();
     check_session_timeout();
 
     if(!isset($_SESSION['is_logged_in']) || isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == false){
@@ -11,10 +11,14 @@
         $DOM = str_replace('###userError###', '', $DOM);
     }
     else if($_SESSION['ruolo'] == 'Admin') {
+        $_SESSION['user_role'] = 'Admin';
+
         header("Location: admin.php");
         exit();
     }
     else{
+        $_SESSION['user_role'] = 'cliente';
+
         $DOM = file_get_contents("html/area-riservata.html");
         $cliente = $_SESSION["ID_Cliente"];
         $wishlist_query = $pdo->prepare("SELECT * FROM Wishlist

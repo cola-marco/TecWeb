@@ -1,28 +1,56 @@
 <?php
+    session_start();
     $currentPage = basename($_SERVER['PHP_SELF']);
     $headerTemplate = file_get_contents('./html/templates/header.html');
 
     // mappatura delle pagine
     $pages = [
-        'index.php' => ['text' => 'Home', 'class' => ''],
+        'index.php' => ['text' => 'Home', 'class' => '', 'lang' => 'en'],
         'catalogo.php' => ['text' => 'Catalogo', 'class' => ''],
-        'login.php' => ['text' => 'Accedi', 'class' => '', 'lang' => 'it']
     ];
+
+    $currentAreaPage = null;
+
+    // Aggiungi "Registrati" SOLO se l'utente NON è loggato + Area Personale dinamica e divisione per ruoli
+    if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
+        if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
+            $pages['admin.php'] = ['text' => 'Area Personale', 'class' => ''];
+            $currentAreaPage = 'admin.php';
+        } else {
+            $pages['login.php'] = ['text' => 'Area Personale', 'class' => ''];
+            $currentAreaPage = 'login.php';
+        }
+    } else {
+        $pages['login.php'] = ['text' => 'Area Personale', 'class' => ''];
+        $currentAreaPage = 'login.php';
+    }
+
 
     // Menu dinamico
     $menuItems = '';
     foreach ($pages as $page => $data) {
+        // Determina se questa è la pagina corrente
+        $isCurrentPage = false;
+        
         if ($page === $currentPage) {
+            $isCurrentPage = true;
+        }
+        // Se siamo su login.php o admin.php dopo il login, evidenzia l'Area Personale appropriata
+        else if (($currentPage === 'login.php' || $currentPage === 'admin.php') && $page === $currentAreaPage) {
+            $isCurrentPage = true;
+        }
+        
+        if ($isCurrentPage) {
             // Elemento corrente
-            $menuItems .= '<li aria-current="page" id="current"' . 
-                        (!empty($data['class']) ? ' class="' . $data['class'] . '"' : '') .
-                        (!empty($data['lang']) ? ' lang="' . $data['lang'] . '"' : '') .
-                        '>' . $data['text'] . '</li>';
+            $menuItems .= '<li aria-current="page" id="current"' .
+                (!empty($data['class']) ? ' class="' . $data['class'] . '"' : '') .
+                (!empty($data['lang']) ? ' lang="' . $data['lang'] . '"' : '') .
+                '>' . $data['text'] . '</li>';
         } else {
             // Altri elementi
             $menuItems .= '<li><a href="' . $page . '"' .
-                        (!empty($data['lang']) ? ' lang="' . $data['lang'] . '"' : '') .
-                        '>' . $data['text'] . '</a></li>';
+                (!empty($data['lang']) ? ' lang="' . $data['lang'] . '"' : '') .
+                '>' . $data['text'] . '</a></li>';
         }
     }
 
