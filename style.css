@@ -219,7 +219,7 @@ header input{
   #vertical-menu a{
     display: block;
     width: 100%;
-    border-radius: none;
+    border-radius: 0;
     padding: 0.5em 2em;
   }
 
@@ -766,9 +766,10 @@ table {
 
 .delete-form{
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
-  bottom: 0.5em;
-  right: 0.5em;
+  align-items: flex-end;
+  height: 100%;
 }
 
 #delete-button{
@@ -776,7 +777,7 @@ table {
   border: none;
   border-radius: 0.5em;
   width: 25%;
-  height: 100%;
+  height: 25%;
 }
 
 #delete-button:hover{
@@ -793,6 +794,7 @@ table {
   header h1, main h1, .mainSection h1 {
     font-size: 2rem;
   }
+
   #menu a, #current {
     padding: 0.5em 0.5em;
   }
@@ -806,7 +808,7 @@ table {
   .login-section {
     width: 70%;
     padding: 1rem;
-    margin: 0.5rem;
+    margin: auto;
   }
 
   .register-prompt {
@@ -839,7 +841,7 @@ table {
   .login-section {
     width: 90%;
     padding: 1rem;
-    margin: 0rem;
+    margin: auto;
   }
   .register-prompt {
     width: 90%;
@@ -976,10 +978,10 @@ table {
 }
 
 #logout-form{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;  
 }
 
 .container{
