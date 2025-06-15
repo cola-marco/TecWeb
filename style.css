@@ -219,7 +219,7 @@ header input{
   #vertical-menu a{
     display: block;
     width: 100%;
-    border-radius: none;
+    border-radius: 0px;
     padding: 0.5em 2em;
   }
 
@@ -361,7 +361,6 @@ main h1, .mainSection h1 {
 /*torna-primo*/
 
 #torna-primo {
-
   width: fit-content;
   padding: 0.5rem;
   text-align: center;
@@ -601,6 +600,17 @@ footer dt {
 
 /*tabella*/
 
+#orari .table-head{
+  background-color: var(--menubgcolor)
+}
+
+table tr:nth-child(even){
+  background-color: lightgray;
+}
+
+table tr:nth-child(odd) {
+  background-color: white; /* White for odd rows */
+}
 
 table th, table td {
   padding-left: 2rem;
@@ -701,6 +711,7 @@ table {
 .error-msg {
   font-size: 1rem;
   color: var(--errorcolor);
+  list-style-position: inside;
   min-height: 1em;
   margin-bottom: 0.5rem;
 }

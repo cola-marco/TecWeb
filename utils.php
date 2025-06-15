@@ -31,13 +31,16 @@ function book_display($result, $li_template){
 
         $titolo = $book["Titolo"];
         $autore = $book["Autore"];
-        $copertina = $book["Image_path"];
         $casa = $book["Casa_Editrice"];
         $genere = $book["Genere"];
         $pubblicazione = $book["Pubblicazione"];
         $id_libro = $book["ID_Libro"];
-        $trama = $book["Trama"];
-        //$trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
+        
+        if(!empty($book["Trama"])) $trama = $book["Trama"];
+        else $trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
+
+        if(!empty($book["Image_path"])) $copertina = $book["Image_path"];
+        else $copertina = "./Immagini/default_book_cover.png";
 
         $li = str_replace('###IMG-PATH###', $copertina, $li);
         $li = str_replace('###ID_LIBRO###', $id_libro, $li);
@@ -64,12 +67,16 @@ function displayBookInfo($DOM, $pdo, $id_libro){
     $book = $query->fetch(PDO::FETCH_ASSOC);
     $titolo = $book["Titolo"];
     $autore = $book["Autore"];
-    $copertina = $book["Image_path"];
     $casa = $book["Casa_Editrice"];
     $genere = $book["Genere"];
     $pubblicazione = $book["Pubblicazione"];
-    $trama = $book["Trama"];
-    //$trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
+
+    if(!empty($book["Trama"])) $trama = $book["Trama"];
+    else $trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
+
+    if(!empty($book["Image_path"])) $copertina = $book["Image_path"];
+    else $copertina = "./Immagini/default_book_cover.png";
+    
 
     $DOM = str_replace("###TITOLO###", $titolo, $DOM);
     $DOM = str_replace('###IMG-PATH###', $copertina, $DOM);

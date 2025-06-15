@@ -30,7 +30,6 @@
                     }
                 } else{ //password errata 
                     $passError .= '<li>Password errata</li>';
-                    include "templates/footer.php";
                 }
             } else { //user non trovato
                 $userError .= '<li>Username non esistente</li>';

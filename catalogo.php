@@ -42,7 +42,6 @@
         $lista_libri = book_display($result, $li);    
         $DOM = str_replace('###LISTA###', $lista_libri, $DOM);
         $DOM = str_replace('###ERRORE_DB###', $error, $DOM);
-
     }
 
     echo $DOM;

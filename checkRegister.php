@@ -105,8 +105,10 @@
                     $usernameErr .= '<li>Username già utilizzato</li>';
                 }
                 if($emailErr || $usernameErr){ //email o user già utilizzate, devo rimandare al form
-                    $DOM = str_replace('<userError/>', $usernameErr, $DOM);
-                    $DOM = str_replace('<emailError/>', $emailErr, $DOM);
+                    $DOM = str_replace('###userError###', $usernameErr, $DOM);
+                    $DOM = str_replace('###emailError###', $emailErr, $DOM);
+                    $DOM = str_replace('###passError###', $passErr, $DOM);
+                    $DOM = str_replace('###confpassError###', $confpassErr, $DOM);
                     echo($DOM);
                     exit();
                 }
