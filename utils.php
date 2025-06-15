@@ -27,10 +27,11 @@ function book_display($result, $li_template){
     foreach($result as $book){
         $li = $li_template;
 
-        $titolo = $autore = $casa = $genere = $pubblicazione = $trama = "";
+        $titolo = $autore = $copertina = $casa = $genere = $pubblicazione = $trama = "";
 
         $titolo = $book["Titolo"];
         $autore = $book["Autore"];
+        $copertina = $book["Image_path"];
         $casa = $book["Casa_Editrice"];
         $genere = $book["Genere"];
         $pubblicazione = $book["Pubblicazione"];
@@ -38,7 +39,7 @@ function book_display($result, $li_template){
         $trama = $book["Trama"];
         //$trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
 
-        $li = str_replace('###IMG-PATH###', 'Immagini/default_book_cover.png', $li);
+        $li = str_replace('###IMG-PATH###', $copertina, $li);
         $li = str_replace('###ID_LIBRO###', $id_libro, $li);
         $li = str_replace('###TITOLO###', $titolo, $li);
         $li = str_replace('###AUTORE###', $autore, $li);
@@ -63,6 +64,7 @@ function displayBookInfo($DOM, $pdo, $id_libro){
     $book = $query->fetch(PDO::FETCH_ASSOC);
     $titolo = $book["Titolo"];
     $autore = $book["Autore"];
+    $copertina = $book["Image_path"];
     $casa = $book["Casa_Editrice"];
     $genere = $book["Genere"];
     $pubblicazione = $book["Pubblicazione"];
@@ -70,7 +72,7 @@ function displayBookInfo($DOM, $pdo, $id_libro){
     //$trama = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque eos quae veniam! Quas nulla reprehenderit ratione fugit aspernatur, quae possimus maiores deleniti veritatis nemo atque exercitationem sunt, accusantium doloremque itaque?";
 
     $DOM = str_replace("###TITOLO###", $titolo, $DOM);
-    $DOM = str_replace('###IMG-PATH###', 'Immagini/default_book_cover.png', $DOM);
+    $DOM = str_replace('###IMG-PATH###', $copertina, $DOM);
     $DOM = str_replace('###ID_LIBRO###', $id_libro, $DOM);
     $DOM = str_replace('###TITOLO###', $titolo, $DOM);
     $DOM = str_replace('###AUTORE###', $autore, $DOM);

@@ -33,7 +33,7 @@
             $autoreErr .= '<li>Autore non può contenere soli spazi</li>';
             $formValido = false;
         }
-        else if(!preg_match("/^[\p{L}\s'\-]+$/u", $autore)){ //regex non permette numeri e caratteri strani
+        else if(!preg_match("/^[\p{L}\s'\-\.]+$/u", $autore)){ //regex non permette numeri e caratteri strani
             $autoreErr .= '<li>Autore non può contenere numeri o caratteri speciali</li>';
             $formValido = false;
         }
@@ -47,7 +47,7 @@
             mkdir($uploadDir, 0755, true); // crea la cartella se non esiste
         }
 
-        $imagePath = 'Immagini/esempio libro.jpg'; // default
+        $imagePath = 'Immagini/default_book_cover.png'; // default
 
         if (isset($_FILES['image_path']) && $_FILES['image_path']['error'] !== UPLOAD_ERR_NO_FILE) {
             $imageLoaded = true;
