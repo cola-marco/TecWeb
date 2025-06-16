@@ -562,7 +562,6 @@ label[for="search-bar"], label[for="submit-button"], label[for="delete-button"]{
 }
 
 /*footer*/
-
 footer {
   display: flex;
   align-items: center;
@@ -576,16 +575,18 @@ footer {
 }
 
 footer a {
-  color: var(--footerlink);
-  text-decoration: none;
+  color: var(--txtcolor);
+  text-decoration: underline;
 }
 
 footer a:hover {
   text-decoration: underline;
+  color: var(--txtcolor);
 }
 
 footer a:visited {
-  color: var(--textcolor);
+  color: var(--txtcolor);
+  background: transparent;
 }
 
 footer dl {
@@ -597,6 +598,7 @@ footer dt {
   padding-right: 0.2rem;
   font-weight: bold;
 }
+
 
 /*tabella*/
 
