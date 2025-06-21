@@ -1031,3 +1031,33 @@ RECENSIONI
 .form-recensione textarea{
   height: 5em;
 }
+
+.card-recensione{
+  border: 1px solid var(--headercolor);
+  margin: 0.5em 0.5em 0.5em 0;
+  border-radius: 1em;
+  display: flex; 
+  flex-direction: row;
+}
+
+.card-recensione h5{
+  font-size: 1em;
+}
+
+.review-data{
+  border-right: 1px solid var(--headercolor);
+  padding: 0.5em;
+}
+
+.mex{
+  padding: 0.5em;
+}
+
+.wish-form{
+  width: 80%;
+  margin: auto;
+}
+
+.wish-form button{
+  width: 100%;
+}
