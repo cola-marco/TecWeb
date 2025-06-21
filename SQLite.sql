@@ -1,6 +1,11 @@
-DROP TABLE IF EXISTS Clienti;
-DROP TABLE IF EXISTS Libri;
+DROP TABLE IF EXISTS Recensioni;
+DROP TABLE IF EXISTS Whishlist;
 DROP TABLE IF EXISTS Prestiti;
+DROP TABLE IF EXISTS Libri;
+DROP TABLE IF EXISTS Clienti;
+
+
+
 
 
 -- Tabella dei Clienti
@@ -46,6 +51,18 @@ CREATE TABLE Wishlist (
     FOREIGN KEY (Libro) REFERENCES Libri(ID_Libro) ON DELETE CASCADE
 );
 
+
+CREATE TABLE Recensioni (
+    Cliente INT NOT NULL,
+    Libro INT NOT NULL,
+    Valutazione INT NOT NULL,
+    Recensione TEXT,
+    Data TIMESTAMP,
+    FOREIGN KEY (Cliente) REFERENCES Clienti(ID_Cliente) ON DELETE CASCADE,
+    FOREIGN KEY (Libro) REFERENCES Libri(ID_Libro) ON DELETE CASCADE
+);
+
+
 INSERT INTO Libri (Titolo, Autore, Image_path, Casa_Editrice, Genere, Pubblicazione, Trama) VALUES 
 ('Il nome della rosa', 'Umberto Eco', 'Immagini/cover_68484e26e00496.19349912.jpg', 'Bompiani', 'Storico', 1980, 'Un monaco francescano indaga su misteriosi omicidi in un monastero medievale, tra segreti e verità scomode.'),
 ('1984', 'George Orwell', 'Immagini/cover_68484e68a8e416.87839484.jpg', 'Secker & Warburg', 'Distopico', 1949, 'In un futuro totalitario, un uomo cerca la verità in una società oppressa dal Grande Fratello.'),
@@ -57,4 +74,3 @@ INSERT INTO Libri (Titolo, Autore, Image_path, Casa_Editrice, Genere, Pubblicazi
 ('La coscienza di Zeno', 'Italo Svevo', 'Immagini/cover_68484fdb11a3e1.36429587.jpg', 'Cappelli', 'Romanzo introspettivo', 1923, 'Il protagonista racconta la propria vita attraverso sedute psicoanalitiche, cercando un senso alla sua esistenza.'),
 ('Harry Potter e la pietra filosofale', 'J.K. Rowling', 'Immagini/cover_68484fe49c6423.11389143.jpg', 'Bloomsbury', 'Fantasy', 1997, 'Un ragazzo scopre di essere un mago e inizia la sua avventura nella scuola di magia di Hogwarts.'),
 ('Sulla strada', 'Jack Kerouac', 'Immagini/cover_68484fee970171.95685111.jpg', 'Viking Press', 'Narrativa', 1957, 'Il racconto di un viaggio on the road negli Stati Uniti, simbolo della beat generation.');
-

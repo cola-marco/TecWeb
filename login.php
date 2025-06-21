@@ -20,6 +20,8 @@
         $_SESSION['user_role'] = 'cliente';
 
         $DOM = file_get_contents("html/area-riservata.html");
+
+        //DISPLAY WISHLIST
         $cliente = $_SESSION["ID_Cliente"];
         $wishlist_query = $pdo->prepare("SELECT * FROM Wishlist
                                         JOIN Libri ON Wishlist.Libro = Libri.ID_libro
@@ -43,8 +45,8 @@
                         </div>    
 
                         <form action="#" method="post" class="delete-form">
-                            <label for="delete-button">Elimina libro dalla wishlist</label>
-                            <button type="submit" name="delete-from-wishlist" value="###ID_LIBRO###" id="delete-button"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
+                            <label for="delete-button">Elimina ###TITOLO###</label>
+                            <button type="submit" name="delete-button" value="###ID_LIBRO###" id="delete-button"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
                         </form>
                     </div>
                 </li>';
@@ -55,6 +57,7 @@
             $wishlist = "<p>Nessun libro salvato, se ne vuoi salvarne alcuni vai al <a href=\"catalogo.php\">catalogo</a>.</p>";
         }
 
+        //DISPLAY PERSONAL DATA
         $personal_query = $pdo->prepare("SELECT * FROM Clienti WHERE ID_Cliente = :cliente");
         $personal_query->bindParam(':cliente', $cliente, PDO::PARAM_STR);
         $personal_query->execute();
@@ -69,12 +72,49 @@
             $personal_data = "Nessun cliente";
         }
 
-        if(isset($_POST["delete-from-wishlist"]) && $_POST["delete-from-wishlist"] > 0){
-            $delete = deleteFromWishlist($pdo, $cliente, $_POST["delete-from-wishlist"]);
+        if(isset($_POST["delete-button"]) && $_POST["delete-button"] > 0){
+            $delete = deleteFromWishlist($pdo, $cliente, $_POST["delete-button"]);
             if($delete) header("Location: login.php");
             exit();
         }
+
+        //DISPLAY RECENSIONI
+        $user = $_SESSION["ID_Cliente"];
+        $lista_recensioni = '';
         
+        $query = $pdo->prepare("SELECT R.Valutazione, R.Recensione, R.Libro, L.Titolo, R.Data
+                        FROM Recensioni R
+                        JOIN Clienti C ON R.Cliente = C.ID_Cliente
+                        JOIN Libri L ON R.Libro = L.ID_Libro
+                        WHERE C.ID_Cliente = :user");
+
+        $query->bindParam(':user', $user, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        if(count($result)>0){
+            foreach($result as $instance){
+                $singola_recensione = '
+                    <div class="card-recensione">
+                        <div class="review-data">
+                            <p><strong>Valutazione</strong>: ###VALUTAZIONE###/5</p>
+                            <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
+                        </div>
+                        
+                        <div class="mex">
+                            <p>###RECENSIONE###</p>
+                        </div>
+                    </div>';
+                    
+                $singola_recensione = str_replace('###VALUTAZIONE###', $instance["Valutazione"], $singola_recensione);
+                $singola_recensione = str_replace('###RECENSIONE###', $instance["Recensione"], $singola_recensione);
+                $singola_recensione = str_replace('###DATA_ORA###', $instance["Data"], $singola_recensione);
+            
+                $lista_recensioni = $lista_recensioni . $singola_recensione;
+            }   
+        }
+
+        $DOM = str_replace('###RECENSIONI###', $lista_recensioni, $DOM);
         $DOM = str_replace('###LISTA-WISHLIST###', $wishlist, $DOM);
         $DOM = str_replace('###DATI-PERSONALI###', $personal_data, $DOM);
     }

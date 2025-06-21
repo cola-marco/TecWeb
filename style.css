@@ -818,7 +818,7 @@ table {
   .login-section {
     width: 70%;
     padding: 1rem;
-    margin: 0.5rem;
+    margin: auto;
   }
 
   .register-prompt {
@@ -851,7 +851,7 @@ table {
   .login-section {
     width: 90%;
     padding: 1rem;
-    margin: 0rem;
+    margin: auto;
   }
   .register-prompt {
     width: 90%;
@@ -1003,4 +1003,60 @@ table {
     width: 100%;
     max-width: 300px;
   }
+}
+
+/*==================
+RECENSIONI
+====================*/
+
+.recensione{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+.form-recensione{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.form-recensione select, button, textarea{
+  font-family: Arial, sans-serif;
+}
+
+.form-recensione textarea{
+  height: 5em;
+}
+
+.card-recensione{
+  border: 1px solid var(--headercolor);
+  margin: 0.5em 0.5em 0.5em 0;
+  border-radius: 1em;
+  display: flex; 
+  flex-direction: row;
+}
+
+.card-recensione h5{
+  font-size: 1em;
+}
+
+.review-data{
+  border-right: 1px solid var(--headercolor);
+  padding: 0.5em;
+}
+
+.mex{
+  padding: 0.5em;
+}
+
+.wish-form{
+  width: 80%;
+  margin: auto;
+}
+
+.wish-form button{
+  width: 100%;
 }
