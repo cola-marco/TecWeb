@@ -51,6 +51,7 @@ CREATE TABLE Wishlist (
     FOREIGN KEY (Libro) REFERENCES Libri(ID_Libro) ON DELETE CASCADE
 );
 
+
 CREATE TABLE Recensioni (
     Cliente INT NOT NULL,
     Libro INT NOT NULL,
@@ -60,6 +61,7 @@ CREATE TABLE Recensioni (
     FOREIGN KEY (Cliente) REFERENCES Clienti(ID_Cliente) ON DELETE CASCADE,
     FOREIGN KEY (Libro) REFERENCES Libri(ID_Libro) ON DELETE CASCADE
 );
+
 
 INSERT INTO Libri (Titolo, Autore, Image_path, Casa_Editrice, Genere, Pubblicazione, Trama) VALUES 
 ('Il nome della rosa', 'Umberto Eco', 'Immagini/cover_68484e26e00496.19349912.jpg', 'Bompiani', 'Storico', 1980, 'Un monaco francescano indaga su misteriosi omicidi in un monastero medievale, tra segreti e verità scomode.'),
