@@ -1,6 +1,10 @@
-DROP TABLE IF EXISTS Clienti;
-DROP TABLE IF EXISTS Libri;
+DROP TABLE IF EXISTS Whishlist;
 DROP TABLE IF EXISTS Prestiti;
+DROP TABLE IF EXISTS Libri;
+DROP TABLE IF EXISTS Clienti;
+
+
+
 
 
 -- Tabella dei Clienti
