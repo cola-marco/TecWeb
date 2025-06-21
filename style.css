@@ -520,7 +520,7 @@ CATALOGO
   border-radius: 2em;
 }
 
-label[for="search-bar"], label[for="submit-button"], label[for="delete-button"]{
+label[for="search-bar"], label[for="submit-button"], label[for="delete-button"], label[for="delete-review-button"]{
   text-indent: -9999px;
 }
 
@@ -814,7 +814,7 @@ table {
   right: 0.5em;
 }
 
-#delete-button{
+#delete-button, #delete-review-button{
   background-color: rgb(231, 63, 63);
   border: none;
   border-radius: 0.5em;
@@ -822,7 +822,7 @@ table {
   height: 100%;
 }
 
-#delete-button:hover{
+#delete-button:hover, #delete-review-button:hover{
   cursor: pointer;
 }
 
@@ -1077,12 +1077,20 @@ RECENSIONI
 .review-data{
   border-right: 1px solid var(--headercolor);
   padding: 0.5em;
+  flex: 1;
 }
 
 .mex{
   padding: 0.5em;
+  flex: 2;
+  flex-wrap: wrap;
+  
 }
 
+.mex p{
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 .wish-form{
   width: 80%;
   margin: auto;

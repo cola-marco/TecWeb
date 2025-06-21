@@ -74,8 +74,11 @@
 
         if(isset($_POST["delete-button"]) && $_POST["delete-button"] > 0){
             $delete = deleteFromWishlist($pdo, $cliente, $_POST["delete-button"]);
-            if($delete) header("Location: login.php");
-            exit();
+            if($delete){
+                header("Location: login.php");
+                exit();
+            }
+            else header("Location: 505.php");
         }
 
         //DISPLAY RECENSIONI
@@ -97,21 +100,39 @@
                 $singola_recensione = '
                     <div class="card-recensione">
                         <div class="review-data">
+                            <p><strong>Titolo del libro</strong>: ###TITOLO###</p>
                             <p><strong>Valutazione</strong>: ###VALUTAZIONE###/5</p>
                             <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                         </div>
                         
                         <div class="mex">
                             <p>###RECENSIONE###</p>
+                            
+                            <form action="#" method="post" class="delete-form">
+                                <label for="delete-review-button">Elimina la recensione a ###TITOLO###</label>
+                                <button type="submit" name="delete-review-button" value="###ID_LIBRO###" id="delete-review-button"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
+                            </form>
                         </div>
                     </div>';
                     
                 $singola_recensione = str_replace('###VALUTAZIONE###', $instance["Valutazione"], $singola_recensione);
                 $singola_recensione = str_replace('###RECENSIONE###', $instance["Recensione"], $singola_recensione);
+                $singola_recensione = str_replace('###ID_LIBRO###', $instance["Libro"], $singola_recensione);
                 $singola_recensione = str_replace('###DATA_ORA###', $instance["Data"], $singola_recensione);
+                $singola_recensione = str_replace('###TITOLO###', $instance["Titolo"], $singola_recensione);
             
                 $lista_recensioni = $lista_recensioni . $singola_recensione;
             }   
+        }
+        else $lista_recensioni = '<p>Non hai ancora aggiunto alcuna recensione.</p>';
+
+        if(isset($_POST["delete-review-button"]) && $_POST["delete-review-button"] > 0){
+            $delete = deleteFromRecensioni($pdo, $cliente, $_POST["delete-review-button"]);
+            if($delete) {
+                header("Location: login.php");
+                exit();
+            }
+            else echo("errore");
         }
 
         $DOM = str_replace('###RECENSIONI###', $lista_recensioni, $DOM);

@@ -58,6 +58,7 @@ CREATE TABLE Recensioni (
     Valutazione INT NOT NULL,
     Recensione TEXT,
     Data TIMESTAMP,
+    PRIMARY KEY (Cliente, Libro),
     FOREIGN KEY (Cliente) REFERENCES Clienti(ID_Cliente) ON DELETE CASCADE,
     FOREIGN KEY (Libro) REFERENCES Libri(ID_Libro) ON DELETE CASCADE
 );

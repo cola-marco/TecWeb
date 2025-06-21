@@ -130,6 +130,15 @@ function deleteFromWishlist($pdo, $user, $id_libro){
     }
 }
 
+function deleteFromRecensioni($pdo, $user, $id_libro){
+    $query = $pdo->prepare("DELETE FROM Recensioni WHERE Cliente = :user AND Libro = :id_libro");
+    $query->bindParam(':user', $user, PDO::PARAM_STR);
+    $query->bindParam(':id_libro', $id_libro, PDO::PARAM_STR);
+    $result = $query->execute();
+
+    return $result;
+}
+
 function tab_book_display($result, $tr_template){
     $tab_libri = "";
 
