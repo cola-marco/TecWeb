@@ -24,7 +24,6 @@
 
         $tr = '
         <tr>
-            <th scope="row">{{ID_Libro}}</th>
             <td>{{Titolo}}</td>
             <td>{{Autore}}</td>
             <td>{{Anno}}</td>
