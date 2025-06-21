@@ -330,6 +330,10 @@ main h1, .mainSection h1 {
 .wishlist ul{
   overflow-y: auto;
   height: 60vh;
+
+  border: 1px solid var(--headercolor);
+  border-radius: 1em;
+  padding: 0.5em;
 }
 
 .personal-data{
@@ -422,6 +426,7 @@ CATALOGO
 .right{
   flex: 4;
   padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 .left{
@@ -520,7 +525,7 @@ CATALOGO
   border-radius: 2em;
 }
 
-label[for="search-bar"], label[for="submit-button"], label[for="delete-button"], label[for="delete-review-button"]{
+label[for="search-bar"], label[for="submit-button"], .delete-label, .delete-review-label{
   text-indent: -9999px;
 }
 
@@ -569,6 +574,7 @@ label[for="search-bar"], label[for="submit-button"], label[for="delete-button"],
 
 .login-request{
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 @media screen and (max-width: 1000px){
@@ -814,7 +820,7 @@ table {
   right: 0.5em;
 }
 
-#delete-button, #delete-review-button{
+.delete-button, .delete-review-button{
   background-color: rgb(231, 63, 63);
   border: none;
   border-radius: 0.5em;
@@ -822,7 +828,7 @@ table {
   height: 100%;
 }
 
-#delete-button:hover, #delete-review-button:hover{
+.delete-button:hover, .delete-review-button:hover{
   cursor: pointer;
 }
 
@@ -1040,18 +1046,51 @@ table {
 RECENSIONI
 ====================*/
 
+.recensioni{
+  flex: 4;
+}
+
 .recensione{
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 80%;
+  width: 100%;
   margin: auto;
+  margin-top: 0.5em;
+}
+
+.recensione select{
+  padding: 0.5em;
+  border: none;
+  border-radius:0.5em 0.5em 0 0;
+}
+
+.recensione button{
+  padding: 0.5em;
+  border: none;
+  transition: all 0.15s;
+  border-radius: 0 0.5em 0.5em;
+}
+
+.recensione button:hover{
+  background-color: var(--headercolor);
+  color: var(--headerbgcolor);
+}
+
+.recensione textarea{
+  resize: none;
+}
+
+.recensione textarea:focus{
+  outline: none;
 }
 
 .form-recensione{
   display: flex;
   flex-direction: column;
   text-align: center;
+  border: 1px solid var(--headercolor);
+  border-radius: 0.5em;
 }
 
 .form-recensione select, button, textarea{
@@ -1060,6 +1099,8 @@ RECENSIONI
 
 .form-recensione textarea{
   height: 5em;
+  padding: 0.5em;
+  border: none;
 }
 
 .card-recensione{
@@ -1091,11 +1132,26 @@ RECENSIONI
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
+
 .wish-form{
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
 .wish-form button{
   width: 100%;
+  border: none;
+  border: 1px solid var(--headercolor);
+  border-radius: 0.5em;
+  transition: all 0.15s;
+}
+
+.wish-form button:hover{
+  background-color: var(--headercolor);
+  color: var(--headerbgcolor);
+}
+
+.alert-inside-wishlist{
+  margin-top: 0.5em;
+  text-align: center;
 }
