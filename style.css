@@ -819,7 +819,7 @@ table {
   .login-section {
     width: 70%;
     padding: 1rem;
-    margin: 0.5rem;
+    margin: auto;
   }
 
   .register-prompt {
@@ -852,7 +852,7 @@ table {
   .login-section {
     width: 90%;
     padding: 1rem;
-    margin: 0rem;
+    margin: auto;
   }
   .register-prompt {
     width: 90%;
@@ -1004,4 +1004,30 @@ table {
     width: 100%;
     max-width: 300px;
   }
+}
+
+/*==================
+RECENSIONI
+====================*/
+
+.recensione{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+.form-recensione{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.form-recensione select, button, textarea{
+  font-family: Arial, sans-serif;
+}
+
+.form-recensione textarea{
+  height: 5em;
 }
