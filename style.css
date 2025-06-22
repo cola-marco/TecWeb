@@ -443,31 +443,34 @@ CATALOGO
 
 @media (min-width: 720px) {
   .card img {
-    width: 180px;
-    height: 270px;
-  }
-}
-
-@media (min-width: 1000px) and (max-width: 1149px) {
-  .card img {
-    width: 160px;
-    height: 240px;
+    width: 140px;
+    height: 210px;
   }
 }
 
 @media (min-width: 1150px) {
   .card img {
-    width: 220px;
-    height: 330px;
+    width: 180px;
+    height: 270px;
   }
 }
 
 @media (max-width: 600px) {
   .card img {
-    width: 100px;
-    height: 150px;
+    width: 80px;
+    height: 120px;
   }
 }
+
+.card .left .copertina-libro {
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 2 / 3;
+  border-radius: 0.5em;
+width: clamp(200px, 20vw, 800px);
+  height: auto;
+}
+
 
 .slider{
   list-style: none;
