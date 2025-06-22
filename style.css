@@ -181,6 +181,7 @@ header input{
   height: auto;
   padding: 0.5em 2em;
   text-decoration: none;
+  font-size: 1em;
 }
 
 #vertical-menu a:visited{
@@ -334,6 +335,7 @@ main h1, .mainSection h1 {
   border: 1px solid var(--headercolor);
   border-radius: 1em;
   padding: 0.5em;
+  padding-right: 1em;
 }
 
 .personal-data{
@@ -355,6 +357,10 @@ main h1, .mainSection h1 {
 
   .personal-data, .wishlist{
     text-align: left;
+  }
+
+  .personal-data{
+    margin-top: 1em;
   }
 
   .wishlist{
@@ -402,7 +408,7 @@ CATALOGO
 }
 
 .catalogo h2{
-  margin: 0.5em 0 0.5em 0.5em;
+  margin: 0 0 0 0.5em;
 }
 
 .card{
@@ -423,14 +429,14 @@ CATALOGO
   position: relative;
 }
 
+.info-libro{
+  flex: 4;
+}
+
 .right{
   flex: 4;
   padding-left: 0.5em;
   padding-right: 0.5em;
-}
-
-.left{
-  flex: 1;
 }
 
 .right ul{
@@ -479,6 +485,7 @@ CATALOGO
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 0;
+  margin-top: 1em;
   padding: 0;
   width: 100%;
   position: relative;
@@ -496,6 +503,10 @@ CATALOGO
   background-color: transparent;
   transition: all 0.15s;
   font-family: Arial, sans-serif;
+}
+
+#search-bar::placeholder{
+  color: black;
 }
 
 .search-nav{
@@ -521,12 +532,19 @@ CATALOGO
   flex-direction: row;
   width: 35%;
   margin-right: 2em;
-  background-color: rgb(200, 200, 200);
+  background-color: rgb(151, 151, 151);
   border-radius: 2em;
+  border: 1px solid var(--headercolor);
+  transition: all 0.15s;
 }
 
-label[for="search-bar"], label[for="submit-button"], .delete-label, .delete-review-label{
+.search-form:focus-within{
+  background-color: rgb(200, 200, 200);
+}
+
+label[for="search-bar"], label[for="submit-button"], .delete-label, .delete-review-label, label[for="valutazione"], label[for="textarea"], label[for="wish"]{
   text-indent: -9999px;
+  height: 0;
 }
 
 .save-label{
@@ -605,7 +623,6 @@ footer {
   flex-wrap: wrap;
   background-color: var(--footerbgcolor);
   color: var(--footercolor);
-  font-size: 0.8rem;
   padding: 1rem 0; 
   border-top: 2px solid var(--bordercolor);
 }
@@ -814,8 +831,10 @@ table {
 }
 
 .delete-form{
+  flex: 1;
   display: flex;
   justify-content: flex-end;
+  align-items: flex-end;
   bottom: 0.5em;
   right: 0.5em;
 }
@@ -825,7 +844,7 @@ table {
   border: none;
   border-radius: 0.5em;
   width: 25%;
-  height: 100%;
+  height: 3em;
 }
 
 .delete-button:hover, .delete-review-button:hover{
@@ -898,6 +917,10 @@ table {
 
   .register-prompt a {
     font-size: 0.9rem;
+  }
+
+  footer{
+    font-size: 0.8em;
   }
 }
 
@@ -1048,6 +1071,7 @@ RECENSIONI
 
 .recensioni{
   flex: 4;
+  padding-left: 0.5em;
 }
 
 .recensione{
@@ -1069,7 +1093,7 @@ RECENSIONI
   padding: 0.5em;
   border: none;
   transition: all 0.15s;
-  border-radius: 0 0.5em 0.5em;
+  border-radius: 0 0 0.5em 0.5em;
 }
 
 .recensione button:hover{
@@ -1095,12 +1119,20 @@ RECENSIONI
 
 .form-recensione select, button, textarea{
   font-family: Arial, sans-serif;
+  background-color: #F0F0F0;
 }
 
 .form-recensione textarea{
   height: 5em;
   padding: 0.5em;
   border: none;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  transition: all 0.15s;
+}
+
+.form-recensione textarea:focus{
+  background-color: white;
 }
 
 .card-recensione{
@@ -1122,6 +1154,8 @@ RECENSIONI
 }
 
 .mex{
+  display: flex;
+  flex-direction: column;
   padding: 0.5em;
   flex: 2;
   flex-wrap: wrap;
@@ -1134,8 +1168,10 @@ RECENSIONI
 }
 
 .wish-form{
+  display: flex;
   width: 100%;
   margin: auto;
+  margin-top: 0.5em;
 }
 
 .wish-form button{
@@ -1154,4 +1190,20 @@ RECENSIONI
 .alert-inside-wishlist{
   margin-top: 0.5em;
   text-align: center;
+}
+
+.card-container{
+  display: flex;
+  flex-direction: row;
+  flex: 4;
+}
+
+.area-riservata-recensioni{
+  margin-top: 1em;
+}
+
+@media screen and (max-width: 1000px){
+  .card-container{
+    flex-direction: column;
+  }
 }

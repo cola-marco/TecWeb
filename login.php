@@ -38,7 +38,7 @@
                         <img src="###IMG-PATH###" alt="">
                     </div>
                     <div class="description">
-                        <div>
+                        <div class="info-libro">
                             <a href="libro.php?id_libro=###ID_LIBRO###"><h3>###TITOLO###</h3></a>
                             <h4>###AUTORE###</h4>
                             <p><strong>Trama</strong>:###TRAMA###</p>
@@ -65,8 +65,8 @@
 
 
         if($personal_result && count($personal_result) > 0){
-            $personal_data = "<li> Username: " .  $personal_result["Username"] . "</li>";
-            $personal_data = $personal_data . "<li> Email: ". $personal_result["Email"] ."</li>";
+            $personal_data = "<li lang='en'> Username: " .  $personal_result["Username"] . "</li>";
+            $personal_data = $personal_data . "<li lang='en'> Email: ". $personal_result["Email"] ."</li>";
         }
         else{
             $personal_data = "Nessun cliente";

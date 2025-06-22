@@ -105,6 +105,7 @@ function isSaved($pdo, $id, $user){
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
     foreach($result as $book) if($book["Libro"] == $id) return true;
+
     return false;
 }
 
@@ -117,6 +118,7 @@ function addToWishlist($pdo, $user, $id_libro){
 
         return $result;
     }
+    else return false;
 }
 
 function deleteFromWishlist($pdo, $user, $id_libro){
@@ -192,7 +194,7 @@ function get_reviews($pdo, $user, $id_libro){
             $singola_recensione = '
             <div class="card-recensione">
                 <div class="review-data">
-                    <p><strong>Username</strong>: ###USERNAME###<p>
+                    <p><strong><span lang="en">Username</span></strong>: ###USERNAME###<p>
                     <p><strong>Valutazione</strong>: ###VALUTAZIONE###/5</p>
                     <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                 </div>
