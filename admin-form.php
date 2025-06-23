@@ -1,4 +1,7 @@
 <?php
+    $metaDescription = 'Pannello di aggiunta libro: aggiungi un libro con il suo Titolo, Autore ecc';
+    $metaKeywords    = 'admin, gestione libri, backend';
+
     include "templates/header.php"; 
     require 'utils.php';
     //session_start();

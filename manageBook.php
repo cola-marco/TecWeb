@@ -1,9 +1,13 @@
 <?php
+    $metaDescription = 'Modifica o aggiungi schede libro nel catalogo (solo amministratori).';
+    $metaKeywords    = 'admin, modifica libro, catalogo';
+    
     include "templates/header.php";
     require 'utils.php';
     //session_start();
 
     $DOM = file_get_contents("html/admin-form.html");
+
     $formValido = true;
     //inizializzazione variabili form
     $id_libro = $titolo = $autore = $imagePath = $casa_editrice = $genere = $anno = $trama = $n_copie = '';

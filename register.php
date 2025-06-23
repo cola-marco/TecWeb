@@ -1,5 +1,9 @@
 <?php
+    $metaDescription = 'Crea un nuovo account per prenotare libri e scrivere recensioni.';
+    $metaKeywords    = 'registrazione, account, biblioteca';
+    
     include "templates/header.php";
+
     $DOM = file_get_contents('html/register.html');
 
     $usernameErr = '';

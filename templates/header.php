@@ -1,5 +1,9 @@
 <?php
     session_start();
+
+    $metaDescription = $metaDescription ?? 'Biblioteca Luzzatti di Padova';
+    $metaKeywords    = $metaKeywords    ?? 'biblioteca, padova, libri';
+
     $currentPage = basename($_SERVER['PHP_SELF']);
     $headerTemplate = file_get_contents('./html/templates/header.html');
 
@@ -54,6 +58,15 @@
         }
     }
 
+    $headerTemplate = str_replace(
+        ['%%DESCRIPTION%%', '%%KEYWORDS%%'],
+        [
+            htmlspecialchars($metaDescription, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
+            htmlspecialchars($metaKeywords,    ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')
+        ],
+        $headerTemplate
+    );
+    
     // Sostituzione menu nel template
     $headerContent = preg_replace(
         '/<ul id="vertical-menu" data-open="false">.*?<\/ul>/s',
