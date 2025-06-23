@@ -122,18 +122,22 @@ if(reg_form){
 
 const passwordInput = document.getElementById('password');
 
+if(passwordInput){
 passwordInput.addEventListener('input', function () {
     const trimmed = this.value.trim();  // rimuove spazi all'inizio e alla fine
     if (this.value !== trimmed) {
         this.value = trimmed;
     }
 });
+}
 
 const confpasswordInput = document.getElementById('confirm-password');
 
+if(confpasswordInput){
 confpasswordInput.addEventListener('input', function () {
     const trimmed = this.value.trim();  // rimuove spazi all'inizio e alla fine
     if (this.value !== trimmed) {
         this.value = trimmed;
     }
 });
+}
