@@ -545,7 +545,17 @@ width: clamp(200px, 20vw, 800px);
   background-color: rgb(200, 200, 200);
 }
 
-label[for="search-bar"], label[for="submit-button"], .delete-label, .delete-review-label, label[for="valutazione"], label[for="textarea"], label[for="wish"]{
+.valutazione{
+  display: flex;
+  flex-direction: row;
+  border: none;
+  background-color: #F0F0F0;
+  border-radius: 0.5em 0.5em 0 0;
+  padding: 0.5em;
+}
+
+
+label[for="search-bar"], label[for="submit-button"], .delete-label, .delete-review-label, label[for="textarea"], label[for="wish"], .valutazione legend{
   text-indent: -9999px;
   height: 0;
 }
@@ -1125,6 +1135,11 @@ RECENSIONI
   background-color: #F0F0F0;
 }
 
+.form-recensione button{
+  padding: 0.5em 0;
+  font-size: 1em;
+}
+
 .form-recensione textarea{
   height: 5em;
   padding: 0.5em;
@@ -1205,8 +1220,47 @@ RECENSIONI
   margin-top: 1em;
 }
 
+.errore-server{
+  margin: 1em;
+}
+
+.star-rating {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  display: flex;
+  justify-content: center;
+}
+
+.star-rating input[type="radio"] {
+  display: none;
+}
+
+.star-rating label {
+  font-size: 2em;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: gold;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+  color: gold;
+}
+
 @media screen and (max-width: 1000px){
   .card-container{
     flex-direction: column;
+  }
+
+  .form-recensione button, textarea, fieldset{
+    font-size: 0.8em;
+  }
+
+  .recensioni{
+    margin-top: 1em;
   }
 }

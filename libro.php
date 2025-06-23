@@ -56,15 +56,22 @@
                     <div class="recensione">
                         <h4>Recensione</h4>
                         <form action="recensione.php?id_libro=###ID-LIBRO###" class="form-recensione" method="post">
-                            <label for="valutazione">Inserisci una valutazione del libro</label>
-                            <select name="valutazione" id="valutazione">
-                                <option value="">Seleziona un\'opzione</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
+                            <fieldset class="valutazione">
+                                <legend>Inserisci la valutazione del libro</legend>
+                                <p>Valutazione: </p>
+                                <div class="star-rating">
+                                    <input type="radio" id="star5" name="valutazione" value="5" aria-label="5 stella"/>
+                                    <label for="star5">&#9733;</label>
+                                    <input type="radio" id="star4" name="valutazione" value="4" aria-label="4 stella"/>
+                                    <label for="star4">&#9733;</label>
+                                    <input type="radio" id="star3" name="valutazione" value="3" aria-label="3 stella"/>
+                                    <label for="star3">&#9733;</label>
+                                    <input type="radio" id="star2" name="valutazione" value="2" aria-label="2 stella"/>
+                                    <label for="star2">&#9733;</label>
+                                    <input type="radio" id="star1" name="valutazione" value="1" aria-label="1 stella"/>
+                                    <label for="star1">&#9733;</label>
+                                </div>
+                            </fieldset>
                             <label for="textarea">Scrivi qui la tua recensione</label>
                             <textarea name="mex" id="textarea" placeholder="Scrivi qui la tua recensione."></textarea>
                             <button type="submit" name="submit-review" value="###ID-LIBRO###">Invia</button>
