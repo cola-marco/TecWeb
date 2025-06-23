@@ -22,62 +22,62 @@
 
         $username = $_POST['username'];
         if(strlen($username) == 0){
-            $usernameErr .= '<li>Username non inserito</li>';
+            $usernameErr .= '<p><span lang="en">Username</span> non inserito</p>';
             $formValido = false;
         }
         else if(strlen(trim($username)) == 0){ //composto da soli spazi
-            $usernameErr .= '<li>Username composto da soli spazi</li>';
+            $usernameErr .= '<p><span lang="en">Username</span> non può contenere soli spazi</p>';
             $formValido = false;
         }
         $username = pulisciInput($username); //chiamata dopo perchè se no la funzione fa trim(), toglie gli spazi e non si vede se sono inseriti solo spazi nel form
         if(strlen($username) < 3){
-            $usernameErr .= '<li>Username deve essere composto da almeno 3 caratteri</li>';
+            $usernameErr .= '<p><span lang="en">Username</span> deve essere composto da almeno 3 caratteri</p>';
             $formValido = false;
         }
 
         $email = $_POST['email'];
         if(strlen($email) == 0){
-            $emailErr .= '<li>Email non inserita</li>';
+            $emailErr .= '<p><span lang="en">Email</span> non inserita</p>';
             $formValido = false;
         }
         if(strlen(trim($email)) == 0){
-            $emailErr .= '<li>Email composta da soli spazi</li>';
+            $emailErr .= '<p><span lang="en">Email</span> non può contenere soli spazi</p>';
             $formValido = false;
         }
         $email = pulisciInput($email);
         $email_filtred = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         if(!$email_filtred){ //controlla che l'email sia scritta nel formato corretto
-            $emailErr .= '<li>Email non valida</li>';
+            $emailErr .= '<p><span lang="en">Email</span> non valida</p>';
             $formValido = false;
         }
 
         $password = $_POST['password'];
         if(strlen($password) == 0){
-            $passErr .= '<li>Password non inserita</li>';
+            $passErr .= '<p><span lang="en">Password</span> non inserita</p>';
             $formValido = false;
         }
         if(strlen(trim($password)) == 0){
-            $passErr .= '<li>Password composta da soli spazi</li>';
+            $passErr .= '<p><span lang="en">Password</span> non può contenere soli spazi</p>';
             $formValido = false;
         }
         $password = trim($password); //non usa pulisciInput perchè potrebbe togliere caratteri importanti
         if(strlen($password) < 8){
-            $passErr .= '<li>La password deve avere almeno 8 caratteri</li>';
+            $passErr .= '<p>La <span lang="en">password</span> deve avere almeno 8 caratteri</p>';
             $formValido = false;
         }
 
         $conferma_password = $_POST['confirm-password'];
         if(strlen($conferma_password) == 0){
-            $confpassErr .= '<li>Password di conferma non inserita</li>';
+            $confpassErr .= '<p><span lang="en">Password</span> di conferma non inserita</p>';
             $formValido = false;
         }
         if(strlen(trim($conferma_password)) == 0){
-            $confpassErr .= '<li>Password di conferma composta da soli spazi</li>';
+            $confpassErr .= '<p><span lang="en">Password</span> di conferma non può contenere soli spazi</p>';
             $formValido = false;
         }
         $conferma_password = trim($conferma_password);
         if($password !== $conferma_password){
-            $confpassErr .= '<li>Password di conferma diversa dalla password inserita</li>';
+            $confpassErr .= '<p><span lang="en">Password</span> di conferma diversa dalla <span lang="en">password<span/> inserita</p>';
             $formValido = false;
         }
 
@@ -99,17 +99,22 @@
                 $stmt2->execute();
                 
                 if ($stmt->rowCount() > 0) { //email già stata utilizzata
-                    $emailErr .= '<li>Email già utilizzata</li>';
+                    $emailErr .= '<p><span lang="en">Email</span> già utilizzata</p>';
                 }
                 if ($stmt2->rowCount() > 0) { //username già stato utilizzato
-                    $usernameErr .= '<li>Username già utilizzato</li>';
+                    $usernameErr .= '<p><span lang="en">Username</span> già utilizzato</p>';
                 }
                 if($emailErr || $usernameErr){ //email o user già utilizzate, devo rimandare al form
+                    /*if($usernameErr) $usernameErr = '<ul class="error-msg" aria-live="polite">' . $usernameErr . '</ul>';
+                    if($emailErr) $emailErr = '<ul class="error-msg" aria-live="polite">' . $emailErr . '</ul>';
+                    if($passErr) $passErr = '<ul class="error-msg" aria-live="polite">' . $passErr . '</ul>';
+                    if($confpassErr) $confpassErr = '<ul class="error-msg" aria-live="polite">' . $confpassErr . '</ul>';*/
                     $DOM = str_replace('###userError###', $usernameErr, $DOM);
                     $DOM = str_replace('###emailError###', $emailErr, $DOM);
                     $DOM = str_replace('###passError###', $passErr, $DOM);
                     $DOM = str_replace('###confpassError###', $confpassErr, $DOM);
                     echo($DOM);
+                    include "templates/footer.php";
                     exit();
                 }
                 //email, username non ancora registrati
@@ -136,12 +141,18 @@
             }
         } else { //form non valido
             //faccio visualizzare i messaggi di errore del form
+            /*if($usernameErr) $usernameErr = '<ul class="error-msg" aria-live="polite">' . $usernameErr . '</ul>';
+            if($emailErr) $emailErr = '<ul class="error-msg" aria-live="polite">' . $emailErr . '</ul>';
+            if($passErr) $passErr = '<ul class="error-msg" aria-live="polite">' . $passErr . '</ul>';
+            if($confpassErr) $confpassErr = '<ul class="error-msg" aria-live="polite">' . $confpassErr . '</ul>';*/
             $DOM = str_replace('###userError###', $usernameErr, $DOM);
             $DOM = str_replace('###emailError###', $emailErr, $DOM);
             $DOM = str_replace('###passError###', $passErr, $DOM);
             $DOM = str_replace('###confpassError###', $confpassErr, $DOM);
             echo($DOM);
+            include "templates/footer.php";
             exit();
+
         }
     }
 

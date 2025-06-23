@@ -28,7 +28,7 @@
             maxlength="30"
             aria-describedby="err-titolo"
             data-required-msg="Inserisci il titolo del libro">
-            <span id="err-titolo" class="error-msg" aria-live="assertive">###titoloError###</span>
+            ###titoloError###
 
             <label for="autore">Autore <span aria-hidden="true">*</span></label>
             <input
@@ -41,7 +41,7 @@
             maxlength="30"
             aria-describedby="err-autore"
             data-required-msg="Inserisci l’autore del libro">
-            <span id="err-autore" class="error-msg" aria-live="assertive">###autoreError###</span>
+            ###autoreError###
 
             <input
             type="file"
@@ -51,7 +51,7 @@
             aria-describedby="err-image"
             data-required-msg="Carica l’immagine di copertina"
             aria-label="Carica l’immagine di copertina">
-            <span id="err-image" class="error-msg" aria-live="assertive">###imageError###</span>
+            ###imageError###
 
             <label for="casa_editrice">Casa Editrice <span aria-hidden="true">*</span></label>
             <input
@@ -64,7 +64,7 @@
             maxlength="30"
             aria-describedby="err-casa"
             data-required-msg="Inserisci la casa editrice">
-            <span id="err-casa" class="error-msg" aria-live="assertive">###casaedError###</span>
+            ###casaedError###
 
             <label for="genere">Genere <span aria-hidden="true">*</span></label>
             <input
@@ -77,7 +77,7 @@
             maxlength="30"
             aria-describedby="err-genere"
             data-required-msg="Inserisci il genere del libro">
-            <span id="err-genere" class="error-msg" aria-live="assertive">###genereError###</span>
+            ###genereError###
 
             <label for="pubblicazione">Anno di pubblicazione <span aria-hidden="true">*</span></label>
             <input
@@ -91,7 +91,7 @@
             step="1"
             aria-describedby="err-pubblicazione"
             data-required-msg="Inserisci l’anno di pubblicazione">
-            <span id="err-pubblicazione" class="error-msg" aria-live="assertive">###annopubbError###</span>
+            ###annopubbError###
 
             <label for="trama">Trama <span aria-hidden="true">*</span></label>
             <textarea
@@ -102,7 +102,7 @@
             maxlength="1000"
             aria-describedby="err-trama"
             data-required-msg="Inserisci la trama del libro">{{Trama}}</textarea>
-            <span id="err-trama" class="error-msg" aria-live="assertive">###tramaError###</span>
+            ###tramaError###
 
             <label for="numero_copie">Numero copie <span aria-hidden="true">*</span></label>
             <input
@@ -115,10 +115,10 @@
             step="1"
             aria-describedby="err-copie"
             data-required-msg="Inserisci il numero di copie disponibili">
-            <span id="err-copie" class="error-msg" aria-live="assertive">###ncopieError###</span>
+            ###ncopieError###
         </fieldset>
 
-        <button type="submit">Aggiungi</button>
+        <button type="submit">{{buttonAction}}</button>
         <p class="required-info">I campi contrassegnati con <span aria-hidden="true">*</span> sono obbligatori.</p>
         </form>
 

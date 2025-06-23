@@ -60,7 +60,7 @@
             $fileType = mime_content_type($fileTmpPath);
 
             if (!in_array($fileType, $allowedTypes)) {
-                $imageErr .= "<li>Formato immagine non consentito. Usa JPG, PNG o WEBP.</li>";
+                $imageErr .= "<li>Formato immagine non consentito. Usa <abbr title='Joint Photographic Experts Group'>JPG</abbr>, <abbr title='Portable Network Graphics'>PNG</abbr> o <abbr title='Web Picture format'>WEBP</abbr>.</li>";
                 $formValido = false;
             } elseif ($fileSize > $maxSize) {
                 $imageErr .= "<li>Dimensione immagine troppo grande. Max 1MB.</li>";
@@ -256,6 +256,7 @@
         else if(!$formValido && isset($_GET['id'])) { //form non valido nel caso di modifica
             
             $DOM = str_replace('{{Azione}}', 'Modifica', $DOM);
+            $DOM = str_replace('{{buttonAction}}', 'Modifica', $DOM);
             $id_libro = $_GET['id'];
             $form_action = 'manageBook.php?id=' . urlencode($id_libro);
             $DOM = str_replace('{{FormAction}}', $form_action, $DOM);
@@ -267,6 +268,14 @@
             $DOM = str_replace('{{Trama}}', $trama, $DOM);
             $DOM = str_replace('{{Numero_copie}}', $n_copie, $DOM);
 
+            if($titoloErr) $titoloErr = '<ul id="err-titolo" class="error-msg" aria-live="assertive">' . $titoloErr . '</ul>';
+            if($autoreErr) $autoreErr = '<ul id="err-autore" class="error-msg" aria-live="assertive">' . $autoreErr . '</ul>';
+            if($imageErr) $imageErr = '<ul id="err-image" class="error-msg" aria-live="assertive">' . $imageErr . '</ul>';
+            if($casaErr) $casaErr = '<ul id="err-casa" class="error-msg" aria-live="assertive">' . $casaErr . '</ul>';
+            if($genereErr) $genereErr = '<ul id="err-genere" class="error-msg" aria-live="assertive">' . $genereErr . '</ul>';
+            if($annoErr) $annoErr = '<ul id="err-pubblicazione" class="error-msg" aria-live="assertive">' . $annoErr . '</ul>';
+            if($tramaErr) $tramaErr = '<ul id="err-trama" class="error-msg" aria-live="assertive">' . $tramaErr . '</ul>';
+            if($ncopieErr) $ncopieErr = '<ul id="err-copie" class="error-msg" aria-live="assertive">' . $ncopieErr . '</ul>';
             $DOM = str_replace('###titoloError###', $titoloErr, $DOM);
             $DOM = str_replace('###autoreError###', $autoreErr, $DOM);
             $DOM = str_replace('###imageError###', $imageErr, $DOM);
@@ -279,6 +288,7 @@
         }
         else if (!$formValido && !isset($_GET['id'])) { //form non valido nel caso di aggiunta
             $DOM = str_replace('{{Azione}}', 'Aggiungi', $DOM);
+            $DOM = str_replace('{{buttonAction}}', 'Aggiungi', $DOM);
             $form_action = 'manageBook.php';
             $DOM = str_replace('{{FormAction}}', $form_action, $DOM);
             $DOM = str_replace('{{Titolo}}', $titolo, $DOM);
@@ -289,6 +299,15 @@
             $DOM = str_replace('{{Trama}}', $trama, $DOM);
             $DOM = str_replace('{{Numero_copie}}', $n_copie, $DOM);
 
+
+            if($titoloErr) $titoloErr = '<ul id="err-titolo" class="error-msg" aria-live="assertive">' . $titoloErr . '</ul>';
+            if($autoreErr) $autoreErr = '<ul id="err-autore" class="error-msg" aria-live="assertive">' . $autoreErr . '</ul>';
+            if($imageErr) $imageErr = '<ul id="err-image" class="error-msg" aria-live="assertive">' . $imageErr . '</ul>';
+            if($casaErr) $casaErr = '<ul id="err-casa" class="error-msg" aria-live="assertive">' . $casaErr . '</ul>';
+            if($genereErr) $genereErr = '<ul id="err-genere" class="error-msg" aria-live="assertive">' . $genereErr . '</ul>';
+            if($annoErr) $annoErr = '<ul id="err-pubblicazione" class="error-msg" aria-live="assertive">' . $annoErr . '</ul>';
+            if($tramaErr) $tramaErr = '<ul id="err-trama" class="error-msg" aria-live="assertive">' . $tramaErr . '</ul>';
+            if($ncopieErr) $ncopieErr = '<ul id="err-copie" class="error-msg" aria-live="assertive">' . $ncopieErr . '</ul>';
             $DOM = str_replace('###titoloError###', $titoloErr, $DOM);
             $DOM = str_replace('###autoreError###', $autoreErr, $DOM);
             $DOM = str_replace('###imageError###', $imageErr, $DOM);
