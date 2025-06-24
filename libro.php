@@ -1,4 +1,7 @@
 <?php
+    $metaDescription = 'Scheda libro della Biblioteca: trama, autore, valutazioni e recensioni.';
+    $metaKeywords    = 'libro, dettagli, recensioni, autore, biblioteca';
+
     include "templates/header.php";
     require 'utils.php';
     $pdo = connectDB();

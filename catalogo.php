@@ -1,5 +1,9 @@
 <?php
+    $metaDescription = 'Sfoglia il catalogo online e visualizza i libri.';
+    $metaKeywords    = 'catalogo, libri, ricerca';
+    
     include "templates/header.php";
+
     require 'utils.php';
     $pdo = connectDB();
     //session_start();

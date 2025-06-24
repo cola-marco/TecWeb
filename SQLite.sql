@@ -5,9 +5,6 @@ DROP TABLE IF EXISTS Libri;
 DROP TABLE IF EXISTS Clienti;
 
 
-
-
-
 -- Tabella dei Clienti
 CREATE TABLE Clienti (
     ID_Cliente INT AUTO_INCREMENT PRIMARY KEY,
@@ -58,7 +55,7 @@ CREATE TABLE Recensioni (
     Valutazione INT NOT NULL,
     Recensione TEXT,
     Data TIMESTAMP,
-    Segnala BOOLEAN
+    Segnala BOOLEAN,
     PRIMARY KEY (Cliente, Libro),
     FOREIGN KEY (Cliente) REFERENCES Clienti(ID_Cliente) ON DELETE CASCADE,
     FOREIGN KEY (Libro) REFERENCES Libri(ID_Libro) ON DELETE CASCADE
