@@ -29,15 +29,17 @@
                         exit();
                     }
                 } else{ //password errata 
-                    $passError .= '<li>Password errata</li>';
+                    $passError .= '<li><span lang="en">Password</span> errata</li>';
                 }
             } else { //user non trovato
-                $userError .= '<li>Username non esistente</li>';
+                $userError .= '<li><span lang="en">Username</span> non esistente</li>';
             }
         }
         else {
             //errore di connessione al db
         }
+        if($userError) $userError = '<ul class="error-msg" aria-live="polite">' . $userError . '</ul>';
+        if($passError) $passError = '<ul class="error-msg" aria-live="polite">' . $passError . '</ul>';
         $DOM = str_replace('###passError###', $passError, $DOM);
         $DOM = str_replace('###userError###', $userError, $DOM);
         echo $DOM;

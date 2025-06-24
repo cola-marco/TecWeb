@@ -13,28 +13,36 @@
             <input type="text" id="username" name="username"
                     placeholder="Scegli un username"
                     required minlength="3">
-            <span class="error-msg" aria-live="polite">###userError###</span>
+            <div class="error-msg display-error" aria-live="polite">###userError###</div>
+            <p class="error-msg user1-error" aria-live="polite"></p>
+            <p class="error-msg user2-error" aria-live="polite"></p>
+            <p class="error-msg user3-error" aria-live="polite"></p>
 
-            <label for="email" class="camporichiesto">Email</label>
+            <label for="email" class="camporichiesto"><span lang="en">Email</span></label>
             <input type="email" id="email" name="email"
                     placeholder="Inserisci la tua email"
                     autocomplete="email"
                     required>
-            <span class="error-msg" aria-live="polite">###emailError###</span>
+            <div class="error-msg display-error" aria-live="polite">###emailError###</div>
+            <p class="error-msg email1-error" aria-live="polite"></p>
+            <p class="error-msg email2-error" aria-live="polite"></p>
+            <p class="error-msg email3-error" aria-live="polite"></p>
 
-            <label for="password" class="camporichiesto">Password</label>
+            <label for="password" class="camporichiesto"><span lang="en">Password</span></label>
             <input type="password" id="password" name="password"
                     placeholder="Crea una password"
                     autocomplete="new-password"
                     required minlength="6">
-            <span class="error-msg" aria-live="polite">###passError###</span>
+            <div class="error-msg display-error" aria-live="polite">###passError###</div>
+            <p class="error-msg pass1-error" aria-live="polite"></p>
 
-            <label for="confirm-password" class="camporichiesto">Conferma password</label>
+            <label for="confirm-password" class="camporichiesto">Conferma <span lang="en">password</span></label>
             <input type="password" id="confirm-password" name="confirm-password"
                     placeholder="Riscrivi la password"
                     autocomplete="new-password"
                     required minlength="6">
-            <span class="error-msg" aria-live="polite">###confpassError###</span>
+            <div class="error-msg display-error" aria-live="polite">###confpassError###</div>
+            <p class="error-msg confpass1-error" aria-live="polite"></p>
 
             <button type="submit">Registrati</button>
             <p class="required-info">
