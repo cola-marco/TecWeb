@@ -287,7 +287,13 @@ main {
 }
 
 .mainSection {
-  padding: 1rem; 
+  background: #fff;
+  border-radius: 1.5em;
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2); 
+  padding: 2em 2em 2em 2em;
+  margin: 2em auto;
+  width: 100%;
+  max-width: 1080px;
 }
 
 main h1, .mainSection h1 {
@@ -296,15 +302,103 @@ main h1, .mainSection h1 {
   font-size: 2.5rem;
 }
 
+.mainSection h1 {
+  font-size: 2.7rem;
+}
+
+
 .mainSection h2 {
-  font-size: 1.5rem;
+    text-align: center;
+  font-size: 2rem;
   padding: 1rem;
 }
 
 .mainSection p {
-  padding: 1em;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
+  line-height: 1.7;
+  margin-bottom: 2em;
+  text-align: center;
 }
+
+
+.mainSection img {
+  display: block;
+  margin: 0.5em auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 1em;
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2); 
+  transition: transform 0.4s;
+}
+
+.mainSection img:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 1000px) {
+  .mainSection {
+    padding: 1.5em 1em 1em 1em;
+    max-width: 95vw;
+  }
+  .mainSection h1 {
+    font-size: 2rem;
+  }
+  .mainSection h2 {
+    font-size: 1.5rem;
+  }
+  .mainSection p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .mainSection {
+    padding: 1em 0.5em 0.5em 0.5em;
+    margin: 1em 0.2em;
+    max-width: 100vw;
+  }
+  .mainSection h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+  }
+  .mainSection h2 {
+    font-size: 1.2rem;
+    padding: 0.5em 0 0.2em 0;
+  }
+  .mainSection p {
+    font-size: 0.95rem;
+    padding: 0 0.2em;
+  }
+  .mainSection img {
+    max-width: 98%;
+    margin: 1em auto 0.5em auto;
+  }
+}
+
+.mainSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5em auto 0 auto;
+  max-width: 500px;
+}
+
+.mainSection ul li {
+  position: relative;
+  background: var(--headerbgcolor);
+  margin: 0.7em 0;
+  padding: 1em 1.5em 1em 2.5em;
+  border-radius: 0.5em;
+  font-size: 1.1rem;
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2); 
+}
+
+.mainSection ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 1em;
+  color: var(--headercolor);
+}
+
 
 #contenuto {
   background-color: var(--contentbgcolor);
