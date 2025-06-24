@@ -1,4 +1,7 @@
 <?php
+$metaDescription = 'Leggi o scrivi una recensione per i libri della nostra biblioteca.';
+$metaKeywords    = 'recensioni libri, opinioni, utenti';
+
 include "templates/header.php";
 require 'utils.php';
 $pdo = connectDB();

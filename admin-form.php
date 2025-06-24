@@ -1,4 +1,7 @@
 <?php
+    $metaDescription = 'Pannello di aggiunta libro: aggiungi un libro con il suo Titolo, Autore ecc';
+    $metaKeywords    = 'admin, gestione libri, backend';
+
     include "templates/header.php"; 
     require 'utils.php';
     //session_start();
@@ -8,6 +11,7 @@
     $titoloErr = $autoreErr = $imageErr = $casaErr = $genereErr = $annoErr = $tramaErr = $ncopieErr = '';
     if(isset($_GET['id'])){ //id settato quindi form per modifica
         $DOM = str_replace('{{Azione}}', 'Modifica', $DOM);
+        $DOM = str_replace('{{buttonAction}}', 'Modifica', $DOM);
         $id_libro = $_GET['id'];
         $form_action = 'manageBook.php?id=' . urlencode($id_libro);
         $DOM = str_replace('{{FormAction}}', $form_action, $DOM);
@@ -44,6 +48,7 @@
     }
     else { //form per l'aggiunta di un libro
         $DOM = str_replace('{{Azione}}', 'Aggiungi', $DOM);
+        $DOM = str_replace('{{buttonAction}}', 'Aggiungi', $DOM);
         $form_action = 'manageBook.php';
         $DOM = str_replace('{{FormAction}}', $form_action, $DOM);
         $DOM = str_replace('{{Titolo}}', $titolo, $DOM);

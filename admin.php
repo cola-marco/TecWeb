@@ -1,9 +1,13 @@
 <?php
+    $metaDescription = 'Pannello amministrazione: gestisci catalogo e impostazioni della biblioteca.';
+    $metaKeywords    = 'admin, gestione biblioteca, backend';
+    
     include "templates/header.php"; 
     require 'utils.php';
     //session_start();
     $pdo = connectDB();
     $DOM = file_get_contents('html/admin.html');
+
     if(!$pdo){
         $error = "
             <h2>OOOPS</h2>

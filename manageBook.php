@@ -1,9 +1,13 @@
 <?php
+    $metaDescription = 'Modifica o aggiungi schede libro nel catalogo (solo amministratori).';
+    $metaKeywords    = 'admin, modifica libro, catalogo';
+    
     include "templates/header.php";
     require 'utils.php';
     //session_start();
 
     $DOM = file_get_contents("html/admin-form.html");
+
     $formValido = true;
     //inizializzazione variabili form
     $id_libro = $titolo = $autore = $imagePath = $casa_editrice = $genere = $anno = $trama = $n_copie = '';
@@ -15,26 +19,26 @@
 
         $titolo = $_POST['titolo'];
         if(strlen($titolo) == 0){
-            $titoloErr .= '<li>Titolo non inserito</li>';
+            $titoloErr .= '<p>Titolo non inserito</p>';
             $formValido = false;
         }
         else if(strlen(trim($titolo)) == 0){ //composto da soli spazi
-            $titoloErr .= '<li>Titolo non può contenere soli spazi</li>';
+            $titoloErr .= '<p>Titolo non può contenere soli spazi</p>';
             $formValido = false;
         }
         $titolo = pulisciInput($titolo);
 
         $autore = $_POST['autore'];
         if(strlen($autore) == 0){
-            $autoreErr .= '<li>Autore non inserito</li>';
+            $autoreErr .= '<p>Autore non inserito</p>';
             $formValido = false;
         }
         else if(strlen(trim($autore)) == 0){ //composto da soli spazi
-            $autoreErr .= '<li>Autore non può contenere soli spazi</li>';
+            $autoreErr .= '<p>Autore non può contenere soli spazi</p>';
             $formValido = false;
         }
         else if(!preg_match("/^[\p{L}\s'\-\.]+$/u", $autore)){ //regex non permette numeri e caratteri strani
-            $autoreErr .= '<li>Autore non può contenere numeri o caratteri speciali</li>';
+            $autoreErr .= '<p>Autore non può contenere numeri o caratteri speciali</p>';
             $formValido = false;
         }
         $autore = pulisciInput($autore);
@@ -60,10 +64,10 @@
             $fileType = mime_content_type($fileTmpPath);
 
             if (!in_array($fileType, $allowedTypes)) {
-                $imageErr .= "<li>Formato immagine non consentito. Usa JPG, PNG o WEBP.</li>";
+                $imageErr .= "<p>Formato immagine non consentito. Usa <abbr title='Joint Photographic Experts Group'>JPG</abbr>, <abbr title='Portable Network Graphics'>PNG</abbr> o <abbr title='Web Picture format'>WEBP</abbr>.</p>";
                 $formValido = false;
             } elseif ($fileSize > $maxSize) {
-                $imageErr .= "<li>Dimensione immagine troppo grande. Max 1MB.</li>";
+                $imageErr .= "<p>Dimensione immagine troppo grande. Max 1MB.</p>";
                 $formValido = false;
             } else {
                 // Estrazione estensione
@@ -76,7 +80,7 @@
                     // Salva il path relativo, così poi puoi mostrarla nel catalogo
                     $imagePath = 'Immagini/' . $newFileName;
                 } else {
-                    $imageErr = "<li>Errore nel caricamento dell'immagine.</li>";
+                    $imageErr = "<p>Errore nel caricamento dell'immagine.</p>";
                     $formValido = false;
                 }
             }
@@ -84,67 +88,67 @@
 
         $casa_editrice = $_POST['casa_editrice'];
         if(strlen($casa_editrice) == 0){
-            $casaErr .= '<li>Casa editrice non inserita</li>';
+            $casaErr .= '<p>Casa editrice non inserita</p>';
             $formValido = false;
         }
         else if(strlen(trim($casa_editrice)) == 0){ //composto da soli spazi
-            $casaErr .= '<li>Casa editrice non può contenere soli spazi</li>';
+            $casaErr .= '<p>Casa editrice non può contenere soli spazi</p>';
             $formValido = false;
         }
         $casa_editrice = pulisciInput($casa_editrice);
 
         $genere = $_POST['genere'];
         if(strlen($genere) == 0){
-            $genereErr .= '<li>Genere non inserito</li>';
+            $genereErr .= '<p>Genere non inserito</p>';
             $formValido = false;
         }
         else if(strlen(trim($genere)) == 0){ //composto da soli spazi
-            $genereErr .= '<li>Genere non può contenere soli spazi</li>';
+            $genereErr .= '<p>Genere non può contenere soli spazi</p>';
             $formValido = false;
         }
         else if(!preg_match("/^[\p{L}\s'\-]+$/u", $genere)){ //regex non permette numeri e caratteri strani
-            $genereErr .= '<li>Genere non può contenere numeri o caratteri speciali</li>';
+            $genereErr .= '<p>Genere non può contenere numeri o caratteri speciali</p>';
             $formValido = false;
         }
         $genere = pulisciInput($genere);
 
         $anno = $_POST['pubblicazione'];
         if(strlen($anno) == 0){
-            $annoErr .= '<li>Anno di pubblicazione non inserito</li>';
+            $annoErr .= '<p>Anno di pubblicazione non inserito</p>';
             $formValido = false;
         }
         else if(strlen(trim($anno)) == 0){ //composto da soli spazi
-            $annoErr .= '<li>Anno di pubblicazione non può contenere soli spazi</li>';
+            $annoErr .= '<p>Anno di pubblicazione non può contenere soli spazi</p>';
             $formValido = false;
         }
         else if(!filter_var($anno, FILTER_VALIDATE_INT)){ //non contiene solo numeri
-            $annoErr .= '<li>Anno di pubblicazione può contenere solo numeri naturali</li>';
+            $annoErr .= '<p>Anno di pubblicazione può contenere solo numeri naturali</p>';
             $formValido = false;
         }
         $anno = pulisciInput($anno);
 
         $trama = $_POST['trama'];
         if(strlen($trama) == 0){
-            $tramaErr .= '<li>Trama non inserita</li>';
+            $tramaErr .= '<p>Trama non inserita</p>';
             $formValido = false;
         }
         else if(strlen(trim($anno)) == 0){ //composto da soli spazi
-            $tramaErr .= '<li>Trama non può contenere soli spazi</li>';
+            $tramaErr .= '<p>Trama non può contenere soli spazi</p>';
             $formValido = false;
         }
         $trama = pulisciInput($trama);
 
         $n_copie = $_POST['numero_copie'];
         if(strlen($n_copie) == 0){
-            $ncopieErr .= '<li>Numero di copie non inserito</li>';
+            $ncopieErr .= '<p>Numero di copie non inserito</p>';
             $formValido = false;
         }
         else if(strlen(trim($n_copie)) == 0){ //composto da soli spazi
-            $ncopieErr .= '<li>Numero di copie non può contenere soli spazi</li>';
+            $ncopieErr .= '<p>Numero di copie non può contenere soli spazi</p>';
             $formValido = false;
         }
         else if(!filter_var($n_copie, FILTER_VALIDATE_INT)){ //non contiene solo numeri
-            $ncopieErr .= '<li>Numero di copie può contenere solo numeri naturali</li>';
+            $ncopieErr .= '<p>Numero di copie può contenere solo numeri naturali</p>';
             $formValido = false;
         }
         $n_copie = pulisciInput($n_copie);
@@ -256,6 +260,7 @@
         else if(!$formValido && isset($_GET['id'])) { //form non valido nel caso di modifica
             
             $DOM = str_replace('{{Azione}}', 'Modifica', $DOM);
+            $DOM = str_replace('{{buttonAction}}', 'Modifica', $DOM);
             $id_libro = $_GET['id'];
             $form_action = 'manageBook.php?id=' . urlencode($id_libro);
             $DOM = str_replace('{{FormAction}}', $form_action, $DOM);
@@ -279,6 +284,7 @@
         }
         else if (!$formValido && !isset($_GET['id'])) { //form non valido nel caso di aggiunta
             $DOM = str_replace('{{Azione}}', 'Aggiungi', $DOM);
+            $DOM = str_replace('{{buttonAction}}', 'Aggiungi', $DOM);
             $form_action = 'manageBook.php';
             $DOM = str_replace('{{FormAction}}', $form_action, $DOM);
             $DOM = str_replace('{{Titolo}}', $titolo, $DOM);

@@ -1,4 +1,7 @@
 <?php
+    $metaDescription = 'Accedi alla tua area personale per gestire wishlist e recensioni.';
+    $metaKeywords    = 'login, area personale, recensioni, wishlist';
+    
     include "templates/header.php";
     require 'utils.php';
     $pdo = connectDB();
