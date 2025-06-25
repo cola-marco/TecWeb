@@ -10,6 +10,7 @@
     // mappatura delle pagine
     $pages = [
         'index.php' => ['text' => 'Home', 'class' => '', 'lang' => 'en'],
+        'chi-siamo.php'  => ['text' => 'Chi Siamo', 'class' => ''],
         'catalogo.php' => ['text' => 'Catalogo', 'class' => ''],
     ];
 
