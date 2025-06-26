@@ -108,7 +108,7 @@
                     <div class="card-recensione">
                         <div class="review-data">
                             <p><strong>Titolo del libro</strong>: ###TITOLO###</p>
-                            <p><strong>Valutazione</strong>: ###VALUTAZIONE###</p>
+                            <p><strong>Valutazione</strong>: <span aria-label="###N-STELLE### stelle">###VALUTAZIONE###</span></p>
                             <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                         </div>
                         
@@ -122,6 +122,7 @@
                         </div>
                     </div>';
                     
+                $singola_recensione = str_replace('###N-STELLE###', $instance["Valutazione"], $singola_recensione);
                 $singola_recensione = str_replace('###VALUTAZIONE###',  str_repeat("&#9733;", $instance["Valutazione"]), $singola_recensione);
                 $singola_recensione = str_replace('###RECENSIONE###', $instance["Recensione"], $singola_recensione);
                 $singola_recensione = str_replace('###ID_LIBRO###', $instance["Libro"], $singola_recensione);

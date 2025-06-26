@@ -63,13 +63,13 @@
                                 <legend>Inserisci la valutazione del libro</legend>
                                 <p>Valutazione: </p>
                                 <div class="star-rating">
-                                    <input type="radio" id="star5" name="valutazione" value="5" aria-label="5 stella"/>
+                                    <input type="radio" id="star5" name="valutazione" value="5" aria-label="5 stelle"/>
                                     <label for="star5">&#9733;</label>
-                                    <input type="radio" id="star4" name="valutazione" value="4" aria-label="4 stella"/>
+                                    <input type="radio" id="star4" name="valutazione" value="4" aria-label="4 stelle"/>
                                     <label for="star4">&#9733;</label>
-                                    <input type="radio" id="star3" name="valutazione" value="3" aria-label="3 stella"/>
+                                    <input type="radio" id="star3" name="valutazione" value="3" aria-label="3 stelle"/>
                                     <label for="star3">&#9733;</label>
-                                    <input type="radio" id="star2" name="valutazione" value="2" aria-label="2 stella"/>
+                                    <input type="radio" id="star2" name="valutazione" value="2" aria-label="2 stelle"/>
                                     <label for="star2">&#9733;</label>
                                     <input type="radio" id="star1" name="valutazione" value="1" aria-label="1 stella"/>
                                     <label for="star1">&#9733;</label>
