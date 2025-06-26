@@ -1367,13 +1367,17 @@ RECENSIONI
 }
 
 .map-container{
+  width:100%;
+  max-width: 700px;
+  margin: 1.5rem auto;
+
   position:relative;
-  padding-bottom:56.25%;   /* 16 : 9 */
+  padding-bottom:56.25%;
   height:0;
   overflow:hidden;
+
   border-radius:.75rem;
   box-shadow:0 2px 6px rgba(0,0,0,.08);
-  margin-top:1.5rem;
 }
 
 .map-container iframe{
@@ -1381,4 +1385,14 @@ RECENSIONI
   top:0; left:0;
   width:100%; height:100%;
   border:0;
+}
+
+/* Immagine homepage*/
+.immagine {
+  text-align: center;
+}
+
+.immagine img {
+  max-width: 70%;
+  height: auto;
 }
