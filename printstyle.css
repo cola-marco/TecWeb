@@ -1,0 +1,122 @@
+
+
+:root {
+  --headerbgcolor: rgb(200, 240, 255);
+  --headercolor: darkblue;
+  --bgcolor: white;
+  --txtcolor: black;
+  --contentbgcolor: var(--headerbgcolor);
+  --linkcolor: rgb(180, 0, 0);
+  --lighterlinkcolor: rgb(255, 140, 140);
+  --bordercolor: var(--headercolor);
+  --footerbgcolor: var(--headerbgcolor);
+  --footercolor: var(--headercolor);
+  --tablebgcolor: var(--contentbgcolor);
+  --footerlink: var(--linkcolor);
+  --Visitedlink: black;
+  --visitedbgcolor: rgb(0, 217, 255);
+  --menubgcolor: rgb(185, 185, 185);
+  --errorcolor: var(--linkcolor);
+}
+
+#hamb-button{
+    display: none;
+}
+
+#vertical-menu{
+    display: none;
+}
+
+img{display: none;}
+
+
+.search-nav{
+    display: none;
+}
+
+#logout-btn{
+    display: none;
+}
+
+.delete-button, .delete-review-button{
+    display: none;
+}
+
+.recensione, #wish{
+    display: none;
+}
+
+.card-recensione{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    border-radius: 1em;
+}
+
+.review-data{
+    border-right: 1px solid black;
+    padding: 0 0.5em ;
+}
+
+.mex{
+    padding: 0 0.5em ;
+}
+
+#login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+#login-form button {
+  border: black solid 1px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.6em;
+  width: auto;
+  color: black;
+  border-radius: 0.5em;
+}
+
+.compilaform input,
+.compilaform textarea{
+  width: auto;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: black solid 1px;
+  border-radius: 0.5em;
+}
+
+#login-form label{
+    margin-top: 1em;
+}
+
+.register-prompt {
+  width: 100%;                       
+  border: black solid 2px;   
+  background-color: var(--bgcolor);    
+  border-radius: 1em;                   
+  text-align: center;          
+}
+
+
+.error-msg{
+    display: none;
+}
+
+/*FOOTER*/
+
+#orari, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#tabella{
+    display: none;   
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+

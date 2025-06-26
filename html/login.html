@@ -8,13 +8,13 @@
     <div class="login-section">
         <h1>Accedi alla Biblioteca</h1>
         <form id="login-form" class="compilaform" action="checkLogin.php" method="post">
-            <label for="username" class="camporichiesto">Nome utente</label>
+            <label for="username" >Nome utente</label>
             <input type="text" id="username" name="username"
                     placeholder="Inserisci il tuo username"
                     required minlength="3" >
             ###userError###
             
-            <label for="password" class="camporichiesto">Password</label>
+            <label for="password">Password</label>
             <input type="password" id="password" name="password"
                     placeholder="Inserisci la tua password"
                     required minlength="6"
@@ -23,7 +23,7 @@
             
             <button type="submit">Accedi</button>
 
-            <p class="required-info">I campi contrassegnati con <span aria-hidden="true">*</span> sono obbligatori.</p>
+            <p class="required-info">Tutti i campi sono obbligatori.</p>
         </form> 
     </div> 
 
