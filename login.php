@@ -19,6 +19,10 @@
         header("Location: admin.php");
         exit();
     }
+    else if(isset($_SESSION['is_logged_in']) && !isset($_SESSION["ID_Cliente"])){
+        header("Location: logout.php");
+        exit();
+    }
     else{
         $_SESSION['user_role'] = 'cliente';
 
@@ -72,7 +76,7 @@
             $personal_data = $personal_data . "<li lang='en'> Email: ". $personal_result["Email"] ."</li>";
         }
         else{
-            $personal_data = "Nessun cliente";
+            header("Location: 505.php");
         }
 
         if(isset($_POST["delete-button"]) && $_POST["delete-button"] > 0){
@@ -104,7 +108,7 @@
                     <div class="card-recensione">
                         <div class="review-data">
                             <p><strong>Titolo del libro</strong>: ###TITOLO###</p>
-                            <p><strong>Valutazione</strong>: ###VALUTAZIONE###/5</p>
+                            <p><strong>Valutazione</strong>: ###VALUTAZIONE###</p>
                             <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                         </div>
                         
@@ -118,7 +122,7 @@
                         </div>
                     </div>';
                     
-                $singola_recensione = str_replace('###VALUTAZIONE###', $instance["Valutazione"], $singola_recensione);
+                $singola_recensione = str_replace('###VALUTAZIONE###',  str_repeat("&#9733;", $instance["Valutazione"]), $singola_recensione);
                 $singola_recensione = str_replace('###RECENSIONE###', $instance["Recensione"], $singola_recensione);
                 $singola_recensione = str_replace('###ID_LIBRO###', $instance["Libro"], $singola_recensione);
                 $singola_recensione = str_replace('###DATA_ORA###', $instance["Data"], $singola_recensione);
