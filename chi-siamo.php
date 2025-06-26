@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    //session_start();
 
     $metaDescription = 'Chi siamo - Biblioteca Luzzatti di Padova';
     $metaKeywords    = 'biblioteca, padova, chi siamo, team, missione';
