@@ -853,13 +853,6 @@ table {
   border: var(--txtcolor) solid 3px;
 }
 
-
-.camporichiesto::after {
-  content: " *";
-  color: var(--errorcolor);
-  margin-left: 0.2em;
-}
-
 .error-msg{
   display: none;
   font-size: 1rem;
