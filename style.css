@@ -759,6 +759,10 @@ footer dt {
   font-weight: bold;
 }
 
+#social{
+  list-style-position: inside;
+}
+
 
 /*tabella*/
 
@@ -771,7 +775,7 @@ table tr:nth-child(even){
 }
 
 table tr:nth-child(odd) {
-  background-color: white; /* White for odd rows */
+  background-color: white;
 }
 
 table th, table td {
