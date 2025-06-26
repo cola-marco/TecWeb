@@ -177,7 +177,7 @@ function check_session_timeout(){
     }
 }
 
-function get_reviews($pdo, $user, $id_libro){
+function get_reviews($pdo, $role, $id_libro){
     $query = $pdo->prepare("SELECT R.Valutazione, R.Recensione, C.Username, R.Libro, R.Data
                             FROM Recensioni R
                             JOIN Clienti C ON R.Cliente = C.ID_Cliente
@@ -186,26 +186,48 @@ function get_reviews($pdo, $user, $id_libro){
     $query->bindParam(':id_libro', $id_libro, PDO::PARAM_STR);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
     $lista_recensioni = '';
 
     if(count($result) > 0){
         foreach($result as $instance){
-            $singola_recensione = '
-            <div class="card-recensione">
-                <div class="review-data">
-                    <p><strong><span lang="en">Username</span></strong>: ###USERNAME###<p>
-                    <p><strong>Valutazione</strong>: <span aria-label="###N-STELLE### stelle">###VALUTAZIONE###</span></p>
-                    <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
-                </div>
-                
-                <div class="mex">
-                    <p>###RECENSIONE###</p>
-                </div>
-            </div>';
+            
+            if($role == "Admin"){
+                $singola_recensione = '
+                    <div class="card-recensione">
+                        <div class="review-data">
+                            <p><strong><span lang="en">Username</span></strong>: ###USERNAME###<p>
+                            <p><strong>Valutazione</strong>: <span aria-label="###N-STELLE### stelle">###VALUTAZIONE###</span></p>
+                            <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
+                        </div>
+                        
+                        <div class="mex">
+                            <p>###RECENSIONE###</p>
+
+                            <form action="#" method="post" class="delete-form">
+                                <button type="submit" name="delete-review-button" value="###ID_LIBRO###" id="delete-review-button-###ID_LIBRO###" class="delete-review-button" aria-label="Elimina la recensione a ###TITOLO###"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
+                            </form>
+                        </div>
+                    </div>';
+                }
+            else{
+                $singola_recensione = '
+                    <div class="card-recensione">
+                        <div class="review-data">
+                            <p><strong><span lang="en">Username</span></strong>: ###USERNAME###<p>
+                            <p><strong>Valutazione</strong>: <span aria-label="###N-STELLE### stelle">###VALUTAZIONE###</span></p>
+                            <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
+                        </div>
+                        
+                        <div class="mex">
+                            <p>###RECENSIONE###</p>
+                        </div>
+                    </div>';   
+            }
+
             if($instance["Libro"] == $id_libro){
                 $singola_recensione = str_replace('###USERNAME###', $instance["Username"], $singola_recensione);
                 $singola_recensione = str_replace('###N-STELLE###', $instance["Valutazione"], $singola_recensione);
+                $singola_recensione = str_replace('###ID_LIBRO###', $instance["Libro"], $singola_recensione);
                 $singola_recensione = str_replace('###VALUTAZIONE###',  str_repeat("&#9733;", $instance["Valutazione"]), $singola_recensione);
                 $singola_recensione = str_replace('###RECENSIONE###', $instance["Recensione"], $singola_recensione);
                 $singola_recensione = str_replace('###DATA_ORA###', $instance["Data"], $singola_recensione);
