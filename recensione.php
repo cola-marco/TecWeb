@@ -10,7 +10,8 @@ check_session_timeout();
 if(isset($_POST["submit-review"]) && $_POST["submit-review"] > 0){
     $user = $_SESSION["ID_Cliente"];
     $id_libro = $_POST["submit-review"];
-    $valutazione = $_POST["valutazione"];
+    if(isset($_POST["valutazione"])) $valutazione = $_POST["valutazione"];
+    else $valutazione = 0;
     $recensione = $_POST["mex"];
 
     $query = $pdo->prepare("INSERT INTO Recensioni(Cliente, Libro, Valutazione, Recensione, Data) VALUES (:user, :id_libro, :valutazione, :recensione, NOW())");

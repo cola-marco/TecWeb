@@ -32,7 +32,7 @@
             <td>{{Autore}}</td>
             <td>{{Anno}}</td>
             <td><a href="admin-form.php?id={{ID_Libro}}">Modifica</a></td>
-            <td><a href="deleteBook.php?id={{ID_Libro}}" onclick="return confirm("Confermi eliminazione?")">Elimina</a></td>
+            <td><a href="deleteBook.php?id={{ID_Libro}}" onclick="return confirm(\'Confermi eliminazione?\')">Elimina</a></td>
         </tr>
         ';   
         $error = '';

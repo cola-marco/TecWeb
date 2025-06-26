@@ -195,7 +195,7 @@ function get_reviews($pdo, $user, $id_libro){
             <div class="card-recensione">
                 <div class="review-data">
                     <p><strong><span lang="en">Username</span></strong>: ###USERNAME###<p>
-                    <p><strong>Valutazione</strong>: ###VALUTAZIONE###/5</p>
+                    <p><strong>Valutazione</strong>: <span aria-label="###N-STELLE### stelle">###VALUTAZIONE###</span></p>
                     <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                 </div>
                 
@@ -205,7 +205,8 @@ function get_reviews($pdo, $user, $id_libro){
             </div>';
             if($instance["Libro"] == $id_libro){
                 $singola_recensione = str_replace('###USERNAME###', $instance["Username"], $singola_recensione);
-                $singola_recensione = str_replace('###VALUTAZIONE###', $instance["Valutazione"], $singola_recensione);
+                $singola_recensione = str_replace('###N-STELLE###', $instance["Valutazione"], $singola_recensione);
+                $singola_recensione = str_replace('###VALUTAZIONE###',  str_repeat("&#9733;", $instance["Valutazione"]), $singola_recensione);
                 $singola_recensione = str_replace('###RECENSIONE###', $instance["Recensione"], $singola_recensione);
                 $singola_recensione = str_replace('###DATA_ORA###', $instance["Data"], $singola_recensione);
                 
