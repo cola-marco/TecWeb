@@ -1,14 +1,19 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
+\usepackage{caption}
+\usepackage{float}
+\usepackage[T1]{fontenc} % Enable guillemets and better font encoding
+\usepackage[table]{xcolor} % Enable \rowcolor for tables
 
-\title{Relazione di Progetto Tecnologie Web}
+
+\title{\textbf{Relazione Progetto di Tecnologie Web}}
 \date{}
 
 
 \newcommand{\componenti}{
     & Enrico Bianchi \\
     & Davide Martinelli \\
-    & Alex Shu \\
+    & Marco Cola \\
     & Riccardo Valerio \\
 }
 \renewcommand{\contentsname}{Indice}
@@ -17,25 +22,42 @@
 \begin{document}
 \maketitle
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{logo_unipd.png}
+    \label{fig:logo_unipd}
+\end{figure}
+
+\vspace{0.5cm}
+
 \begin{center}
 \begin{tabular}{r|l}
     \textbf{Componenti} \componenti 
 \end{tabular}
 
 \vspace{1cm}
+\rule{\linewidth}{0.2mm}
+
+\vspace{0.3cm}
+
 \textbf{Informazioni sul sito} \\
 \textbf{Indirizzo sito web:} tecweb.studenti.math.unipd.it/damartin \\
 \textbf{Email referente del gruppo: }davide.martinelli.1@studenti.unipd.it
 
-\vspace{1cm}
+\vspace{0.3cm}
+\rule{\linewidth}{0.2mm}
+
+\vspace{0.5cm}
 \textbf{Accessi predisposti al sito}
 \begin{table}[h]
     \centering
     \begin{tabular}{|p{5cm}|p{5cm}|}
         \hline
+        \rowcolor{gray!30}
         Nome utente & Password \\
         \hline
         admin & admin   \\
+        \hline
         user & user   \\
         \hline
     \end{tabular}
@@ -44,81 +66,199 @@
 \end{center}
 
 \newpage
+
 \tableofcontents        %indice
+
 \newpage
 
 \section{Introduzione}
+La \textbf{Biblioteca Luzzatti} è una biblioteca universitaria situata in Via Luzzatti 8 a Padova, a pochi passi dall'aula \textbf{LUM250}.  
+Il sito web dedicato nasce con l'obiettivo di:
+
+\begin{itemize}
+    \item offrire un portale intuitivo e accessibile per la consultazione del catalogo dei volumi disponibili;
+    \item semplificare la gestione del patrimonio librario (inserimento, aggiornamento e rimozione dei titoli) tramite un'area riservata allo staff bibliotecario;
+    \item garantire un'esperienza di navigazione uniforme su dispositivi desktop e mobile.
+\end{itemize}
+
+Il presente documento illustra le scelte progettuali, tecnologiche e organizzative adottate nello sviluppo del sito.
 
 
 \newpage
 
 \section{Analisi dei requisiti}
+Il team ha raccolto i requisiti attraverso colloqui con i bibliotecari, questionari anonimi somministrati nel campus, e l'analisi comparativa di portali accademici già esistenti.  
+Particolare attenzione è stata posta all'accessibilità, ai tempi di risposta del catalogo e alla facilità di manutenzione.
 
 
 \subsection{Tipi di utenti}
+\begin{itemize}
+    \item \textbf{Visitatore (utente anonimo)} - Può navigare liberamente il catalogo, visualizzare la scheda dettagliata dei volumi, consultare gli orari di apertura e le news sulla vita della biblioteca.  
+    \item \textbf{Utente registrato} - Dopo autenticazione dispone, oltre alle funzioni del visitatore, di:
+          \begin{itemize}
+              \item creazione di una \emph{wishlist} personale;
+              \item inserimento di recensioni e valutazioni dei libri;
+              \item accesso alla cronologia dei volumi nella wishlist e delle recensioni scritte.
+          \end{itemize}
+    \item \textbf{Amministratore / Bibliotecario} - Accede a una dashboard riservata per:
+          \begin{itemize}
+              \item operazioni di \emph{CRUD} (Create-Read-Update-Delete) sui libri presenti nel catalogo;
+              \item moderazione delle recensioni;
+          \end{itemize}
+\end{itemize}
 
 
 \subsection{Funzionalità}
+\begin{itemize}
+    \item \textbf{Ricerca avanzata} full-text per titolo e autore;
+    \item \textbf{Scheda libro arricchita} (Titolo, dati editoriali, recensioni, trama);
+    \item \textbf{Wishlist e recensioni} gestibili dall'utente;
+    \item \textbf{Area riservata} con profilo utente e cronologia prestiti;
+    \item \textbf{Dashboard amministrativa} per la gestione del catalogo e della moderazione;
+    \item \textbf{Layout di stampa};
+    \item \textbf{Accessibilità e responsive design} AA WCAG 2.2, con navigazione coerente su desktop e mobile.
+\end{itemize}
 
-
-\newpage
 
 \section{Progettazione}
+Lo schema organizzativo adottato è a \emph{task}, con una chiara suddivisione in quattro macro-sezioni intuitive:
+
+\begin{itemize}
+    \item \textbf{Home} - È la prima pagina visualizzata all'accesso al sito.  
+          Presenta una panoramica della Biblioteca Luzzatti: missione, orari di apertura e una sintesi dei principali servizi offerti.
+    
+    \item \textbf{Chi siamo} - Sezione dedicata ai membri del team bibliotecario e al gruppo di progetto: foto, ruoli, breve biografia e competenze e la mappa per raggiungerci. Contiene inoltre un paragrafo sulla storia della biblioteca.
+          
+    \item \textbf{Catalogo} - Cuore funzionale del sito: elenco completo e ricercabile dei libri presenti, con filtri per titolo e autore. Ogni volume al suo interno rimanda a una \emph{pagina dettaglio} che include la trama del libro, dati editoriali, recensioni e pulsante «Aggiungi a wishlist».
+    
+    \item \textbf{Area riservata} - Punto d'ingresso per l'autenticazione:  
+          \begin{itemize}
+              \item \emph{Utente registrato}: accede al proprio profilo, gestisce wishlist, scrive o modifica recensioni;  
+              \item \emph{Admin/Bibliotecario}: entra in una dashboard di back-office per operazioni di CRUD sul catalogo dei volumi.
+          \end{itemize}
+\end{itemize}
 
 
 \newpage
 
 \section{Organizzazione e Suddivisione del lavoro}
-
-
 Il lavoro è stato suddiviso come segue:
 \begin{itemize}
-    \item \textbf{Davide Martinelli}: 
+    \item \textbf{Davide Martinelli} (Project lead, Accessibility):
             \begin{itemize}
-                \item
+                \item testing di accessibilità;
+                \item validazione HTML/CSS, contrast-checker;
+                \item supporto layout di stampa;
+                \item scrittura della relazione progettuale.
             \end{itemize}
-    \item \textbf{Riccardo Valerio}: 
+    \item \textbf{Marco Cola} (Front-end):
             \begin{itemize}
-                \item 
+                \item realizzazione template HTML5 semantici;
+                \item miglioramento stile e struttura CSS;
+                \item scrittura della relazione progettuale.
             \end{itemize}
-    \item \textbf{Enrico Bianchi}: 
+    \item \textbf{Enrico Bianchi} (Back-end \& QA):
             \begin{itemize}
-                \item
+                \item progettazione schema database (PHP);
+                \item progettazione interfacciamento al database con php;
+                \item scrittura della relazione progettuale.
             \end{itemize}
-   \item \textbf{Marco Cola}: 
+   \item \textbf{Riccardo Valerio} (JavaScript \& UX):
             \begin{itemize}
-                \item 
+                \item script di validazione dati lato client;
+                \item implementazione iniziale della struttura e dello stile CSS;
+                \item scrittura della relazione progettuale.
             \end{itemize}
 \end{itemize}
+
+
 \newpage
 
 \section{Implementazione Front-End}
 
 \subsection{Struttura delle Pagine (HTML)}
+Ogni pagina segue la struttura \texttt{header - nav - main - footer}.  
+Sono impiegati tag semantici come \texttt{<section>} per migliorare l'accessibilità e la SEO.  
+I template sono generati dinamicamente tramite placeholder sostituiti da PHP.
 
 
 \subsection{Design e Styling (CSS)}
+Il foglio \texttt{style.css} definisce un layout responsivo con Flexbox e CSS Grid. 
+Il foglio \texttt{printstyle.css} definisce il layout per la stampa delle pagine. 
+
+
 
 
 \subsection{Dinamismo e Interazione (JavaScript)}
+Script \texttt{script.js} gestisce:
+
+\begin{itemize}
+    \item 
+    \item
+    \item 
+    \item 
+\end{itemize}
+
+Script \texttt{val\_admin\_form.js} gestisce:
+
+\begin{itemize}
+    \item 
+    \item
+    \item 
+    \item 
+\end{itemize}
+
+Script \texttt{val\_reg.js} gestisce:
+
+\begin{itemize}
+    \item 
+    \item
+    \item 
+    \item 
+\end{itemize}
+
 
 
 \subsection{Gestione della Stampa e dei Media (CSS per Stampa)}
-
+Il foglio \texttt{printstyle.css} rimuove elementi di navigazionee converte i colori.
 
 \newpage
 
+
 \section{Implementazioni back-end}
+
+
 
 \subsection{JavaScript}
 
 
 \subsection{PHP}
 
+Lato server è stato implementato:
+
+\begin{itemize}
+    \item
+    \item 
+    \item gestione errore 505.
+\end{itemize}
+
 
 \section{Accessibilità}
+Il sito mira al livello \textbf{AA} delle WCAG 2.2.
+
+\begin{itemize}
+    \item Tasti \emph{skip link} posizionati prima della navigazione.
+    \item tutti i testi superano AAA.
+    \item Tutte le immagini di contenuto includono attributo \texttt{alt};
+    \item Form con \texttt{label} associati, \texttt{aria} e messaggi descrittivi.
+    \item Navigazione completa via tastiera (tabindex naturale).
+\end{itemize}
 
 
 \subsection{Validazione}
+\begin{itemize}
+    \item W3C Markup Validator - N errori, N warning (falsi positivi).
+    \item W3C CSS Validator - N errori.
+\end{itemize}
 
 \end{document}
