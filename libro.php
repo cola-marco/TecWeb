@@ -21,7 +21,15 @@
 
         if(isLogged() == 1){
             $user = $_SESSION["ID_Cliente"];
-            if($_SESSION['ruolo'] == 'Admin') $star = $form_recensione = '';
+            
+            //ADMIN
+            if($_SESSION['ruolo'] == 'Admin'){
+                $role = $_SESSION['ruolo'];
+                $star = $form_recensione = '';
+                $lista_recensioni = get_reviews($pdo, $role, $id_libro);
+            }
+
+            //CLIENTE
             else{
                 if(isSaved($pdo, $id_libro, $user)){
                     $star = '<p class="alert-inside-wishlist">Questo libro è già all\'interno della tua <a href="login.php" lang="en">wishlist</a>.</p>';
@@ -83,7 +91,9 @@
 
                     $form_recensione = str_replace("###ID-LIBRO###", $id_libro, $form_recensione);
                 }
-                
+
+                $role = $_SESSION['ruolo'];
+                $lista_recensioni = get_reviews($pdo, $role, $id_libro);
             }
         }
         else if(isLogged() == 0 || isLogged() == -1){
@@ -91,7 +101,14 @@
             $form_recensione = '';
         }
 
-        $lista_recensioni = get_reviews($pdo, $user, $id_libro);
+        if(isset($_POST["delete-review-button"]) && $_POST["delete-review-button"] > 0){
+            $delete = deleteFromRecensioni($pdo, $_POST["ID_Cliente"], $_POST["delete-review-button"]);
+            if($delete) {
+                header("Location: libro.php?id_libro=".$id_libro);
+                exit();
+            }
+            else header("Location: 505.php");
+            }
 
         $DOM = str_replace('###RECENSIONI###', $lista_recensioni, $DOM);
         $DOM = str_replace('###STAR###', $star, $DOM);
