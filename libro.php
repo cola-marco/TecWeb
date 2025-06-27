@@ -91,6 +91,9 @@
 
                     $form_recensione = str_replace("###ID-LIBRO###", $id_libro, $form_recensione);
                 }
+
+                $role = $_SESSION['ruolo'];
+                $lista_recensioni = get_reviews($pdo, $role, $id_libro);
             }
         }
         else if(isLogged() == 0 || isLogged() == -1){
@@ -99,13 +102,13 @@
         }
 
         if(isset($_POST["delete-review-button"]) && $_POST["delete-review-button"] > 0){
-                $delete = deleteFromRecensioni($pdo, $cliente, $_POST["delete-review-button"]);
-                if($delete) {
-                    header("Location: libro.php?id_libro=".$id_libro);
-                    exit();
-                }
-                else header("Location: 505.php");
-                }
+            $delete = deleteFromRecensioni($pdo, $_POST["ID_Cliente"], $_POST["delete-review-button"]);
+            if($delete) {
+                header("Location: libro.php?id_libro=".$id_libro);
+                exit();
+            }
+            else header("Location: 505.php");
+            }
 
         $DOM = str_replace('###RECENSIONI###', $lista_recensioni, $DOM);
         $DOM = str_replace('###STAR###', $star, $DOM);
