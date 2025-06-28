@@ -883,6 +883,12 @@ table {
   /*transform: translateY(-2em);*/
 }
 
+#err-valutazione-client{
+  margin: 0;
+  padding: 0.2em;
+  background-color: #F0F0F0;
+}
+
 .required-info {
   font-size: 0.8rem;
   color: var(--txtcolor);

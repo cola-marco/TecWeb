@@ -75,12 +75,12 @@
                     $form_recensione ='
                     <div class="recensione">
                         <h4>Recensione</h4>
-                        <form action="recensione.php?id_libro=###ID-LIBRO###" class="form-recensione" method="post">
-                            <fieldset class="valutazione">
+                        <form id="add-recensione-section" action="recensione.php?id_libro=###ID-LIBRO###" class="form-recensione" method="post">
+                            <fieldset class="valutazione" aria-describedby="err-valutazione-client">
                                 <legend>Inserisci la valutazione del libro</legend>
                                 <p>Valutazione: </p>
                                 <div class="star-rating">
-                                    <input type="radio" id="star5" name="valutazione" value="5" aria-label="5 stelle" required/>
+                                    <input type="radio" id="star5" name="valutazione" value="5" aria-label="5 stelle"/>
                                     <label for="star5">&#9733;</label>
                                     <input type="radio" id="star4" name="valutazione" value="4" aria-label="4 stelle"/>
                                     <label for="star4">&#9733;</label>
@@ -92,6 +92,7 @@
                                     <label for="star1">&#9733;</label>
                                 </div>
                             </fieldset>
+                            <p id="err-valutazione-client" class="error-msg valutazione-error" aria-live="polite"></p>
                             <label for="textarea">Scrivi qui la tua recensione</label>
                             <textarea name="mex" id="textarea" placeholder="Scrivi qui la tua recensione."></textarea>
                             <button type="submit" name="submit-review" value="###ID-LIBRO###">Invia</button>
