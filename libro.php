@@ -8,7 +8,7 @@
     //session_start();
     check_session_timeout();
     if(!$pdo){
-        header('Location: 505.php');
+        header("Location: 505.php");
         exit();
     }
 

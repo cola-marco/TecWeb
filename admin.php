@@ -20,7 +20,7 @@
         exit();
     }
     else if (!isset($_SESSION['ID_Cliente']) || $_SESSION['ruolo'] !== 'Admin') {
-        header('Location: index.php');
+        header("Location: index.php");
         exit();
     }
     else { //collegamento al db andato a buon fine e fatto login come admin
