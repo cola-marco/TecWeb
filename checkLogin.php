@@ -20,6 +20,8 @@
                     $_SESSION['ID_Cliente'] = $user['ID_Cliente'];
                     $_SESSION['is_logged_in'] = true; //per capire se è loggato o no
                     $_SESSION['ruolo'] = $user['Ruolo'];
+                    $_SESSION['user_role'] = $user['Ruolo'];
+                    
                     if($user['Ruolo'] == 'Cliente') {
                         header("Location: login.php"); //viene mandato alla pagina di login 
                         exit();

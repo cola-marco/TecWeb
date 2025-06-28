@@ -19,14 +19,14 @@
     // Aggiungi "Registrati" SOLO se l'utente NON è loggato + Area Personale dinamica e divisione per ruoli
     if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
         if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
-            $pages['admin.php'] = ['text' => 'Area Personale', 'class' => ''];
+            $pages['admin.php'] = ['text' => 'Area Admin', 'class' => ''];
             $currentAreaPage = 'admin.php';
         } else {
             $pages['login.php'] = ['text' => 'Area Personale', 'class' => ''];
             $currentAreaPage = 'login.php';
         }
     } else {
-        $pages['login.php'] = ['text' => 'Area Personale', 'class' => ''];
+        $pages['login.php'] = ['text' => 'Accedi', 'class' => ''];
         $currentAreaPage = 'login.php';
     }
 
