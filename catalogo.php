@@ -12,13 +12,15 @@
     $DOM = file_get_contents('html/catalogo.html');
     
     if(!$pdo){
-        $error = "
+        /*$error = "
             <h2>OOOPS</h2>
             <p>Se vedi questo messaggio c'è un errore server</p>
         ";
         $lista_libri = '';
         $DOM = str_replace('###LISTA###', $lista_libri, $DOM);
-        $DOM = str_replace('###ERRORE_DB###', $error, $DOM);
+        $DOM = str_replace('###ERRORE_DB###', $error, $DOM);*/
+
+        header("Location: 505.php");
     }
     else{
         $query = $pdo->prepare("SELECT * FROM Libri");

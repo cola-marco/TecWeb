@@ -5,7 +5,7 @@
     </div>
 
     <p id="tabella-libri" class="nascosto">La tabella contiene il catalogo dei libri presenti nella biblioteca</p>
-    <table id="orari" aria-describedby="tabella-libri">
+    <table class="orari" aria-describedby="tabella-libri">
         <caption>Catalogo</caption>
         <thead>
             <tr class="table-head">      
@@ -20,6 +20,14 @@
         <tbody>
 
              
+        <tr>
+            <td>Il nome della rosa</td>
+            <td>Umberto Eco</td>
+            <td>1980</td>
+            <td><a href="admin-form.php?id=1">Modifica</a></td>
+            <td><a href="deleteBook.php?id=1" onclick="return confirm('Confermi eliminazione?')">Elimina</a></td>
+        </tr>
+         
         <tr>
             <td>1984</td>
             <td>George Orwell</td>

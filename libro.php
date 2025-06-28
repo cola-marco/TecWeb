@@ -11,6 +11,8 @@
     $DOM = file_get_contents('html/libro.html');
     $id_libro = $_GET["id_libro"];
     $user = $_SESSION["ID_Cliente"] ?? '';
+    if(isset($_SESSION['ruolo'])) $role = $_SESSION['ruolo'];
+    else $role = "";
 
     
     if (!isset($_GET["id_libro"])) {
@@ -24,9 +26,9 @@
             
             //ADMIN
             if($_SESSION['ruolo'] == 'Admin'){
-                $role = $_SESSION['ruolo'];
+                //$role = $_SESSION['ruolo'];
                 $star = $form_recensione = '';
-                $lista_recensioni = get_reviews($pdo, $role, $id_libro);
+                //$lista_recensioni = get_reviews($pdo, $role, $id_libro);
             }
 
             //CLIENTE
@@ -92,14 +94,16 @@
                     $form_recensione = str_replace("###ID-LIBRO###", $id_libro, $form_recensione);
                 }
 
-                $role = $_SESSION['ruolo'];
-                $lista_recensioni = get_reviews($pdo, $role, $id_libro);
+                //$role = $_SESSION['ruolo'];
             }
+
         }
         else if(isLogged() == 0 || isLogged() == -1){
             $star = '<p class="login-request">Per salvare un libro nella tua <span lang="en">wishlist</span> e aggiungere una recensione ti preghiamo di <a href="login.php">accedere</a>.</p>';
             $form_recensione = '';
         }
+
+        $lista_recensioni = get_reviews($pdo, $role, $id_libro);
 
         if(isset($_POST["delete-review-button"]) && $_POST["delete-review-button"] > 0){
             $delete = deleteFromRecensioni($pdo, $_POST["ID_Cliente"], $_POST["delete-review-button"]);

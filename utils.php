@@ -211,7 +211,7 @@ function get_reviews($pdo, $role, $id_libro){
                         </div>
                     </div>';
                 }
-            else{
+            else if($role == "Cliente" || $role == ""){
                 $singola_recensione = '
                     <div class="card-recensione">
                         <div class="review-data">
