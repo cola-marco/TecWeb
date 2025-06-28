@@ -5,8 +5,12 @@
     include "templates/header.php";
     require 'utils.php';
     //session_start();
-
+    
     $DOM = file_get_contents("html/admin-form.html");
+    if (!isset($_SESSION['ID_Cliente']) || $_SESSION['ruolo'] !== 'Admin') { //admin non loggato
+        header('Location: index.php');
+        exit();
+    }
 
     $formValido = true;
     //inizializzazione variabili form
@@ -189,8 +193,10 @@
                             exit();
                         }
                         else { 
-                            $_SESSION['error_message'] = "Abbiamo avuto un problema con la modifica del libro";
+                            /*$_SESSION['error_message'] = "Abbiamo avuto un problema con la modifica del libro";
                             header("Location: admin-form.php");
+                            exit();*/
+                            header("location: 505.php"); 
                             exit();
                         }
                     }
@@ -222,8 +228,10 @@
                             exit();
                         }
                         else { 
-                            $_SESSION['error_message'] = "Abbiamo avuto un problema con la modifica del libro";
+                            /*$_SESSION['error_message'] = "Abbiamo avuto un problema con la modifica del libro";
                             header("Location: admin-form.php");
+                            exit();*/
+                            header("location: 505.php"); 
                             exit();
                         }
                     }
@@ -246,14 +254,17 @@
                         exit();
                     }
                     else { 
-                        $_SESSION['error_message'] = "Abbiamo avuto un problema con l'aggiunta del libro";
+                        /*$_SESSION['error_message'] = "Abbiamo avuto un problema con l'aggiunta del libro";
                         header("Location: admin-form.php");
+                        exit();*/
+                        header("location: 505.php"); 
                         exit();
                     }
                 }
             }
             else {
                 //connessione al db fallita
+                header("location: 505.php"); 
                 exit();
             }
         }

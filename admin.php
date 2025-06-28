@@ -9,13 +9,15 @@
     $DOM = file_get_contents('html/admin.html');
 
     if(!$pdo){
-        $error = "
+        /*$error = "
             <h2>OOOPS</h2>
             <p>Se vedi questo messaggio c'è un errore server</p>
         ";
         $tabella_libri = '';
         $DOM = str_replace('###BODY_TABELLA###', $tabella_libri, $DOM);
-        $DOM = str_replace('###ERRORE_DB###', $error, $DOM);
+        $DOM = str_replace('###ERRORE_DB###', $error, $DOM);*/
+        header("location: 505.php"); 
+        exit();
     }
     else if (!isset($_SESSION['ID_Cliente']) || $_SESSION['ruolo'] !== 'Admin') {
         header('Location: index.php');
@@ -23,7 +25,10 @@
     }
     else { //collegamento al db andato a buon fine e fatto login come admin
         $stmt = $pdo->prepare("SELECT * FROM Libri");
-        $stmt->execute();
+        if(!$stmt->execute()){
+            header("location: 505.php"); 
+            exit();
+        }
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $tr = '
@@ -35,10 +40,8 @@
             <td><a href="deleteBook.php?id={{ID_Libro}}" onclick="return confirm(\'Confermi eliminazione?\')">Elimina</a></td>
         </tr>
         ';   
-        $error = '';
         $tabella_libri = tab_book_display($result, $tr);    
         $DOM = str_replace('###BODY_TABELLA###', $tabella_libri, $DOM);
-        $DOM = str_replace('###ERRORE_DB###', $error, $DOM);
     }
 
     echo $DOM;

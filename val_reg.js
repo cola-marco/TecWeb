@@ -22,7 +22,7 @@ pass_error = false;
 confpass_error = false;
 
 if(reg_form){
-    reg_form.addEventListener('change', function (e) {
+    reg_form.addEventListener('change', function() {
         
         clearError();
         user_error = false;
@@ -62,7 +62,12 @@ if(reg_form){
         }
         
         //validazione email
-        let email = document.getElementById('email').value.trim();
+        let email = document.getElementById('email').value;
+        if(email.length > 0 && email.trim().length == 0){
+            showError("email1-error", "<span lang='en'>Email</span> non può contenere soli spazi");
+            user_error = true;
+        };
+        email = email.trim();
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if(email.length > 0){
             if(!emailPattern.test(email)){

@@ -7,6 +7,10 @@
     $pdo = connectDB();
     //session_start();
     check_session_timeout();
+    if(!$pdo){
+        header('Location: 505.php');
+        exit();
+    }
 
     $DOM = file_get_contents('html/libro.html');
     $id_libro = $_GET["id_libro"];
@@ -61,7 +65,10 @@
 
                 $query->bindParam(':id_libro', $id_libro, PDO::PARAM_STR);
                 $query->bindParam(':user', $user, PDO::PARAM_STR);
-                $query->execute();
+                if(!$query->execute()){
+                    header('Location: 505.php');
+                    exit();
+                }
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
                 if(count($result)>0) $form_recensione = ""; //$form_recensione = "<p>Hai già effettuato una recensione per questo libro.</p>";
                 else{
@@ -73,7 +80,7 @@
                                 <legend>Inserisci la valutazione del libro</legend>
                                 <p>Valutazione: </p>
                                 <div class="star-rating">
-                                    <input type="radio" id="star5" name="valutazione" value="5" aria-label="5 stelle"/>
+                                    <input type="radio" id="star5" name="valutazione" value="5" aria-label="5 stelle" required/>
                                     <label for="star5">&#9733;</label>
                                     <input type="radio" id="star4" name="valutazione" value="4" aria-label="4 stelle"/>
                                     <label for="star4">&#9733;</label>

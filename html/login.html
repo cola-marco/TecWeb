@@ -11,15 +11,17 @@
             <label for="username" >Nome utente</label>
             <input type="text" id="username" name="username"
                     placeholder="Inserisci il tuo username"
-                    required minlength="3" >
-            ###userError###
+                    required minlength="3" 
+                    aria-describedby="err-user-server">
+            <div id="err-user-server" class="error-msg display-error" aria-live="polite">###userError###</div>
             
             <label for="password">Password</label>
             <input type="password" id="password" name="password"
                     placeholder="Inserisci la tua password"
                     required minlength="6"
-                    autocomplete="current-password">
-            ###passError###
+                    autocomplete="current-password"
+                    aria-describedby="err-pass-server">
+            <div id="err-pass-server" class="error-msg display-error" aria-live="polite">###passError###</div>
             
             <button type="submit">Accedi</button>
 

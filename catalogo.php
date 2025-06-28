@@ -24,9 +24,12 @@
     }
     else{
         $query = $pdo->prepare("SELECT * FROM Libri");
-        $query->execute();
+        if(!$query->execute()){
+            header("location: 505.php"); 
+            exit();
+        }
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
+    
         $li = '
             <li class="card">
                 <div>
@@ -44,10 +47,8 @@
 
         $lista_libri = book_display($result, $li);        
 
-        $error = '';
         $lista_libri = book_display($result, $li);    
         $DOM = str_replace('###LISTA###', $lista_libri, $DOM);
-        $DOM = str_replace('###ERRORE_DB###', $error, $DOM);
     }
 
     echo $DOM;

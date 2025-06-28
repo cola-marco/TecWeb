@@ -25,7 +25,7 @@ trama_error = false;
 ncopie_error = false;
 
 if(admin_form){
-admin_form.addEventListener('change', function (e) {
+admin_form.addEventListener('change', function() {
     
     clearError();
     titolo_error = false;
