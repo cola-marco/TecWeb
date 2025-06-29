@@ -280,7 +280,6 @@ header input{
 main {
   display : flex;
   flex-direction: column;
-  /*align-items: center;*/
   margin: 2rem;
   background-color: var(--contentbgcolor);
   border-radius: 1em;
@@ -415,10 +414,6 @@ main h1, .mainSection h1 {
 
 .wishlist{
   flex: 2;
-  /*border: 1px solid black;
-  border-radius: 1em;
-  padding: 0.5em;*/
-  
   margin-right: 1em;
   width: 100%;
 }
@@ -510,7 +505,6 @@ CATALOGO
 .card{
   display: flex;
   flex-direction: row;
-  /*width: 100%;*/
   scroll-snap-align: start;
   margin: 0.5em;
 }
@@ -518,7 +512,6 @@ CATALOGO
 .description{
   display: flex;
   flex-direction: column;
-  /*justify-content: space-between;*/
   margin: 0 0 0 0.5em;
   flex: 1;
   height: auto;
@@ -883,6 +876,10 @@ table {
   /*transform: translateY(-2em);*/
 }
 
+.error-msg:empty {
+    display: none;
+}
+
 #err-valutazione-client{
   margin: 0;
   padding: 0.2em;
@@ -989,6 +986,7 @@ table {
     border: 1px solid var(--bordercolor);
     text-align: center;
   }
+
   .login-section {
     width: 70%;
     padding: 1rem;
@@ -1002,7 +1000,7 @@ table {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   header h1, main h1, .mainSection h1 {
     font-size: 1.8rem;
   }
@@ -1027,6 +1025,7 @@ table {
     padding: 1rem;
     margin: auto;
   }
+
   .register-prompt {
     width: 90%;
     padding: 0.5rem;
