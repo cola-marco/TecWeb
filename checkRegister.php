@@ -132,11 +132,12 @@
                 }
                 else { 
                     $_SESSION['error_message'] = "Abbiamo avuto un problema con la registrazione";
-                    header("Location: register.php"); //reindirizzo alla pagina di registrazione (problema con l'esecuzione della query)
+                    header("Location: 505.php"); //reindirizzo alla pagina di registrazione (problema con l'esecuzione della query)
                     exit();
                 }
             } else {
-                //problema con la connessione al DB, immagino si farà reindirizzamento ad una pagina di errore
+                //problema con la connessione al DB
+                header("Location: 505.php");
                 exit();
             }
         } else { //form non valido

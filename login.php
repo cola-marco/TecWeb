@@ -7,7 +7,10 @@
     $pdo = connectDB();
     //session_start();
     check_session_timeout();
-
+    if(!$pdo){
+        header("location: 505.php"); 
+        exit();
+    }
     if(!isset($_SESSION['is_logged_in']) || isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] == false){
         $DOM = file_get_contents('html/login.html');
         $DOM = str_replace('###passError###', '', $DOM);

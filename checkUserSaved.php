@@ -2,12 +2,12 @@
 require 'utils.php';
 session_start();
 header("Content-type: application/json");
+$pdo = connectDB();
 
 $risultato = false;
 
 if(isset($_POST['checkUser'])){
-    $UserRicevuto = $_POST['checkUser'];
-    $pdo = connectDB();
+    $UserRicevuto = pulisciInput($_POST['checkUser']);
     if($pdo){
         if(isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true){
             $idCliente = $_SESSION['ID_Cliente'];

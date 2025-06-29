@@ -7,6 +7,10 @@
     $pdo = connectDB();
     //session_start();
     check_session_timeout();
+    if(!$pdo){
+        header("Location: 505.php");
+        exit();
+    }
 
     $DOM = file_get_contents('html/libro.html');
     $id_libro = $_GET["id_libro"];
@@ -61,15 +65,18 @@
 
                 $query->bindParam(':id_libro', $id_libro, PDO::PARAM_STR);
                 $query->bindParam(':user', $user, PDO::PARAM_STR);
-                $query->execute();
+                if(!$query->execute()){
+                    header('Location: 505.php');
+                    exit();
+                }
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
                 if(count($result)>0) $form_recensione = ""; //$form_recensione = "<p>Hai già effettuato una recensione per questo libro.</p>";
                 else{
                     $form_recensione ='
                     <div class="recensione">
                         <h4>Recensione</h4>
-                        <form action="recensione.php?id_libro=###ID-LIBRO###" class="form-recensione" method="post">
-                            <fieldset class="valutazione">
+                        <form id="add-recensione-section" action="recensione.php?id_libro=###ID-LIBRO###" class="form-recensione" method="post">
+                            <fieldset class="valutazione" aria-describedby="err-valutazione-client">
                                 <legend>Inserisci la valutazione del libro</legend>
                                 <p>Valutazione: </p>
                                 <div class="star-rating">
@@ -85,6 +92,7 @@
                                     <label for="star1">&#9733;</label>
                                 </div>
                             </fieldset>
+                            <p id="err-valutazione-client" class="error-msg valutazione-error" aria-live="polite"></p>
                             <label for="textarea">Scrivi qui la tua recensione</label>
                             <textarea name="mex" id="textarea" placeholder="Scrivi qui la tua recensione."></textarea>
                             <button type="submit" name="submit-review" value="###ID-LIBRO###">Invia</button>

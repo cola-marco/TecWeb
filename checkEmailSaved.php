@@ -7,7 +7,7 @@ $pdo = connectDB();
 $risultato = false;
 
 if(isset($_POST['checkEmail'])){
-    $EmailRicevuta = $_POST['checkEmail'];
+    $EmailRicevuta = pulisciInput($_POST['checkEmail']);
     if($pdo){
         if(isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true){
             $idCliente = $_SESSION['ID_Cliente'];

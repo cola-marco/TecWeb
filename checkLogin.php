@@ -31,17 +31,18 @@
                         exit();
                     }
                 } else{ //password errata 
-                    $passError .= '<li><span lang="en">Password</span> errata</li>';
+                    $passError .= '<p><span lang="en">Password</span> errata</p>';
                 }
             } else { //user non trovato
-                $userError .= '<li><span lang="en">Username</span> non esistente</li>';
+                $userError .= '<p><span lang="en">Username</span> non esistente</p>';
             }
         }
         else {
             //errore di connessione al db
+            header("Location: 505.php");
+            exit();
+
         }
-        if($userError) $userError = '<ul class="error-msg display-error" aria-live="polite">' . $userError . '</ul>';
-        if($passError) $passError = '<ul class="error-msg display-error" aria-live="polite">' . $passError . '</ul>';
         $DOM = str_replace('###passError###', $passError, $DOM);
         $DOM = str_replace('###userError###', $userError, $DOM);
         echo $DOM;

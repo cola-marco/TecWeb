@@ -26,10 +26,9 @@
             required
             minlength="1"
             maxlength="30"
-            aria-describedby="err-titolo"
-            data-required-msg="Inserisci il titolo del libro">
-            <div class="error-msg display-error" aria-live="polite">###titoloError###</div>
-            <p class="error-msg titolo-error" aria-live="polite"></p>
+            aria-describedby="err-titolo-server err-titolo-client">
+            <div id="err-titolo-server" class="error-msg display-error" aria-live="polite">###titoloError###</div>
+            <p id="err-titolo-client" class="error-msg titolo-error" aria-live="polite"></p>
 
             <label for="autore">Autore <span aria-hidden="true">*</span></label>
             <input
@@ -40,21 +39,19 @@
             required
             minlength="1"
             maxlength="30"
-            aria-describedby="err-autore"
-            data-required-msg="Inserisci l’autore del libro">
-            <div class="error-msg display-error" aria-live="polite">###autoreError###</div>
-            <p class="error-msg autore1-error" aria-live="polite"></p>
-            <p class="error-msg autore2-error" aria-live="polite"></p>
+            aria-describedby="err-autore-server err-autore1-client err-autore2-client">
+            <div id="err-autore-server" class="error-msg display-error" aria-live="polite">###autoreError###</div>
+            <p id="err-autore1-client" class="error-msg autore1-error" aria-live="polite"></p>
+            <p id="err-autore2-client" class="error-msg autore2-error" aria-live="polite"></p>
 
+            <label for="image_path">Immagine copertina</label>
             <input
             type="file"
             id="image_path"
             name="image_path"
             accept=".jpg,.jpeg,.png,.webp"
-            aria-describedby="err-image"
-            data-required-msg="Carica l’immagine di copertina"
-            aria-label="Carica l’immagine di copertina">
-            <div class="error-msg display-error" aria-live="polite">###imageError###</div>
+            aria-describedby="err-image">
+            <div id="err-image" class="error-msg display-error" aria-live="polite">###imageError###</div>
 
             <label for="casa_editrice">Casa Editrice <span aria-hidden="true">*</span></label>
             <input
@@ -65,10 +62,9 @@
             required
             minlength="1"
             maxlength="30"
-            aria-describedby="err-casa"
-            data-required-msg="Inserisci la casa editrice">
-            <div class="error-msg display-error" aria-live="polite">###casaedError###</div>
-            <p class="error-msg casa-error" aria-live="polite"></p>
+            aria-describedby="err-casa-server err-casa-client">
+            <div id="err-casa-server" class="error-msg display-error" aria-live="polite">###casaedError###</div>
+            <p id="err-casa-client" class="error-msg casa-error" aria-live="polite"></p>
 
             <label for="genere">Genere <span aria-hidden="true">*</span></label>
             <input
@@ -79,11 +75,10 @@
             required
             minlength="1"
             maxlength="30"
-            aria-describedby="err-genere"
-            data-required-msg="Inserisci il genere del libro">
-            <div class="error-msg display-error" aria-live="polite">###genereError###</div>
-            <p class="error-msg genere1-error" aria-live="polite"></p>
-            <p class="error-msg genere2-error" aria-live="polite"></p>
+            aria-describedby="err-genere-server err-genere1-client err-genere2-client">
+            <div id="err-genere-server" class="error-msg display-error" aria-live="polite">###genereError###</div>
+            <p id="err-genere1-client" class="error-msg genere1-error" aria-live="polite"></p>
+            <p id="err-genere2-client" class="error-msg genere2-error" aria-live="polite"></p>
 
             <label for="pubblicazione">Anno di pubblicazione <span aria-hidden="true">*</span></label>
             <input
@@ -95,11 +90,10 @@
             min="1000"
             max="2025"
             step="1"
-            aria-describedby="err-pubblicazione"
-            data-required-msg="Inserisci l’anno di pubblicazione">
-            <div class="error-msg display-error" aria-live="polite">###annopubbError###</div>
-            <p class="error-msg anno1-error" aria-live="polite"></p>
-            <p class="error-msg anno2-error" aria-live="polite"></p>
+            aria-describedby="err-anno-server err-anno1-client err-anno2-client">
+            <div id="err-anno-server" class="error-msg display-error" aria-live="polite">###annopubbError###</div>
+            <p id="err-anno1-client" class="error-msg anno1-error" aria-live="polite"></p>
+            <p id="err-anno2-client" class="error-msg anno2-error" aria-live="polite"></p>
 
             <label for="trama">Trama <span aria-hidden="true">*</span></label>
             <textarea
@@ -108,10 +102,9 @@
             required
             rows="4"
             maxlength="1000"
-            aria-describedby="err-trama"
-            data-required-msg="Inserisci la trama del libro">{{Trama}}</textarea>
-            <div class="error-msg display-error" aria-live="polite">###tramaError###</div>
-            <p class="error-msg trama-error" aria-live="polite"></p>
+            aria-describedby="err-trama-server err-trama-client">{{Trama}}</textarea>
+            <div id="err-trama-server" class="error-msg display-error" aria-live="polite">###tramaError###</div>
+            <p id="err-trama-client" class="error-msg trama-error" aria-live="polite"></p>
 
             <label for="numero_copie">Numero copie <span aria-hidden="true">*</span></label>
             <input
@@ -122,11 +115,10 @@
             required
             min="1"
             step="1"
-            aria-describedby="err-copie"
-            data-required-msg="Inserisci il numero di copie disponibili">
-            <div class="error-msg display-error" aria-live="polite">###ncopieError###</div>
-            <p class="error-msg ncopie1-error" aria-live="polite"></p>
-            <p class="error-msg ncopie2-error" aria-live="polite"></p>
+            aria-describedby="err-ncopie-server err-ncopie1-client err-ncopie2-client">
+            <div id="err-ncopie-server" class="error-msg display-error" aria-live="polite">###ncopieError###</div>
+            <p id="err-ncopie1-client" class="error-msg ncopie1-error" aria-live="polite"></p>
+            <p id="err-ncopie2-client" class="error-msg ncopie2-error" aria-live="polite"></p>
         </fieldset>
 
         <button type="submit">{{buttonAction}}</button>

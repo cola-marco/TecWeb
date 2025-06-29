@@ -9,6 +9,10 @@
     $DOM = file_get_contents('html/admin-form.html');
     $id_libro = $titolo = $autore = $casa_editrice = $genere = $anno = $trama = $n_copie = '';
     $titoloErr = $autoreErr = $imageErr = $casaErr = $genereErr = $annoErr = $tramaErr = $ncopieErr = '';
+    if (!isset($_SESSION['ID_Cliente']) || $_SESSION['ruolo'] !== 'Admin') { //admin non loggato
+        header("Location: index.php");
+        exit();
+    }
     if(isset($_GET['id'])){ //id settato quindi form per modifica
         $DOM = str_replace('{{Azione}}', 'Modifica', $DOM);
         $DOM = str_replace('{{buttonAction}}', 'Modifica', $DOM);
@@ -40,10 +44,14 @@
             }
             else {
                 //problema con l'esecuzione della query
+                header("location: 505.php"); 
+                exit();
             }
         }
         else {
             //problema con la connessione a db
+            header("location: 505.php"); 
+            exit();
         }
     }
     else { //form per l'aggiunta di un libro
