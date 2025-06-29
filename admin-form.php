@@ -31,7 +31,6 @@
                 $genere = $result["Genere"];
                 $anno = $result["Pubblicazione"];
                 $trama = $result["Trama"];
-                $n_copie = $result["Numero_copie"];
                 
                 $DOM = str_replace('{{Titolo}}', $titolo, $DOM);
                 $DOM = str_replace('{{Autore}}', $autore, $DOM);
@@ -39,7 +38,6 @@
                 $DOM = str_replace('{{Genere}}', $genere, $DOM);
                 $DOM = str_replace('{{Pubblicazione}}', $anno, $DOM);
                 $DOM = str_replace('{{Trama}}', $trama, $DOM);
-                $DOM = str_replace('{{Numero_copie}}', $n_copie, $DOM);
 
             }
             else {
@@ -65,7 +63,6 @@
         $DOM = str_replace('{{Genere}}', $genere, $DOM);
         $DOM = str_replace('{{Pubblicazione}}', $anno, $DOM);
         $DOM = str_replace('{{Trama}}', $trama, $DOM);
-        $DOM = str_replace('{{Numero_copie}}', $n_copie, $DOM);
     }
 
     $DOM = str_replace('###titoloError###', $titoloErr, $DOM);
@@ -75,7 +72,6 @@
     $DOM = str_replace('###genereError###', $genereErr, $DOM);
     $DOM = str_replace('###annopubbError###', $annoErr, $DOM);
     $DOM = str_replace('###tramaError###', $tramaErr, $DOM);
-    $DOM = str_replace('###ncopieError###', $ncopieErr, $DOM);
 
     echo $DOM;
     include "templates/footer.php";

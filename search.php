@@ -10,7 +10,7 @@
     if(isset($_POST['search'])){
         $search = '%' . $_POST['search'] . '%';
 
-        $query = $pdo->prepare("SELECT * FROM Libri WHERE LOWER(CONCAT(Titolo,' ',Autore)) LIKE LOWER(:search)");
+        $query = $pdo->prepare("SELECT * FROM Libri WHERE LOWER(CONCAT(Titolo,' ',Autore,' ',Genere)) LIKE LOWER(:search)");
         $query->bindParam(':search', $search, PDO::PARAM_STR);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -27,6 +27,7 @@
             <div class="description">
                 <a href="libro.php?id_libro=###ID_LIBRO###"><h3>###TITOLO###</h3></a>
                 <h4>###AUTORE###</h4>
+                <p><strong>Genere</strong>: ###GENERE###</p>
                 <p><strong>Trama</strong>:###TRAMA###</p>
             </div>
             </li>';

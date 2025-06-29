@@ -142,21 +142,6 @@
         }
         $trama = pulisciInput($trama);
 
-        $n_copie = $_POST['numero_copie'];
-        if(strlen($n_copie) == 0){
-            $ncopieErr .= '<p>Numero di copie non inserito</p>';
-            $formValido = false;
-        }
-        else if(strlen(trim($n_copie)) == 0){ //composto da soli spazi
-            $ncopieErr .= '<p>Numero di copie non può contenere soli spazi</p>';
-            $formValido = false;
-        }
-        else if(!filter_var($n_copie, FILTER_VALIDATE_INT)){ //non contiene solo numeri
-            $ncopieErr .= '<p>Numero di copie può contenere solo numeri naturali</p>';
-            $formValido = false;
-        }
-        $n_copie = pulisciInput($n_copie);
-
         //terminata validazione input
         if($formValido){
             $pdo = connectDB();

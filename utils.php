@@ -42,6 +42,7 @@ function book_display($result, $li_template){
         if(!empty($book["Image_path"])) $copertina = $book["Image_path"];
         else $copertina = "./Immagini/default_book_cover.png";
 
+        $li = str_replace('###GENERE###', $genere, $li);
         $li = str_replace('###IMG-PATH###', $copertina, $li);
         $li = str_replace('###ID_LIBRO###', $id_libro, $li);
         $li = str_replace('###TITOLO###', $titolo, $li);
@@ -198,7 +199,7 @@ function get_reviews($pdo, $role, $id_libro){
                         <div class="review-data">
                             <p><strong><span lang="en">Username</span></strong>: ###USERNAME###<p>
                             <p><strong>Valutazione</strong>: <span aria-label="###N-STELLE### stelle">###VALUTAZIONE###</span></p>
-                            <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
+                            <p><strong>Data e ora pubblicazione</strong>: <time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                         </div>
                         
                         <div class="mex">
@@ -217,7 +218,7 @@ function get_reviews($pdo, $role, $id_libro){
                         <div class="review-data">
                             <p><strong><span lang="en">Username</span></strong>: ###USERNAME###<p>
                             <p><strong>Valutazione</strong>: <span aria-label="###N-STELLE### stelle">###VALUTAZIONE###</span></p>
-                            <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
+                            <p><strong>Data e ora pubblicazione</strong>: <time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                         </div>
                         
                         <div class="mex">

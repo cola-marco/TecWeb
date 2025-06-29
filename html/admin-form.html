@@ -105,20 +105,6 @@
             aria-describedby="err-trama-server err-trama-client">{{Trama}}</textarea>
             <div id="err-trama-server" class="error-msg display-error" aria-live="polite">###tramaError###</div>
             <p id="err-trama-client" class="error-msg trama-error" aria-live="polite"></p>
-
-            <label for="numero_copie">Numero copie <span aria-hidden="true">*</span></label>
-            <input
-            type="number"
-            id="numero_copie"
-            name="numero_copie"
-            value="{{Numero_copie}}"
-            required
-            min="1"
-            step="1"
-            aria-describedby="err-ncopie-server err-ncopie1-client err-ncopie2-client">
-            <div id="err-ncopie-server" class="error-msg display-error" aria-live="polite">###ncopieError###</div>
-            <p id="err-ncopie1-client" class="error-msg ncopie1-error" aria-live="polite"></p>
-            <p id="err-ncopie2-client" class="error-msg ncopie2-error" aria-live="polite"></p>
         </fieldset>
 
         <button type="submit">{{buttonAction}}</button>

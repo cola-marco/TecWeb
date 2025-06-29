@@ -112,7 +112,7 @@
                         <div class="review-data">
                             <p><strong>Titolo del libro</strong>: ###TITOLO###</p>
                             <p><strong>Valutazione</strong>: <span aria-label="###N-STELLE### stelle">###VALUTAZIONE###</span></p>
-                            <p><time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
+                            <p><strong>Data e ora pubblicazione</strong>: <time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                         </div>
                         
                         <div class="mex">

@@ -9,13 +9,6 @@
     $DOM = file_get_contents('html/admin.html');
 
     if(!$pdo){
-        /*$error = "
-            <h2>OOOPS</h2>
-            <p>Se vedi questo messaggio c'è un errore server</p>
-        ";
-        $tabella_libri = '';
-        $DOM = str_replace('###BODY_TABELLA###', $tabella_libri, $DOM);
-        $DOM = str_replace('###ERRORE_DB###', $error, $DOM);*/
         header("location: 505.php"); 
         exit();
     }
