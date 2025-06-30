@@ -23,7 +23,7 @@ CREATE TABLE Libri (
     Casa_Editrice VARCHAR(100) NOT NULL,
     Genere VARCHAR(100) NOT NULL,
     Pubblicazione INT NOT NULL,
-    Trama TEXT NOT NULL,
+    Trama TEXT NOT NULL
 );
 
 -- Tabella lista prestiti

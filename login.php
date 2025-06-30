@@ -95,7 +95,7 @@
         $user = $_SESSION["ID_Cliente"];
         $lista_recensioni = '';
         
-        $query = $pdo->prepare("SELECT R.Valutazione, R.Recensione, R.Libro, L.Titolo, R.Data
+        $query = $pdo->prepare("SELECT R.Valutazione, R.Recensione, R.Libro, L.Titolo, R.Data, C.ID_Cliente
                         FROM Recensioni R
                         JOIN Clienti C ON R.Cliente = C.ID_Cliente
                         JOIN Libri L ON R.Libro = L.ID_Libro
@@ -111,7 +111,8 @@
                     <div class="card-recensione">
                         <div class="review-data">
                             <p><strong>Titolo del libro</strong>: ###TITOLO###</p>
-                            <p><strong>Valutazione</strong>: <span aria-label="###N-STELLE### stelle">###VALUTAZIONE###</span></p>
+                            <label for="valutazione-###ID_LIBRO###-###CLIENTE###" class="label-valutazione">Valutazione: ###N-STELLE### stelle</label> 
+                            <p id="valutazione-###ID_LIBRO###-###CLIENTE###"><strong>Valutazione</strong>:###VALUTAZIONE###</p>
                             <p><strong>Data e ora pubblicazione</strong>: <time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                         </div>
                         
@@ -124,7 +125,8 @@
                             </form>
                         </div>
                     </div>';
-                    
+                   
+                $singola_recensione = str_replace('###CLIENTE###', $instance["ID_Cliente"], $singola_recensione);
                 $singola_recensione = str_replace('###N-STELLE###', $instance["Valutazione"], $singola_recensione);
                 $singola_recensione = str_replace('###VALUTAZIONE###',  str_repeat("&#9733;", $instance["Valutazione"]), $singola_recensione);
                 $singola_recensione = str_replace('###RECENSIONE###', $instance["Recensione"], $singola_recensione);
