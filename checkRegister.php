@@ -61,8 +61,8 @@
             $formValido = false;
         }
         $password = trim($password); //non usa pulisciInput perchè potrebbe togliere caratteri importanti
-        if(strlen($password) < 8){
-            $passErr .= '<p>La <span lang="en">password</span> deve avere almeno 8 caratteri</p>';
+        if(strlen($password) < 4){
+            $passErr .= '<p>La <span lang="en">password</span> deve avere almeno 4 caratteri</p>';
             $formValido = false;
         }
 

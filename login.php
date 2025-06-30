@@ -111,8 +111,7 @@
                     <div class="card-recensione">
                         <div class="review-data">
                             <p><strong>Titolo del libro</strong>: ###TITOLO###</p>
-                            <label for="valutazione-###ID_LIBRO###-###CLIENTE###" class="label-valutazione">Valutazione: ###N-STELLE### stelle</label> 
-                            <p id="valutazione-###ID_LIBRO###-###CLIENTE###"><strong>Valutazione</strong>:###VALUTAZIONE###</p>
+                            <p aria-label="Valutazione: ###N-STELLE### stelle."><strong>Valutazione</strong>: ###VALUTAZIONE###</p>
                             <p><strong>Data e ora pubblicazione</strong>: <time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                         </div>
                         

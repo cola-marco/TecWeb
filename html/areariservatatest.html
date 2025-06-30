@@ -8,8 +8,7 @@
     <table class="orari" aria-describedby="tabella-libri">
         <caption>Catalogo</caption>
         <thead>
-            <tr class="table-head">      
-                <!-- <th scope="col">ID</th> -->
+            <tr class="table-head">
                 <th scope="col">Titolo</th>
                 <th scope="col">Autore</th>
                 <th scope="col">Anno di pubblicazione</th>
@@ -20,14 +19,6 @@
         <tbody>
 
              
-        <tr>
-            <td>Il nome della rosa</td>
-            <td>Umberto Eco</td>
-            <td>1980</td>
-            <td><a href="admin-form.php?id=1">Modifica</a></td>
-            <td><a href="deleteBook.php?id=1" onclick="return confirm('Confermi eliminazione?')">Elimina</a></td>
-        </tr>
-         
         <tr>
             <td>1984</td>
             <td>George Orwell</td>
@@ -54,8 +45,8 @@
          
         <tr>
             <td>Cento anni di solitudine</td>
-            <td>Gabriel Garcìa Màrquez</td>
-            <td>1967</td>
+            <td>Gabriel Garc&igrave;a M&agrave;rquez</td>
+            <td>2024</td>
             <td><a href="admin-form.php?id=5">Modifica</a></td>
             <td><a href="deleteBook.php?id=5" onclick="return confirm('Confermi eliminazione?')">Elimina</a></td>
         </tr>
@@ -70,7 +61,7 @@
          
         <tr>
             <td>Delitto e castigo</td>
-            <td>Fëdor Dostoevskij</td>
+            <td>F&euml;dor Dostoevskij</td>
             <td>1866</td>
             <td><a href="admin-form.php?id=7">Modifica</a></td>
             <td><a href="deleteBook.php?id=7" onclick="return confirm('Confermi eliminazione?')">Elimina</a></td>
@@ -105,6 +96,6 @@
     </table>
 
     <form id="logout-form" class="compilaform" action="logout.php" method="post">
-        <button type="submit" id="logout-btn">Logout</button>
+        <button type="submit" id="logout-btn"><span lang="en">Logout</span></button>
     </form>
 </main>

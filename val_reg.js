@@ -97,8 +97,8 @@ if(reg_form){
         let password = document.getElementById('password').value;
         password = password.trim();
         if(password.length > 0){
-            if(password.length < 8){
-                showError("pass1-error", "<span lan='en'>Password</span> deve avere almeno 8 caratteri diversi dallo spazio");
+            if(password.length < 4){
+                showError("pass1-error", "<span lan='en'>Password</span> deve avere almeno 4 caratteri diversi dallo spazio");
                 pass_error = true;
             }
         }
