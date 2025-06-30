@@ -644,7 +644,7 @@ CATALOGO
 }
 
 
-label[for="search-bar"], label[for="submit-button"], .delete-label, .delete-review-label, label[for="textarea"], label[for="wish"], .valutazione legend{
+label[for="search-bar"], label[for="submit-button"], .delete-label, .delete-review-label, label[for="textarea"], label[for="wish"], .valutazione legend, .label-valutazione{
   text-indent: -9999px;
   height: 0;
 }
@@ -1270,6 +1270,8 @@ RECENSIONI
 }
 
 .review-data{
+  display: flex;
+  flex-direction: column;
   border-right: 1px solid var(--headercolor);
   padding: 0.5em;
   flex: 1;

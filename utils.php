@@ -198,7 +198,8 @@ function get_reviews($pdo, $role, $id_libro){
                     <div class="card-recensione">
                         <div class="review-data">
                             <p><strong><span lang="en">Username</span></strong>: ###USERNAME###<p>
-                            <p><strong>Valutazione</strong>: <span aria-label="###N-STELLE### stelle">###VALUTAZIONE###</span></p>
+                            <label for="valutazione-###ID_LIBRO###" class="label-valutazione">Valutazione: ###N-STELLE### stelle</label> 
+                            <p id="valutazione-###ID_LIBRO###"><strong>Valutazione</strong>: ###VALUTAZIONE###</p>
                             <p><strong>Data e ora pubblicazione</strong>: <time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                         </div>
                         
@@ -216,8 +217,9 @@ function get_reviews($pdo, $role, $id_libro){
                 $singola_recensione = '
                     <div class="card-recensione">
                         <div class="review-data">
-                            <p><strong><span lang="en">Username</span></strong>: ###USERNAME###<p>
-                            <p><strong>Valutazione</strong>: <span aria-label="###N-STELLE### stelle">###VALUTAZIONE###</span></p>
+                            <p><strong><span lang="en">Username</span></strong>: ###USERNAME###</p>
+                            <label for="valutazione-###ID_LIBRO###" class="label-valutazione">Valutazione: ###N-STELLE### stelle</label> 
+                            <p id="valutazione-###ID_LIBRO###"><strong>Valutazione</strong>: ###VALUTAZIONE###</p>
                             <p><strong>Data e ora pubblicazione</strong>: <time datetime="###DATA_ORA###">###DATA_ORA###</time></p>
                         </div>
                         
