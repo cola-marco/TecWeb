@@ -1401,7 +1401,7 @@ RECENSIONI
 }
 
 .check-icon::before {
-  content: \"\\2714\";      /* ✓ */
+  /*content: \"\\2714\";       ✓ */
   font-weight: 700;
   color: var(--team-fg);
 }
@@ -1424,7 +1424,7 @@ RECENSIONI
   width: 1px; height: 1px;
   padding: 0; margin: -1px;
   overflow: hidden;
-  clip: rect(0 0 0 0);
+  /*clip: rect(0 0 0 0);*/
   white-space: nowrap;
   border: 0;
 }
