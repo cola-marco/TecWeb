@@ -24,7 +24,7 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{logo_unipd.png}
+    \includegraphics[width=0.4\textwidth]{img/logo_unipd.png}
     \label{fig:logo_unipd}
 \end{figure}
 
@@ -191,8 +191,10 @@ Il lavoro è stato suddiviso come segue:
             \end{itemize}
     \item \textbf{Enrico Bianchi} (Back-end \& JavaScript):
             \begin{itemize}
-                \item progettazione interfacciamento al database con php;
-                \item controlli sull'input con JavaScript
+                \item progettazione/realizzazione database e interazione tramite PHP;
+                \item sviluppo di script JavaScript per la validazione dei dati client-side e visualizzazione degli errori;
+                \item sviluppo di script PHP per la validazione dei dati server-side, salvataggio su database e visualizzazione errori;
+                \item controllo degli elementi dei form per verirficare l’uso corretto degli attributi di accessibilità;
                 \item scrittura della relazione progettuale.
             \end{itemize}
    \item \textbf{Riccardo Valerio} (JavaScript \& UX):
@@ -304,28 +306,19 @@ Per quanto riguarda l’accessibilità visiva, ogni colore è stato scelto per g
 Script \texttt{script.js} gestisce:
 
 \begin{itemize}
-    \item 
-    \item
-    \item 
-    \item 
-\end{itemize}
-
-Script \texttt{val\_admin\_form.js} gestisce:
-
-\begin{itemize}
-    \item 
-    \item
-    \item 
-    \item 
+    \item apertura e chiusura del menu verticale;
+    \item alterna lo stato visibile del menu e delle relative icone;
+    \item controlla se il menu è aprto o chiuso e cambia di conseguenza.
 \end{itemize}
 
 Script \texttt{val\_reg.js} gestisce:
 
 \begin{itemize}
-    \item 
-    \item
-    \item 
-    \item 
+    \item validazione dei dati inseriti all'interno del form di registrazione con conseguente visualizzazione degli errori se necessaria;
+    \item validazione dei dati inseriti all'interno del form aggiunta/modifica di un libro da parte dell'admin con conseguente visualizzazione degli errori se necessaria;
+    \item validazione dei dati inseriti all'interno del form di recensione con conseguente visualizzazione degli errori se necessaria;
+    \item impedisce l'invio di un form nel caso siano presenti errori;
+    \item Rimuove automaticamente spazi all'inizio/fine di password e conferma password durante la digitazione.
 \end{itemize}
 
 
@@ -342,16 +335,38 @@ Il foglio \texttt{printstyle.css} rimuove elementi di navigazionee converte i co
 
 \subsection{JavaScript}
 
+Javascript è stato utilizzato per la gestione del menu verticale e per la validazione dei dati lato client.
+Attraverso la manipolazione del DOM, ogni modifica a un campo di input di un form (rilevata tramite l'evento \texttt{change}) attiva un controllo sui dati inseriti.
+In caso di errori, i messaggi di avviso vengono inseriti all'interno di specifici elementi \texttt{<p>} di classe \texttt{error-msg} dedicati alla visualizzazione degli errori e viene bloccata la possibilità di \texttt{submit} del form.
 
 \subsection{PHP}
 
-Lato server è stato implementato:
+PHP è stato utilizzato principalmente per il rendering dinamico delle pagine HTML, gestendo la sostituzione automatica dei segnaposto presenti nei file HTML (solitamente nel formato \#\#\#segnaposto\#\#\# oppure \{\{segnaposto\}\}) con i contenuti appropriati tramite specifici script.
+
+È stata inoltre implementata la validazione lato server dei dati inviati attraverso i form, recuperati utilizzando la variabile globale \texttt{\$\_POST}. Gli eventuali errori di input vengono visualizzati mediante la sostituzione di determinati segnaposto, garantendo così un corretto funzionamento anche nel caso in cui JavaScript sia disabilitato e la validazione lato client con conseguente visualizzazione degli errori non possa essere eseguita.
+Nel file \texttt{utils.php} è definita la funzione \texttt{pulisciInput}, pensata per sanificare e normalizzare i dati in ingresso, solitamente provenienti da form HTML, al fine di assicurarne la sicurezza prima di qualsiasi elaborazione o salvataggio.
+Il contenuto viene dapprima "ripulito" con \texttt{trim}, che elimina gli spazi bianchi iniziali e finali; successivamente, \texttt{strip\_tags} rimuove qualsiasi tag HTML o PHP potenzialmente dannoso.
+Infine, \texttt{htmlentities} converte i caratteri speciali nelle relative entità HTML, evitando che possano essere interpretati come codice eseguibile.
+In questo modo, il dato risultante è protetto da vulnerabilità comuni come l'iniezione di codice (XSS).
+
+È stata realizzata la funzione \texttt{check\_session\_timeout}, che consente di terminare automaticamente la sessione utente dopo 30 minuti di inattività sul sito.
+
+Infine, è presente la funzione \texttt{connectDB}, incaricata di stabilire la connessione al database utilizzato. In caso di successo, restituisce un oggetto \texttt{PDO}; in caso contrario, restituisce \texttt{null}.
+Nel caso in cui si verifichino errori durante l'interazione con il database, come ad esempio il fallimento nella connessione o l'esecuzione non riuscita di una query, l'utente viene reindirizzato alla pagina \texttt{505.php}.
+\subsection{Database}
+Il database è stato progettato per la gestione di una biblioteca digitale e comprende tabelle relative a utenti, libri e interazioni come recensioni e wishlist.
 
 \begin{itemize}
-    \item
-    \item 
-    \item gestione errore 505.
+    \item \textbf{Clienti}: contiene le informazioni degli utenti registrati. Ogni cliente è identificato da un campo \texttt{ID\_Cliente} univoco e dispone di un'email, uno username (entrambi univoci), una password e un ruolo. Il ruolo, definito tramite un tipo \texttt{ENUM}, può essere \texttt{Cliente} o \texttt{Admin}, e permette di distinguere tra utenti comuni e amministratori.
+    
+    \item \textbf{Libri}: memorizza i dettagli dei libri disponibili nel sistema. Ogni libro ha un \texttt{ID\_Libro} univoco, un titolo, un autore, un'immagine di copertina (\texttt{Image\_path}), la casa editrice, il genere, l'anno di pubblicazione e una descrizione della trama.
+    
+    \item \textbf{Wishlist}: rappresenta una relazione molti-a-molti tra clienti e libri. Ogni record indica che un certo cliente ha aggiunto un determinato libro alla propria lista dei desideri. La chiave primaria è composta dalla coppia \texttt{(Cliente, Libro)}. I vincoli di chiave esterna assicurano l'integrità referenziale con le tabelle \texttt{Clienti} e \texttt{Libri}.
+    
+    \item \textbf{Recensioni}: consente ai clienti di lasciare una valutazione e una recensione testuale per ciascun libro. Ogni recensione è associata a un cliente e a un libro, e contiene anche la data di inserimento (\texttt{Data}). Anche qui la chiave primaria è composta da \texttt{(Cliente, Libro)}, garantendo una sola recensione per libro da parte di ogni utente.
 \end{itemize}
+
+Il database viene inizialmente popolato con dieci libri di generi diversi, completi di informazioni bibliografiche, immagini di copertina e trame dettagliate.
 
 
 \section{Accessibilità}
