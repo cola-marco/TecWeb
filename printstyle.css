@@ -109,7 +109,7 @@ iframe{
 
 /*FOOTER*/
 
-#orari, th, td{
+.orari, th, td{
     border: 1px solid black;
     border-collapse: collapse;
 }
@@ -119,8 +119,10 @@ iframe{
 }
 
 footer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: none;
+}
+
+#skip-to-main, #torna-primo, label, #aggiungi{
+    display: none;
 }
 
