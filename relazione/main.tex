@@ -1,15 +1,20 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
+\usepackage{caption}
+\usepackage{float}
+\usepackage[T1]{fontenc} % Enable guillemets and better font encoding
+\usepackage[table]{xcolor} % Enable \rowcolor for tables
 
-\title{Relazione di Progetto Tecnologie Web}
+
+\title{\textbf{Relazione Progetto di Tecnologie Web}}
 \date{}
 
 
 \newcommand{\componenti}{
-    & Enrico Bianchi \\
-    & Davide Martinelli \\
-    & Alex Shu \\
-    & Riccardo Valerio \\
+    & Enrico Bianchi - 2040978 - enrico.bianchi.4@studenti.unipd.it\\
+    & Davide Martinelli - 2077679 - davide.martinelli.1@studenti.unipd.it \\
+    & Marco Cola - 2079237 - marco.cola.1@studenti.unipd.it\\
+    & Riccardo Valerio - 2075517 -riccardo.valerio@studenti.unipd.it\\
 }
 \renewcommand{\contentsname}{Indice}
 
@@ -17,25 +22,42 @@
 \begin{document}
 \maketitle
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{logo_unipd.png}
+    \label{fig:logo_unipd}
+\end{figure}
+
+\vspace{0.5cm}
+
 \begin{center}
 \begin{tabular}{r|l}
     \textbf{Componenti} \componenti 
 \end{tabular}
 
 \vspace{1cm}
+\rule{\linewidth}{0.2mm}
+
+\vspace{0.3cm}
+
 \textbf{Informazioni sul sito} \\
 \textbf{Indirizzo sito web:} tecweb.studenti.math.unipd.it/damartin \\
 \textbf{Email referente del gruppo: }davide.martinelli.1@studenti.unipd.it
 
-\vspace{1cm}
+\vspace{0.3cm}
+\rule{\linewidth}{0.2mm}
+
+\vspace{0.5cm}
 \textbf{Accessi predisposti al sito}
 \begin{table}[h]
     \centering
     \begin{tabular}{|p{5cm}|p{5cm}|}
         \hline
+        \rowcolor{gray!30}
         Nome utente & Password \\
         \hline
         admin & admin   \\
+        \hline
         user & user   \\
         \hline
     \end{tabular}
@@ -44,81 +66,310 @@
 \end{center}
 
 \newpage
+
 \tableofcontents        %indice
+
 \newpage
 
 \section{Introduzione}
+La \textbf{Biblioteca Luzzatti} è una biblioteca universitaria situata in Via Luzzatti 8, nel cuore di Padova, a pochi minuti dall'aula \textbf{LUM250}. La biblioteca rappresenta da anni un punto di riferimento per studenti, docenti e appassionati di lettura, offrendo un ambiente accogliente e una vasta collezione di volumi accessibili a tutta la comunità accademica.
+
+Per supportare e ampliare i servizi offerti, è stato sviluppato un sito web dedicato alla biblioteca, pensato per migliorare l'esperienza di consultazione e rendere più semplice l'interazione con il catalogo. Il portale nasce con obiettivi chiari:
+
+\begin{itemize}
+    \item Offrire un'interfaccia semplice, intuitiva e accessibile per permettere agli utenti di esplorare facilmente il catalogo disponibile;
+    \item Semplificare e velocizzare la gestione del patrimonio librario tramite un'area riservata pensata per bibliotecari e amministratori, con strumenti per aggiungere, aggiornare e rimuovere titoli in autonomia;
+    \item Garantire una navigazione fluida e coerente sia da dispositivi desktop che da smartphone e tablet, grazie a un design responsive e accessibile.
+\end{itemize}
+
+Il sito non si limita a fornire un elenco di volumi, ma vuole essere un vero e proprio spazio digitale dove gli utenti possono creare wishlist personalizzate, scrivere recensioni, consultare le esperienze degli altri lettori e contribuire attivamente alla vita della biblioteca.
+
+Questo documento descrive nel dettaglio le scelte progettuali, le funzionalità implementate e le soluzioni tecnologiche adottate per lo sviluppo del sito, con particolare attenzione alla qualità dell'esperienza utente, all'accessibilità e alla semplicità di manutenzione.
 
 
 \newpage
 
 \section{Analisi dei requisiti}
+Per progettare un sito efficace e realmente utile agli utenti, il team ha condotto un'attenta raccolta dei requisiti attraverso diverse modalità. Sono stati realizzati colloqui diretti con i bibliotecari per comprendere le esigenze e le priorità nella gestione del catalogo. Parallelamente, sono stati somministrati questionari anonimi a studenti dell'Università per raccogliere opinioni sulle funzionalità desiderate, sulle abitudini di navigazione e sulle criticità riscontrate in esperienze simili.
+A completamento dell'analisi, è stato effettuato un confronto strutturato con portali accademici già esistenti per identificare best practice in termini di organizzazione, accessibilità e velocità di consultazione.
+Durante tutto il processo, sono stati considerati come obiettivi prioritari:
+
+\begin{itemize}
+    \item Un'elevata accessibilità per rendere il sito fruibile da parte di tutti, compresi utenti con disabilità.
+    \item Tempi di risposta rapidi.
+    \item Una facilità di manutenzione per consentire di aggiornare rapidamente i contenuti senza particolari complessità tecniche.
+\end{itemize}
 
 
 \subsection{Tipi di utenti}
+Il sistema distingue tre principali categorie di utenti, ognuna con permessi e funzionalità differenti:
+\begin{itemize}
+    \item \textbf{Visitatore (utente anonimo)} - può navigare liberamente il sito, consultare il catalogo, visualizzare le schede dettagliate dei libri, conoscere gli orari di apertura e accedere alle informazioni generali sulla biblioteca e sui servizi offerti.  
+    \item \textbf{Utente registrato} - dispone delle funzionalità accessibili ai visitatori, ma ha anche la possibilità di:
+          \begin{itemize}
+              \item Creare e gestire una wishlist personale per organizzare i libri di interesse;
+              \item Inserire recensioni e valutazioni per condividere opinioni con la comunità;
+              \item Accedere alla propria cronologia, che include le wishlist passate e le recensioni scritte.
+          \end{itemize}
+    \item \textbf{Amministratore / Bibliotecario} - oltre alle funzionalità standard, può accedere a una dashboard di gestione per:
+          \begin{itemize}
+              \item Eseguire operazioni di aggiunta, modifica, eliminazione e visualizzazione dei libri nel catalogo (CRUD);
+              \item Eliminare le recensioni pubblicate dagli utenti per garantire la qualità e la pertinenza dei contenuti;
+          \end{itemize}
+\end{itemize}
 
 
 \subsection{Funzionalità}
+Il sito è progettato per offrire agli utenti un set di funzionalità complete e intuitive:
+\begin{itemize}
+    \item \textbf{Sistema di ricerca avanzata} con filtri per titolo, genere e autore, rapido e facilmente accessibile dalla pagina catalogo;
+    \item \textbf{Schede libro} dettagliate, complete di trama, dati editoriali, immagine di copertina e recensioni;
+    \item Possibilità per gli utenti registrati di gestire \textbf{wishlist e recensioni personali} direttamente dal proprio profilo;
+    \item \textbf{Area riservata} per accedere a funzionalità personalizzate e visualizzare la cronologia delle attività;
+    \item \textbf{Dashboard amministrativa} dedicata alla gestione dei contenuti e alla moderazione delle recensioni;
+    \item \textbf{Design responsive e accessibile}, pienamente compatibile con dispositivi mobili e conforme alle linee guida WCAG 2.2 livello AA, per garantire un'esperienza inclusiva e coerente su qualsiasi piattaforma;
+    \item Disponibilità di un \textbf{layout di stampa ottimizzato} per consentire agli utenti di stampare schede e contenuti in modo ordinato e leggibile.
+\end{itemize}
 
-
-\newpage
 
 \section{Progettazione}
+La progettazione del sito web è stata sviluppata con l'obiettivo di creare un'esperienza utente semplice, intuitiva e accessibile, in grado di sottolineare i servizi offerti dalla biblioteca e di facilitare la navigazione del catalogo da parte di utenti con diversi livelli di familiarità con le tecnologie digitali.
+Ogni sezione è stata pensata per offrire contenuti chiari, strutturati e facilmente navigabili.
+
+\begin{itemize}
+    \item \textbf{Home} - La home page si presenta come una vetrina della Biblioteca Luzzatti. Nella parte centrale viene introdotta la missione della biblioteca, con una descrizione che evidenzia il ruolo della struttura come punto di incontro per la comunità e spazio di condivisione della conoscenza. Segue una sezione dedicata ai servizi offerti, elencati con bullet chiari e immediati, che spiegano le principali funzionalità disponibili per l’utente. In fondo alla pagina sono visibili i contatti diretti della biblioteca (telefono ed e-mail), i link ai social network ufficiali e una tabella riassuntiva degli orari di apertura.
+    
+    \item \textbf{Chi siamo} - La sezione "Chi Siamo" approfondisce la storia, la missione e il team della Biblioteca Luzzatti, strutturandosi in 4 blocchi distinti:
+        \begin{itemize}
+            \item \emph{Missione}: viene descritto l'impegno della biblioteca a rendere la cultura accessibile a tutti, attraverso obiettivi chiari come la promozione della lettura, la digitalizzazione delle risorse, la partecipazione a eventi culturali e il continuo supporto alla comunità locale.
+            \item \emph{Storia}: una timeline interattiva ripercorre le tappe fondamentali dell'evoluzione della biblioteca, dalle origini negli anni '90 fino all'apertura online e all'attuale gestione digitale del catalogo.
+            \item \emph{Team}:  vengono presentati i membri del gruppo di progetto con nome, ruolo, contatti e-mail diretti e profili GitHub.
+            \item \emph{Contatti}: è integrata una mappa per facilitare la localizzazione fisica della biblioteca, affiancata da un indirizzo e-mail per richieste di collaborazione o informazioni.
+        \end{itemize}
+          
+    \item \textbf{Catalogo} - Il catalogo rappresenta il cuore operativo del sito. La pagina mostra un elenco visivo dei libri disponibili, ognuno corredato da immagine della copertina, Titolo, autore e genere, breve descrizione della trama per consentire agli utenti di orientarsi rapidamente nella scelta. In alto è presente una barra di ricerca che consente di filtrare in tempo reale i libri per titolo, autore o genere, migliorando la navigabilità e l'esperienza d'uso. L'organizzazione grafica consente di scorrere con facilità tra i volumi e di visualizzare immediatamente le informazioni essenziali. Il sistema è pensato per una consultazione semplice e rapida, ma anche per approfondimenti attraverso le pagine di dettaglio di ogni libro.
+    
+    \item \textbf{Area riservata} - L'area riservata consente agli utenti di accedere ai servizi personalizzati mediante autenticazione. È strutturata con:
+        \begin{itemize}
+            \item Un modulo di login semplice ed essenziale, che richiede username e password.
+            \item Un collegamento per la registrazione di nuovi utenti.
+        \end{itemize}
+    Una volta autenticati:
+        \begin{itemize}
+            \item \emph{Utente registrato}: Gli utenti registrati possono accedere alla loro area personale per:
+                \begin{itemize}
+                    \item Creare e gestire wishlist.
+                    \item Scrivere, modificare e consultare recensioni.
+                \end{itemize}
+            \item \emph{Admin/Bibliotecario}: Gli amministratori e bibliotecari hanno accesso a una dashboard di back-office che consente di:
+                \begin{itemize}
+                    \item Aggiungere, modificare ed eliminare volumi dal catalogo.
+                    \item Gestire i contenuti del sito in maniera semplice ed efficace (es. eliminare recensioni).
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
 
 
 \newpage
 
 \section{Organizzazione e Suddivisione del lavoro}
-
-
 Il lavoro è stato suddiviso come segue:
 \begin{itemize}
-    \item \textbf{Davide Martinelli}: 
+    \item \textbf{Davide Martinelli} (Project lead, Accessibility):
             \begin{itemize}
-                \item
+                \item testing di accessibilità;
+                \item validazione HTML/CSS, contrast-checker;
+                \item supporto layout di stampa;
+                \item scrittura della relazione progettuale.
             \end{itemize}
-    \item \textbf{Riccardo Valerio}: 
+    \item \textbf{Marco Cola} (Front-end):
             \begin{itemize}
-                \item 
+                \item realizzazione template HTML5 semantici;
+                \item miglioramento stile e struttura CSS;
+                \item progettazione schema database;
+                \item scrittura della relazione progettuale.
             \end{itemize}
-    \item \textbf{Enrico Bianchi}: 
+    \item \textbf{Enrico Bianchi} (Back-end \& JavaScript):
             \begin{itemize}
-                \item
+                \item progettazione interfacciamento al database con php;
+                \item controlli sull'input con JavaScript
+                \item scrittura della relazione progettuale.
             \end{itemize}
-   \item \textbf{Marco Cola}: 
+   \item \textbf{Riccardo Valerio} (JavaScript \& UX):
             \begin{itemize}
-                \item 
+                \item implementazione iniziale HTML;
+                \item implementazione iniziale della struttura e dello stile CSS;
+                \item popolamento del database;
+                \item scrittura della relazione progettuale.
             \end{itemize}
 \end{itemize}
+
+
 \newpage
 
 \section{Implementazione Front-End}
 
 \subsection{Struttura delle Pagine (HTML)}
 
+Durante la realizzazione del sito web della \textbf{Biblioteca Luzzatti}, è stata definita una struttura HTML modulare e semanticamente coerente, progettata per essere accessibile, riutilizzabile e facilmente estendibile.  
+Tutte le pagine seguono un’impostazione comune basata su elementi ricorrenti, ordinati secondo il seguente schema:
+
+\begin{center}
+\texttt{\textless header\textgreater{} - \textless nav\textgreater{} - \textless main\textgreater{} - \textless footer\textgreater{}}
+\end{center}
+
+La testata del sito, definita in \texttt{header.html}, include un titolo racchiuso in un tag \texttt{<h1>} nascosto visivamente ma accessibile agli screen reader, e un menu di navigazione responsive che si trasforma in pulsante \texttt{hamburger} su schermi piccoli.  
+Sono inoltre presenti metadati dinamici per migliorare l’indicizzazione nei motori di ricerca, e un link per saltare direttamente al contenuto principale, pensato per favorire la navigazione assistita.
+
+Il menu varia in base al ruolo dell’utente: se anonimo, vengono visualizzate le voci “Accedi” e “Registrati”; una volta autenticato, compare la voce “Area Riservata”, e se l’utente ha privilegi di amministratore, è disponibile anche la sezione “Admin”. La voce corrispondente alla pagina attiva non è cliccabile, per evitare ambiguità di navigazione.
+
+A eccezione della homepage e della pagina di errore, ogni pagina include un breadcrumb implementato con \texttt{<nav aria-label="breadcrumb">}, che mostra la posizione corrente nel sito e consente di tornare agevolmente alle sezioni superiori.
+
+Il contenuto principale è contenuto nel tag \texttt{<main id="contenuto">}, con sezioni organizzate gerarchicamente tramite \texttt{<section>} e \texttt{<article>}, titoli ben strutturati, e dove necessario, contenuti dinamici inseriti tramite placeholder come \texttt{\#\#\#TITOLO\#\#\#}, \texttt{\#\#\#LISTA\#\#\#}, sostituiti a runtime dal codice PHP.
+
+Il piè di pagina, incluso da \texttt{footer.html}, riporta le informazioni di contatto della biblioteca, i link ai canali social e una tabella oraria degli orari di apertura, realizzata con tag semantici come \texttt{<time>} e attributi \texttt{aria-describedby} per facilitarne la lettura automatica.  
+In fondo ad ogni pagina è presente anche un link “Torna su”, identificato da \texttt{id="torna-primo"}.
+
+\medskip
+
+Ogni pagina del sito è costruita per soddisfare una funzione specifica:
+
+\begin{itemize}
+  \item \texttt{index.html} funge da homepage, presentando due sezioni principali che descrivono l’identità della biblioteca e i servizi offerti, corredate da immagini descrittive e ben etichettate.
+  
+  \item \texttt{chi-siamo.html} ospita diverse sezioni informative: una breve storia della biblioteca, la missione, i membri del team con link ai profili GitHub, e una mappa integrata per localizzarla fisicamente.
+
+  \item \texttt{catalogo.html} mostra dinamicamente l’elenco dei libri, organizzato orizzontalmente con una lista \texttt{<ul class="slider">}. È presente un modulo di ricerca semantico che invia i dati a \texttt{search.php}.
+
+  \item \texttt{libro.html} fornisce i dettagli del libro selezionato, impaginati in due colonne (immagine + dettagli testuali). Comprende anche un’area recensioni, accessibile e ben strutturata, con votazioni in stelle.
+
+  \item \texttt{area-riservata.html} mostra la wishlist e il profilo personale dell’utente autenticato, divisi in due colonne affiancate, con contenuti caricati dinamicamente tramite placeholder come \texttt{\#\#\#LISTA-WISHLIST\#\#\#}.
+
+  \item \texttt{admin.html} e \texttt{areariservatatest.html} permettono la gestione dei volumi da parte dell’amministratore. I dati sono mostrati in una tabella accessibile, con intestazioni semantiche e righe caricate tramite \texttt{\#\#\#BODY\_TABELLA\#\#\#}.
+
+  \item \texttt{login.html} e \texttt{register.html} contengono form costruiti con attenzione all’accessibilità: campi con label associate, messaggi di errore gestiti via \texttt{aria-describedby} e aggiornati in modo dinamico con \texttt{aria-live="polite"}.
+
+  \item \texttt{505.html} è la pagina di errore del server: semplice, chiara, e contenente un link di ritorno alla homepage.
+\end{itemize}
+
+Tutti i file HTML rispettano la sintassi XML e sono stati validati tramite il \textit{W3C Markup Validator}, risultando conformi agli standard.
+
+\medskip
+
+La gestione dei contenuti dinamici avviene tramite un sistema di sostituzione lato server, che consente di caricare nelle pagine solo i dati necessari, separando in modo netto la struttura (HTML), la logica (PHP) e la presentazione (CSS). Questa scelta aumenta la modularità e riduce la duplicazione del codice.
+
+\bigskip
+
+\noindent
+\textbf{Accessibilità e ottimizzazione SEO}
+
+Il codice HTML è stato scritto seguendo i principi dell’accessibilità digitale:
+
+\begin{itemize}
+  \item utilizzo di landmark semantici (\texttt{<header>}, \texttt{<nav>}, \texttt{<main>}, \texttt{<footer>});
+  \item uso corretto di attributi \texttt{aria-*}, testi alternativi nelle immagini, e struttura gerarchica dei titoli;
+  \item navigazione da tastiera completa, con link “salta al contenuto” e focus visibile;
+  \item URL semanticamente significativi e contenuti ben marcati per migliorare l’indicizzazione da parte dei motori di ricerca.
+\end{itemize}
+
+\noindent
+Nel complesso, la struttura HTML del sito rispetta pienamente gli obiettivi del progetto: offrire un’interfaccia accessibile, organizzata in maniera semantica, facilmente espandibile e perfettamente compatibile con tutti i dispositivi.
+
 
 \subsection{Design e Styling (CSS)}
 
+L’aspetto grafico del sito è stato interamente sviluppato a mano tramite un unico foglio di stile principale, \texttt{style.css}, scritto in CSS3. L’obiettivo era ottenere un design coerente, moderno, leggibile e completamente responsivo, mantenendo una forte attenzione all’accessibilità e alla compatibilità cross-browser.
+
+Lo stile è organizzato per sezioni tematiche e commentate, ciascuna delle quali si occupa di una parte specifica dell’interfaccia utente: intestazione e menu, breadcrumb, struttura delle pagine, area utente, schede dei libri, sistema di recensioni, form, footer. La struttura del CSS è stata pensata per facilitare manutenzione, estendibilità e riutilizzo.
+
+\medskip
+
+\noindent
+Alla base della coerenza visiva del sito vi è l’uso di variabili CSS, definite nel selettore \texttt{:root}. Variabili come \texttt{--headerbgcolor}, \texttt{--footerbgcolor}, \texttt{--linkcolor}, \texttt{--txtcolor} e \texttt{--buttoncolor} permettono di gestire facilmente l’identità cromatica del sito e garantiscono uno stile uniforme.
+
+Dal punto di vista del layout, il sito utilizza una combinazione di Flexbox e CSS Grid per distribuire i contenuti. Le sezioni principali come la \texttt{.user-area} (che mostra wishlist e profilo) o i contenuti dinamici (es. la lista dei libri) sono disposti in griglie flessibili che si adattano alla larghezza dello schermo. L’intera impaginazione è progettata per essere responsiva: grazie alle media query, il menu di navigazione passa da orizzontale a \texttt{hamburger} sotto i 1000px, e molte sezioni verticali si impilano automaticamente sui dispositivi mobili.
+
+Le card dei libri, sono definite attraverso la classe \texttt{.card} e presentano un’immagine della copertina affiancata ai dati testuali. Sono progettate per essere facilmente scalabili e leggibili su qualsiasi dispositivo, con un effetto di zoom all’hover per migliorare la fruizione su desktop.
+
+Le recensioni degli utenti sono gestite graficamente tramite \texttt{.card-recensione}, che imposta margini, padding, sfondi, e bordi arrotondati per rendere ogni opinione facilmente distinguibile, ordinata e leggibile. Anche i form di login, registrazione e inserimento recensioni seguono uno stile uniforme, con etichette ben visibili, focus evidenziato e gestione visiva degli errori tramite classi come \texttt{.error-msg}.
+
+Per quanto riguarda l’accessibilità visiva, ogni colore è stato scelto per garantire un contrasto minimo di livello AA secondo le WCAG 2.2. I link, i pulsanti e gli elementi interattivi hanno uno stato \texttt{:hover} e \texttt{:focus} visibile, che facilita l’uso da parte di utenti che navigano tramite tastiera o screen reader.
+
+\medskip
+
+
+
 
 \subsection{Dinamismo e Interazione (JavaScript)}
+Script \texttt{script.js} gestisce:
+
+\begin{itemize}
+    \item 
+    \item
+    \item 
+    \item 
+\end{itemize}
+
+Script \texttt{val\_admin\_form.js} gestisce:
+
+\begin{itemize}
+    \item 
+    \item
+    \item 
+    \item 
+\end{itemize}
+
+Script \texttt{val\_reg.js} gestisce:
+
+\begin{itemize}
+    \item 
+    \item
+    \item 
+    \item 
+\end{itemize}
+
 
 
 \subsection{Gestione della Stampa e dei Media (CSS per Stampa)}
-
+Il foglio \texttt{printstyle.css} rimuove elementi di navigazionee converte i colori.
 
 \newpage
 
+
 \section{Implementazioni back-end}
+
+
 
 \subsection{JavaScript}
 
 
 \subsection{PHP}
 
+Lato server è stato implementato:
+
+\begin{itemize}
+    \item
+    \item 
+    \item gestione errore 505.
+\end{itemize}
+
 
 \section{Accessibilità}
+Il sito mira al livello \textbf{AA} delle WCAG 2.2.
+
+\begin{itemize}
+    \item Tasti \emph{skip link} posizionati prima della navigazione.
+    \item tutti i testi superano AAA.
+    \item Tutte le immagini di contenuto includono attributo \texttt{alt};
+    \item Form con \texttt{label} associati, \texttt{aria} e messaggi descrittivi.
+    \item Navigazione completa via tastiera (tabindex naturale).
+\end{itemize}
 
 
 \subsection{Validazione}
+\begin{itemize}
+    \item W3C Markup Validator - N errori, N warning (falsi positivi).
+    \item W3C CSS Validator - N errori.
+\end{itemize}
 
 \end{document}
