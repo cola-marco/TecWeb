@@ -72,7 +72,3 @@ INSERT INTO Libri (Titolo, Autore, Image_path, Casa_Editrice, Genere, Pubblicazi
 ('La coscienza di Zeno', 'Italo Svevo', 'Immagini/cover_68484fdb11a3e1.36429587.jpg', 'Cappelli', 'Romanzo introspettivo', 1923, 'Il protagonista racconta la propria vita attraverso sedute psicoanalitiche, cercando un senso alla sua esistenza. Tra ironia e autoanalisi, emerge un ritratto contraddittorio dell’uomo moderno, incapace di cambiare davvero.'),
 ('Harry Potter e la pietra filosofale', 'J.K. Rowling', 'Immagini/cover_68484fe49c6423.11389143.jpg', 'Bloomsbury', 'Fantasy', 1997, 'Un ragazzo scopre di essere un mago e inizia la sua avventura nella scuola di magia di Hogwarts. Tra lezioni, nuove amicizie e nemici nascosti, scopre la verità sulla sua origine e la minaccia che grava sul mondo magico.'),
 ('Sulla strada', 'Jack Kerouac', 'Immagini/cover_68484fee970171.95685111.jpg', 'Viking Press', 'Narrativa', 1957, 'Il racconto di un viaggio on the road negli Stati Uniti, simbolo della beat generation. Esperienze, incontri e città diventano il pretesto per esplorare una generazione ribelle in cerca di libertà e significato.');
-
-INSERT INTO Clienti(Email, Username, Pass, Ruolo) VALUES
-('admin@admin.it', 'admin', '$2y$10$ARIGeQxm1RFyeBjR8mZDm.xtp5iQadKdMXr2.htPfACAYpgpjelwW', 'Admin'),
-('user@user.it', 'user', '$2y$10$/YVWfolAqO88eUS5XCaKoOLNumtHk8/kOf8X6NkYBBDyW2hyY16de', 'Cliente');
