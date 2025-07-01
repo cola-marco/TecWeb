@@ -64,7 +64,7 @@
             $wishlist = book_display($result, $li);
         }
         else{
-            $wishlist = "<p>Nessun libro salvato, se ne vuoi salvarne alcuni vai al <a href=\"catalogo.php\">catalogo</a>.</p>";
+            $wishlist = "<li>Nessun libro salvato, se ne vuoi salvarne alcuni vai al <a href=\"catalogo.php\">catalogo</a>.</li>";
         }
 
         //DISPLAY PERSONAL DATA

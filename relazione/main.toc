@@ -1,0 +1,24 @@
+\contentsline {section}{\numberline {1}Introduzione}{3}{}%
+\contentsline {section}{\numberline {2}Analisi dei requisiti}{4}{}%
+\contentsline {subsection}{\numberline {2.1}Tipi di utenti}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Funzionalità}{5}{}%
+\contentsline {section}{\numberline {3}Progettazione}{5}{}%
+\contentsline {subsection}{\numberline {3.1}Schema organizzativo}{5}{}%
+\contentsline {subsection}{\numberline {3.2}Convenzioni interne}{6}{}%
+\contentsline {subsection}{\numberline {3.3}Visibilità “Above the Fold”}{6}{}%
+\contentsline {section}{\numberline {4}Organizzazione e Suddivisione del lavoro}{7}{}%
+\contentsline {section}{\numberline {5}Implementazione Front-End}{8}{}%
+\contentsline {subsection}{\numberline {5.1}Struttura delle Pagine (HTML)}{8}{}%
+\contentsline {subsection}{\numberline {5.2}Design e Styling (CSS)}{10}{}%
+\contentsline {subsection}{\numberline {5.3}Convenzioni interne}{10}{}%
+\contentsline {subsection}{\numberline {5.4}Dinamismo e Interazione (JavaScript)}{11}{}%
+\contentsline {subsection}{\numberline {5.5}Gestione della Stampa e dei Media (CSS per Stampa)}{11}{}%
+\contentsline {section}{\numberline {6}Implementazioni back-end}{12}{}%
+\contentsline {subsection}{\numberline {6.1}JavaScript}{12}{}%
+\contentsline {subsection}{\numberline {6.2}PHP}{12}{}%
+\contentsline {subsection}{\numberline {6.3}Database}{12}{}%
+\contentsline {section}{\numberline {7}Accessibilità}{13}{}%
+\contentsline {subsection}{\numberline {7.1}Validazione HTML5}{13}{}%
+\contentsline {subsection}{\numberline {7.2}Validazione CSS}{14}{}%
+\contentsline {subsection}{\numberline {7.3}Contrasti}{14}{}%
+\contentsline {subsection}{\numberline {7.4}Screen Reader}{17}{}%
