@@ -4,6 +4,7 @@
 \usepackage{float}
 \usepackage[T1]{fontenc} % Enable guillemets and better font encoding
 \usepackage[table]{xcolor} % Enable \rowcolor for tables
+\usepackage{hyperref}
 
 
 \title{\textbf{Relazione Progetto di Tecnologie Web}}
@@ -143,9 +144,6 @@ Nella Home vengono presentate la missione della biblioteca, i servizi offerti, i
 La pagina “Chi siamo” è suddivisa in blocchi dedicati alla missione, alla storia tramite una timeline interattiva, alla presentazione del team e alle modalità di contatto con mappa incorporata.  
 Il Catalogo mostra visivamente i libri disponibili (copertina, titolo, autore, genere e breve descrizione) e offre una ricerca live per filtrare i risultati.  
 L’Area riservata prevede un login/registrazione: gli utenti possono gestire wishlist e recensioni, mentre admin e bibliotecari hanno accesso a un cruscotto per aggiornare il catalogo e i contenuti del sito.
-
-\subsection{Convenzioni interne}
-Per garantire chiarezza e accessibilità cromatica, i bottoni interattivi hanno sfondo rosso e testo bianco, i link nel corpo del testo sono grigio scuro in grassetto e sottolineati, mentre il link corrispondente alla pagina corrente appare in rosso senza sottolineatura. La voce di menu attiva è evidenziata da uno sfondo rosso. I messaggi di successo sono accompagnati da testo e bordo verdi più un’icona esplicativa, quelli di errore usano lo stesso principio in rosso, in modo che il significato risulti chiaro anche senza colore.
 
 \subsection{Visibilità “Above the Fold”}
 In tutte le pagine l’altezza dei contenitori principali è studiata per mantenere i contenuti chiave “above the fold”. Gli elementi si navigano tramite:
@@ -371,7 +369,7 @@ Il database è stato progettato per la gestione di una biblioteca digitale e com
 
 Il database viene inizialmente popolato con dieci libri di generi diversi, completi di informazioni bibliografiche, immagini di copertina e trame dettagliate.
 
-
+\newpage
 \section{Accessibilità}
 Il sito mira ad essere completamente accessibile al livello \textbf{AA} delle WCAG 2.2. 
 \subsection{Validazione HTML5}
@@ -381,40 +379,40 @@ I primi test effettuati sono stai fatti tramite l'app HTML validator Basic, a cu
     \item Warning di mancanza degli alt nelle immagini - alcuni alt di immagini presenti nel sito, ovvero quelli relativi alle immagini di copertina dei libri, sono vuoti poichè abbiamo considerato che queste immagini svolgessero un semplice ruolo decorativo, pertanto esse sono prive di una descrizione alternativa.
 \end{itemize}
 
-In seguito ai test eseguiti con HTML Validator Basic, sono stati svolti alcuni test, più semplici e veloci, con l'estensione silktide e Wave con il livello di accessibilità AA. Dalle appena citate estensioni non sono pervenuti errori.
+In seguito ai test eseguiti con HTML Validator Basic, sono stati svolti alcuni test, più semplici e veloci, con l'estensione silktide e Wave con il livello di accessibilità AA. Dalle appena citate estensioni non sono pervenuti errori se non uno sul form di ricerca dei libri nella pagina di catalogo: Silktide considera i contrasti troppo lievi, cosa che controllando manualmente e con l'utilizzo di altri strumenti non ci risulta. Il colore del form, pertanto, non subisce variazioni.
 
 \subsection{Validazione CSS}
-Il CSS è stato validato con lo strumento messo a disposizione da w3c: https://jigsaw.w3.org/css-validator/ con esito positivo.
+Il CSS è stato validato con lo strumento messo a disposizione da w3c, \url{https://jigsaw.w3.org/css-validator/}, con esito positivo.
 
 \subsection{Contrasti}
 Oltre ai controlli effettuati con le estensioni Silktide e Wave sono stati effettuati controlli ad hoc anche con l'estensione WCAG Contrast checker. Il livello imposto a questa estensione è stato AA. I test effettuati con questo strumento, senza l'utilizzo di filtri, sono stati passati con successo. Riportiamo inoltre che con i filtri "tritanopia" e "deuteranopia" presentano lievi errori. Di seguito si allegano alcuni esempi dell'appena descritta analisi dei contrasti.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{img/home.png}
-    \caption{Home}
-    \label{fig:home.png}
-\end{figure}
+\vspace{1cm}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{img/catalogo.png}
-    \caption{Catalogo}
-    \label{fig:catalogo.png}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{img/admin.png}
-    \caption{Admin}
-    \label{fig:admin.png}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{img/area_riservata.png}
-    \caption{Area Riservata}
-    \label{fig:area_riservata.png}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./img/home.png}
+        \caption{Home}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./img/catalogo.png}
+        \caption{Catalogo}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./img/admin.png}
+        \caption{Admin}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./img/area_riservata.png}
+        \caption{Area riservata}
+    \end{minipage}
 \end{figure}
 
 
