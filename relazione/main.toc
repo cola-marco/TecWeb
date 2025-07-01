@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}Introduzione}{3}{}%
+\contentsline {section}{\numberline {2}Analisi dei requisiti}{4}{}%
+\contentsline {subsection}{\numberline {2.1}Tipi di utenti}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Funzionalità}{4}{}%
+\contentsline {section}{\numberline {3}Progettazione}{5}{}%
+\contentsline {section}{\numberline {4}Organizzazione e Suddivisione del lavoro}{6}{}%
+\contentsline {section}{\numberline {5}Implementazione Front-End}{7}{}%
+\contentsline {subsection}{\numberline {5.1}Struttura delle Pagine (HTML)}{7}{}%
+\contentsline {subsection}{\numberline {5.2}Design e Styling (CSS)}{7}{}%
+\contentsline {subsection}{\numberline {5.3}Dinamismo e Interazione (JavaScript)}{7}{}%
+\contentsline {subsection}{\numberline {5.4}Gestione della Stampa e dei Media (CSS per Stampa)}{7}{}%
+\contentsline {section}{\numberline {6}Implementazioni back-end}{8}{}%
+\contentsline {subsection}{\numberline {6.1}JavaScript}{8}{}%
+\contentsline {subsection}{\numberline {6.2}PHP}{8}{}%
+\contentsline {section}{\numberline {7}Accessibilità}{8}{}%
+\contentsline {subsection}{\numberline {7.1}Validazione}{8}{}%

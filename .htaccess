@@ -1,0 +1,8 @@
+ErrorDocument 404 http://localhost/TecWeb/404.php
+ErrorDocument 500 http://localhost/TecWeb/500.php
+ErrorDocument 501 http://localhost/TecWeb/500.php
+ErrorDocument 502 http://localhost/TecWeb/500.php
+ErrorDocument 503 http://localhost/TecWeb/500.php
+ErrorDocument 504 http://localhost/TecWeb/500.php
+ErrorDocument 505 http://localhost/TecWeb/500.php
+ErrorDocument 507 http://localhost/TecWeb/500.php
