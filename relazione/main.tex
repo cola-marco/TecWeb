@@ -159,7 +159,7 @@ In tutte le pagine l’altezza dei contenitori principali è studiata per manten
 \section{Organizzazione e Suddivisione del lavoro}
 Il lavoro è stato suddiviso come segue:
 \begin{itemize}
-    \item \textbf{Davide Martinelli} (Project lead, Accessibility):
+    \item \textbf{Davide Martinelli}:
             \begin{itemize}
                 \item sviluppo del design e comportamento del catalogo;
                 \item design e sviluppo della funzionalità recensioni;
@@ -168,14 +168,14 @@ Il lavoro è stato suddiviso come segue:
                 \item supporto layout di stampa;
                 \item scrittura della relazione progettuale.
             \end{itemize}
-    \item \textbf{Marco Cola} (Front-end):
+    \item \textbf{Marco Cola}:
             \begin{itemize}
                 \item realizzazione template HTML5 semantici;
                 \item miglioramento stile e struttura CSS;
                 \item progettazione schema database;
                 \item scrittura della relazione progettuale.
             \end{itemize}
-    \item \textbf{Enrico Bianchi} (Back-end \& JavaScript):
+    \item \textbf{Enrico Bianchi} :
             \begin{itemize}
                 \item progettazione/realizzazione database e interazione tramite PHP;
                 \item sviluppo di script JavaScript per la validazione dei dati client-side e visualizzazione degli errori;
@@ -183,10 +183,11 @@ Il lavoro è stato suddiviso come segue:
                 \item controllo degli elementi dei form per verirficare l’uso corretto degli attributi di accessibilità;
                 \item scrittura della relazione progettuale.
             \end{itemize}
-   \item \textbf{Riccardo Valerio} (JavaScript \& UX):
+   \item \textbf{Riccardo Valerio}:
             \begin{itemize}
-                \item implementazione iniziale HTML;
-                \item implementazione iniziale della struttura e dello stile CSS;
+                \item implementazione HTML;
+                \item implementazione della struttura e dello stile CSS;
+                \item validazione HTML/CSS;
                 \item popolamento del database;
                 \item scrittura della relazione progettuale.
             \end{itemize}
@@ -199,91 +200,53 @@ Il lavoro è stato suddiviso come segue:
 
 \subsection{Struttura delle Pagine (HTML)}
 
-Durante la realizzazione del sito web della \textbf{Biblioteca Luzzatti}, è stata definita una struttura HTML modulare e semanticamente coerente, progettata per essere accessibile, riutilizzabile e facilmente estendibile.  
-Tutte le pagine seguono un’impostazione comune basata su elementi ricorrenti, ordinati secondo il seguente schema:
+Il sito web della \textbf{Biblioteca Luzzatti} è stato progettato con un'architettura HTML5 modulare, accessibile e semanticamente coerente. Ogni pagina adotta una struttura uniforme composta da elementi ricorrenti:
 
 \begin{center}
-\texttt{\textless header\textgreater{} - \textless nav\textgreater{} - \textless main\textgreater{} - \textless footer\textgreater{}}
+\texttt{<header> - <nav> - <main> - <footer>}
 \end{center}
 
-La testata del sito, definita in \texttt{header.html}, include un titolo racchiuso in un tag \texttt{<h1>} nascosto visivamente ma accessibile agli screen reader, e un menu di navigazione responsive che si trasforma in pulsante \texttt{hamburger} su schermi piccoli.  
-Sono inoltre presenti metadati dinamici per migliorare l’indicizzazione nei motori di ricerca, e un link per saltare direttamente al contenuto principale, pensato per favorire la navigazione assistita.
+L'intestazione (\texttt{<header>}) contiene il logo della biblioteca ed è accompagnata da un menu di navigazione adattivo: nelle visualizzazioni su dispositivi mobili si trasforma in un menu “hamburger”. Il menu mostra voci diverse in base allo stato dell’utente (anonimo, autenticato o amministratore), e la voce relativa alla pagina corrente non è cliccabile.
 
-Il menu varia in base al ruolo dell’utente: se anonimo, vengono visualizzate le voci “Accedi” e “Registrati”; una volta autenticato, compare la voce “Area Riservata”, e se l’utente ha privilegi di amministratore, è disponibile anche la sezione “Admin”. La voce corrispondente alla pagina attiva non è cliccabile, per evitare ambiguità di navigazione.
+Il contenuto principale è racchiuso in \texttt{<main id="contenuto">}, con le informazioni organizzate in \texttt{<section>}, e arricchite da placeholder che vengono sostituiti dinamicamente lato server tramite PHP.
 
-A eccezione della homepage e della pagina di errore, ogni pagina include un breadcrumb implementato con \texttt{<nav aria-label="breadcrumb">}, che mostra la posizione corrente nel sito e consente di tornare agevolmente alle sezioni superiori.
+Ogni pagina, eccetto l’homepage e la pagina di errore, presenta un \texttt{breadcrumb} che migliora la tracciabilità della posizione corrente e consente una navigazione gerarchica semplificata.
 
-Il contenuto principale è contenuto nel tag \texttt{<main id="contenuto">}, con sezioni organizzate gerarchicamente tramite \texttt{<section>} e \texttt{<article>}, titoli ben strutturati, e dove necessario, contenuti dinamici inseriti tramite placeholder come \texttt{\#\#\#TITOLO\#\#\#}, \texttt{\#\#\#LISTA\#\#\#}, sostituiti a runtime dal codice PHP.
+Il piè di pagina (\texttt{<footer>}) è presente su tutte le pagine e include i recapiti, gli orari e link ai canali social. In fondo a ogni documento è inserito un pulsante “Torna su” per facilitare la navigazione da tastiera.
 
-Il piè di pagina, incluso da \texttt{footer.html}, riporta le informazioni di contatto della biblioteca, i link ai canali social e una tabella oraria degli orari di apertura, realizzata con tag semantici come \texttt{<time>} e attributi \texttt{aria-describedby} per facilitarne la lettura automatica.  
-In fondo ad ogni pagina è presente anche un link “Torna su”, identificato da \texttt{id="torna-primo"}.
+Infine, tutte le pagine sono valide secondo lo standard W3C, scritte in HTML conforme alla sintassi XML e testate per garantire compatibilità e accessibilità su tutti i dispositivi.
 
 \medskip
 
-Ogni pagina del sito è costruita per soddisfare una funzione specifica:
-
+\noindent
+\textbf{Aspetti di accessibilità e SEO}:
 \begin{itemize}
-  \item \texttt{index.html} funge da homepage, presentando due sezioni principali che descrivono l’identità della biblioteca e i servizi offerti, corredate da immagini descrittive e ben etichettate.
-  
-  \item \texttt{chi-siamo.html} ospita diverse sezioni informative: una breve storia della biblioteca, la missione, i membri del team con link ai profili GitHub, e una mappa integrata per localizzarla fisicamente.
-
-  \item \texttt{catalogo.html} mostra dinamicamente l’elenco dei libri, organizzato orizzontalmente con una lista \texttt{<ul class="slider">}. È presente un modulo di ricerca semantico che invia i dati a \texttt{search.php}.
-
-  \item \texttt{libro.html} fornisce i dettagli del libro selezionato, impaginati in due colonne (immagine + dettagli testuali). Comprende anche un’area recensioni, accessibile e ben strutturata, con votazioni in stelle.
-
-  \item \texttt{area-riservata.html} mostra la wishlist e il profilo personale dell’utente autenticato, divisi in due colonne affiancate, con contenuti caricati dinamicamente tramite placeholder come \texttt{\#\#\#LISTA-WISHLIST\#\#\#}.
-
-  \item \texttt{admin.html} e \texttt{areariservatatest.html} permettono la gestione dei volumi da parte dell’amministratore. I dati sono mostrati in una tabella accessibile, con intestazioni semantiche e righe caricate tramite \texttt{\#\#\#BODY\_TABELLA\#\#\#}.
-
-  \item \texttt{login.html} e \texttt{register.html} contengono form costruiti con attenzione all’accessibilità: campi con label associate, messaggi di errore gestiti via \texttt{aria-describedby} e aggiornati in modo dinamico con \texttt{aria-live="polite"}.
-
-  \item \texttt{505.html} è la pagina di errore del server: semplice, chiara, e contenente un link di ritorno alla homepage.
+    \item Uso sistematico di landmark semantici (\texttt{<header>}, \texttt{<nav>}, \texttt{<main>}, \texttt{<footer>}).
+    \item Titoli gerarchici, link descrittivi e immagini con \texttt{alt} significativo.
+    \item Navigazione da tastiera completa.
+    \item URL descrittivi e contenuti ottimizzati per l’indicizzazione nei motori di ricerca.
 \end{itemize}
 
-Tutti i file HTML rispettano la sintassi XML e sono stati validati tramite il \textit{W3C Markup Validator}, risultando conformi agli standard.
-
-\medskip
-
-La gestione dei contenuti dinamici avviene tramite un sistema di sostituzione lato server, che consente di caricare nelle pagine solo i dati necessari, separando in modo netto la struttura (HTML), la logica (PHP) e la presentazione (CSS). Questa scelta aumenta la modularità e riduce la duplicazione del codice.
-
-\bigskip
-
-\noindent
-\textbf{Accessibilità e ottimizzazione SEO}
-
-Il codice HTML è stato scritto seguendo i principi dell’accessibilità digitale:
-
-\begin{itemize}
-  \item utilizzo di landmark semantici (\texttt{<header>}, \texttt{<nav>}, \texttt{<main>}, \texttt{<footer>});
-  \item uso corretto di attributi \texttt{aria-*}, testi alternativi nelle immagini, e struttura gerarchica dei titoli;
-  \item navigazione da tastiera completa, con link “salta al contenuto” e focus visibile;
-  \item URL semanticamente significativi e contenuti ben marcati per migliorare l’indicizzazione da parte dei motori di ricerca.
-\end{itemize}
-
-\noindent
-Nel complesso, la struttura HTML del sito rispetta pienamente gli obiettivi del progetto: offrire un’interfaccia accessibile, organizzata in maniera semantica, facilmente espandibile e perfettamente compatibile con tutti i dispositivi.
-
+\vspace{1em}
 
 \subsection{Design e Styling (CSS)}
 
-L’aspetto grafico del sito è stato interamente sviluppato a mano tramite un unico foglio di stile principale, \texttt{style.css}, scritto in CSS3. L’obiettivo era ottenere un design coerente, moderno, leggibile e completamente responsivo, mantenendo una forte attenzione all’accessibilità e alla compatibilità cross-browser.
-
-Lo stile è organizzato per sezioni tematiche e commentate, ciascuna delle quali si occupa di una parte specifica dell’interfaccia utente: intestazione e menu, breadcrumb, struttura delle pagine, area utente, schede dei libri, sistema di recensioni, form, footer. La struttura del CSS è stata pensata per facilitare manutenzione, estendibilità e riutilizzo.
+Lo stile grafico del sito è stato realizzato interamente a mano, tramite un unico foglio CSS centrale (\texttt{style.css}).
 
 \medskip
 
 \noindent
-Alla base della coerenza visiva del sito vi è l’uso di variabili CSS, definite nel selettore \texttt{:root}. Variabili come \texttt{--headerbgcolor}, \texttt{--footerbgcolor}, \texttt{--linkcolor}, \texttt{--txtcolor} e \texttt{--buttoncolor} permettono di gestire facilmente l’identità cromatica del sito e garantiscono uno stile uniforme.
-
-Dal punto di vista del layout, il sito utilizza una combinazione di Flexbox e CSS Grid per distribuire i contenuti. Le sezioni principali come la \texttt{.user-area} (che mostra wishlist e profilo) o i contenuti dinamici (es. la lista dei libri) sono disposti in griglie flessibili che si adattano alla larghezza dello schermo. L’intera impaginazione è progettata per essere responsiva: grazie alle media query, il menu di navigazione passa da orizzontale a \texttt{hamburger} sotto i 1000px, e molte sezioni verticali si impilano automaticamente sui dispositivi mobili.
-
-Le card dei libri, sono definite attraverso la classe \texttt{.card} e presentano un’immagine della copertina affiancata ai dati testuali. Sono progettate per essere facilmente scalabili e leggibili su qualsiasi dispositivo, con un effetto di zoom all’hover per migliorare la fruizione su desktop.
-
-Le recensioni degli utenti sono gestite graficamente tramite \texttt{.card-recensione}, che imposta margini, padding, sfondi, e bordi arrotondati per rendere ogni opinione facilmente distinguibile, ordinata e leggibile. Anche i form di login, registrazione e inserimento recensioni seguono uno stile uniforme, con etichette ben visibili, focus evidenziato e gestione visiva degli errori tramite classi come \texttt{.error-msg}.
-
-Per quanto riguarda l’accessibilità visiva, ogni colore è stato scelto per garantire un contrasto minimo di livello AA secondo le WCAG 2.2. I link, i pulsanti e gli elementi interattivi hanno uno stato \texttt{:hover} e \texttt{:focus} visibile, che facilita l’uso da parte di utenti che navigano tramite tastiera o screen reader.
+\textbf{Caratteristiche principali dello stile:}
+\begin{itemize}
+    \item \textbf{Modularità e coerenza}: l’uso di variabili globali definite con \texttt{:root} (es. \texttt{--headerbgcolor}, \texttt{--txtcolor}) consente di mantenere un’identità visiva uniforme.
+    \item \textbf{Layout responsive}: il sito impiega sia \textbf{Flexbox} sia \textbf{CSS Grid} per la disposizione dei contenuti, garantendo adattabilità a ogni tipo di dispositivo. Le sezioni principali si adattano dinamicamente alla larghezza dello schermo e il menu diventa hamburger sotto una certa dimensione.
+    \item \textbf{Contrasto e accessibilità visiva}: i colori sono scelti per garantire un contrasto minimo AA (WCAG 2.2), e tutti gli elementi interattivi prevedono stati \texttt{:hover} e \texttt{:focus} ben visibili.
+    \item \textbf{Struttura CSS organizzata}: il foglio di stile è diviso in sezioni (header, breadcrumb, main, footer, tabelle, errori, form, ecc.) per facilitarne la manutenzione e l’estensione futura.
+\end{itemize}
 
 \medskip
+
+Questa organizzazione permette una netta separazione tra contenuto (HTML), presentazione (CSS) e comportamento (PHP/JS), in linea con i principi richiesti dal progetto.
 
 \subsection{Convenzioni interne}
 Nello sviluppo del sito sono state definite alcune convenzioni utili a una corretta navigazione:
