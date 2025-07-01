@@ -136,37 +136,23 @@ Il sito è progettato per offrire agli utenti un set di funzionalità complete e
 La progettazione del sito web è stata sviluppata con l'obiettivo di creare un'esperienza utente semplice, intuitiva e accessibile, in grado di sottolineare i servizi offerti dalla biblioteca e di facilitare la navigazione del catalogo da parte di utenti con diversi livelli di familiarità con le tecnologie digitali.
 Ogni sezione è stata pensata per offrire contenuti chiari, strutturati e facilmente navigabili.
 
+
+\subsection{Schema organizzativo}
+Il sito si articola in quattro sezioni principali: \emph{\textbf{Home}}, \emph{\textbf{Chi siamo}}, \emph{\textbf{Catalogo}} e \emph{\textbf{Area riservata}}.  
+Nella Home vengono presentate la missione della biblioteca, i servizi offerti, i contatti e gli orari.  
+La pagina “Chi siamo” è suddivisa in blocchi dedicati alla missione, alla storia tramite una timeline interattiva, alla presentazione del team e alle modalità di contatto con mappa incorporata.  
+Il Catalogo mostra visivamente i libri disponibili (copertina, titolo, autore, genere e breve descrizione) e offre una ricerca live per filtrare i risultati.  
+L’Area riservata prevede un login/registrazione: gli utenti possono gestire wishlist e recensioni, mentre admin e bibliotecari hanno accesso a un cruscotto per aggiornare il catalogo e i contenuti del sito.
+
+\subsection{Convenzioni interne}
+Per garantire chiarezza e accessibilità cromatica, i bottoni interattivi hanno sfondo rosso e testo bianco, i link nel corpo del testo sono grigio scuro in grassetto e sottolineati, mentre il link corrispondente alla pagina corrente appare in rosso senza sottolineatura. La voce di menu attiva è evidenziata da uno sfondo rosso. I messaggi di successo sono accompagnati da testo e bordo verdi più un’icona esplicativa, quelli di errore usano lo stesso principio in rosso, in modo che il significato risulti chiaro anche senza colore.
+
+\subsection{Visibilità “Above the Fold”}
+In tutte le pagine l’altezza dei contenitori principali è studiata per mantenere i contenuti chiave “above the fold”. Gli elementi si navigano tramite:
 \begin{itemize}
-    \item \textbf{Home} - La home page si presenta come una vetrina della Biblioteca Luzzatti. Nella parte centrale viene introdotta la missione della biblioteca, con una descrizione che evidenzia il ruolo della struttura come punto di incontro per la comunità e spazio di condivisione della conoscenza. Segue una sezione dedicata ai servizi offerti, elencati con bullet chiari e immediati, che spiegano le principali funzionalità disponibili per l’utente. In fondo alla pagina sono visibili i contatti diretti della biblioteca (telefono ed e-mail), i link ai social network ufficiali e una tabella riassuntiva degli orari di apertura.
-    
-    \item \textbf{Chi siamo} - La sezione "Chi Siamo" approfondisce la storia, la missione e il team della Biblioteca Luzzatti, strutturandosi in 4 blocchi distinti:
-        \begin{itemize}
-            \item \emph{Missione}: viene descritto l'impegno della biblioteca a rendere la cultura accessibile a tutti, attraverso obiettivi chiari come la promozione della lettura, la digitalizzazione delle risorse, la partecipazione a eventi culturali e il continuo supporto alla comunità locale.
-            \item \emph{Storia}: una timeline interattiva ripercorre le tappe fondamentali dell'evoluzione della biblioteca, dalle origini negli anni '90 fino all'apertura online e all'attuale gestione digitale del catalogo.
-            \item \emph{Team}:  vengono presentati i membri del gruppo di progetto con nome, ruolo, contatti e-mail diretti e profili GitHub.
-            \item \emph{Contatti}: è integrata una mappa per facilitare la localizzazione fisica della biblioteca, affiancata da un indirizzo e-mail per richieste di collaborazione o informazioni.
-        \end{itemize}
-          
-    \item \textbf{Catalogo} - Il catalogo rappresenta il cuore operativo del sito. La pagina mostra un elenco visivo dei libri disponibili, ognuno corredato da immagine della copertina, Titolo, autore e genere, breve descrizione della trama per consentire agli utenti di orientarsi rapidamente nella scelta. In alto è presente una barra di ricerca che consente di filtrare in tempo reale i libri per titolo, autore o genere, migliorando la navigabilità e l'esperienza d'uso. L'organizzazione grafica consente di scorrere con facilità tra i volumi e di visualizzare immediatamente le informazioni essenziali. Il sistema è pensato per una consultazione semplice e rapida, ma anche per approfondimenti attraverso le pagine di dettaglio di ogni libro.
-    
-    \item \textbf{Area riservata} - L'area riservata consente agli utenti di accedere ai servizi personalizzati mediante autenticazione. È strutturata con:
-        \begin{itemize}
-            \item Un modulo di login semplice ed essenziale, che richiede username e password.
-            \item Un collegamento per la registrazione di nuovi utenti.
-        \end{itemize}
-    Una volta autenticati:
-        \begin{itemize}
-            \item \emph{Utente registrato}: Gli utenti registrati possono accedere alla loro area personale per:
-                \begin{itemize}
-                    \item Creare e gestire wishlist.
-                    \item Scrivere, modificare e consultare recensioni.
-                \end{itemize}
-            \item \emph{Admin/Bibliotecario}: Gli amministratori e bibliotecari hanno accesso a una dashboard di back-office che consente di:
-                \begin{itemize}
-                    \item Aggiungere, modificare ed eliminare volumi dal catalogo.
-                    \item Gestire i contenuti del sito in maniera semplice ed efficace (es. eliminare recensioni).
-                \end{itemize}
-        \end{itemize}
+  \item frecce e indicatori cliccabili col mouse  
+  \item frecce direzionali e Tab per la tastiera  
+  \item swipe su dispositivi touch  
 \end{itemize}
 
 
@@ -304,7 +290,6 @@ Per quanto riguarda l’accessibilità visiva, ogni colore è stato scelto per g
 \subsection{Convenzioni interne}
 Nello sviluppo del sito sono state definite alcune convenzioni utili a una corretta navigazione:
 \begin{itemize}
-    \item 
     \item link non visitati di colore rosso;
     \item link visitati di colore nero;
     \item nome dell'informazioni di libri e recensioni di colore blu e dentro un tag \texttt{<strong>};
@@ -403,6 +388,35 @@ Il CSS è stato validato con lo strumento messo a disposizione da w3c: https://j
 
 \subsection{Contrasti}
 Oltre ai controlli effettuati con le estensioni Silktide e Wave sono stati effettuati controlli ad hoc anche con l'estensione WCAG Contrast checker. Il livello imposto a questa estensione è stato AA. I test effettuati con questo strumento, senza l'utilizzo di filtri, sono stati passati con successo. Riportiamo inoltre che con i filtri "tritanopia" e "deuteranopia" presentano lievi errori. Di seguito si allegano alcuni esempi dell'appena descritta analisi dei contrasti.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/home.png}
+    \caption{Home}
+    \label{fig:home.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/catalogo.png}
+    \caption{Catalogo}
+    \label{fig:catalogo.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/admin.png}
+    \caption{Admin}
+    \label{fig:admin.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/area_riservata.png}
+    \caption{Area Riservata}
+    \label{fig:area_riservata.png}
+\end{figure}
+
 
 \subsection{Screen Reader}
 Per completare l'analisi di accessibilità del sito, esso viene sottoposto a vari test tramite l'utilizzo di screen reader. Il sito è stato sottoposto a test con lo screen reader di Silktide e uno screen reader esterno al browser: NVDA. Nel corso della navigazione nel sito essi non hanno trovato alcuna difficoltà.
