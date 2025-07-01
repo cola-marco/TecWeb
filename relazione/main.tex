@@ -177,6 +177,8 @@ Il lavoro è stato suddiviso come segue:
 \begin{itemize}
     \item \textbf{Davide Martinelli} (Project lead, Accessibility):
             \begin{itemize}
+                \item sviluppo del design e comportamento del catalogo;
+                \item design e sviluppo della funzionalità recensioni;
                 \item testing di accessibilità;
                 \item validazione HTML/CSS, contrast-checker;
                 \item supporto layout di stampa;
@@ -299,19 +301,29 @@ Per quanto riguarda l’accessibilità visiva, ogni colore è stato scelto per g
 
 \medskip
 
+\subsection{Convenzioni interne}
+Nello sviluppo del sito sono state definite alcune convenzioni utili a una corretta navigazione:
+\begin{itemize}
+    \item 
+    \item link non visitati di colore rosso;
+    \item link visitati di colore nero;
+    \item nome dell'informazioni di libri e recensioni di colore blu e dentro un tag \texttt{<strong>};
+    \item bottoni di eliminazione libri dalla wishlist e recensioni di colore rosso con icona apposita e \texttt{label} ad hoc.
+\end{itemize}
+
 
 
 
 \subsection{Dinamismo e Interazione (JavaScript)}
-Script \texttt{script.js} gestisce:
-
+All'interno del sito sono stati utilizzate alcune funzionalità Javascript, in particolare per la validazione lato client dei form. Di seguito si elencano i rispettivi impieghi.
+Il file \texttt{script.js} gestisce:
 \begin{itemize}
     \item apertura e chiusura del menu verticale;
     \item alterna lo stato visibile del menu e delle relative icone;
-    \item controlla se il menu è aprto o chiuso e cambia di conseguenza.
+    \item controlla se il menu è aperto o chiuso e cambia di conseguenza.
 \end{itemize}
 
-Script \texttt{val\_reg.js} gestisce:
+Invece il file \texttt{val\_reg.js} gestisce:
 
 \begin{itemize}
     \item validazione dei dati inseriti all'interno del form di registrazione con conseguente visualizzazione degli errori se necessaria;
@@ -324,7 +336,13 @@ Script \texttt{val\_reg.js} gestisce:
 
 
 \subsection{Gestione della Stampa e dei Media (CSS per Stampa)}
-Il foglio \texttt{printstyle.css} rimuove elementi di navigazionee converte i colori.
+Per quanto riguarda il layout di stampa delle varie pagine del sito sono state adottate delle scelte che mirano a inserire nel foglio da stampare solo le informazioni veramente importanti. Le regole css di stampa sono definite nel file \texttt{printstyle.css}. Di seguto vengono descritte:
+\begin{itemize}
+    \item Vengono eliminate la totalità delle immagini e delle mappe per evitare spreco di inchiostro;
+    \item Lo stile della pagina originale viene ridotto al minimo riportando solo informazioni testuali in bianco e nero;
+    \item Viene totalmente eliminato il footer essendoci la pagina "Chi siamo" che ricopre lo stesso scopo;
+    \item Oltre al contenuto essenziale della pagina rimane anche il titolo del sito e l'elenco ordinato del breadcrumb.
+\end{itemize}
 
 \newpage
 
@@ -343,7 +361,7 @@ In caso di errori, i messaggi di avviso vengono inseriti all'interno di specific
 
 PHP è stato utilizzato principalmente per il rendering dinamico delle pagine HTML, gestendo la sostituzione automatica dei segnaposto presenti nei file HTML (solitamente nel formato \#\#\#segnaposto\#\#\# oppure \{\{segnaposto\}\}) con i contenuti appropriati tramite specifici script.
 
-È stata inoltre implementata la validazione lato server dei dati inviati attraverso i form, recuperati utilizzando la variabile globale \texttt{\$\_POST}. Gli eventuali errori di input vengono visualizzati mediante la sostituzione di determinati segnaposto, garantendo così un corretto funzionamento anche nel caso in cui JavaScript sia disabilitato e la validazione lato client con conseguente visualizzazione degli errori non possa essere eseguita.
+È stata inoltre implementata la validazione lato server dei dati inviati attraverso i form, recuperati utilizzando la variabile globale \texttt{\$\_POST}. Gli eventuali errori di input vengono visualizzati mediante la sostituzione di determinati segnaposti, garantendo così un corretto funzionamento anche nel caso in cui JavaScript sia disabilitato e la validazione lato client con conseguente visualizzazione degli errori non possa essere eseguita.
 Nel file \texttt{utils.php} è definita la funzione \texttt{pulisciInput}, pensata per sanificare e normalizzare i dati in ingresso, solitamente provenienti da form HTML, al fine di assicurarne la sicurezza prima di qualsiasi elaborazione o salvataggio.
 Il contenuto viene dapprima "ripulito" con \texttt{trim}, che elimina gli spazi bianchi iniziali e finali; successivamente, \texttt{strip\_tags} rimuove qualsiasi tag HTML o PHP potenzialmente dannoso.
 Infine, \texttt{htmlentities} converte i caratteri speciali nelle relative entità HTML, evitando che possano essere interpretati come codice eseguibile.
@@ -370,21 +388,23 @@ Il database viene inizialmente popolato con dieci libri di generi diversi, compl
 
 
 \section{Accessibilità}
-Il sito mira al livello \textbf{AA} delle WCAG 2.2.
-
+Il sito mira ad essere completamente accessibile al livello \textbf{AA} delle WCAG 2.2. 
+\subsection{Validazione HTML5}
+I primi test effettuati sono stai fatti tramite l'app HTML validator Basic, a cui è stata sottoposta sia la validazione di livello AA sia AAA. Tutte le pagine non risultano avere alcun errore a parte le seguenti eccezioni:
 \begin{itemize}
-    \item Tasti \emph{skip link} posizionati prima della navigazione.
-    \item tutti i testi superano AAA.
-    \item Tutte le immagini di contenuto includono attributo \texttt{alt};
-    \item Form con \texttt{label} associati, \texttt{aria} e messaggi descrittivi.
-    \item Navigazione completa via tastiera (tabindex naturale).
+    \item Warning di mancanza di un link di "skip-navigation" - avvertenza generata da un falso positivo: infatti il link è presente non appena inizia il tag \texttt{body};
+    \item Warning di mancanza degli alt nelle immagini - alcuni alt di immagini presenti nel sito, ovvero quelli relativi alle immagini di copertina dei libri, sono vuoti poichè abbiamo considerato che queste immagini svolgessero un semplice ruolo decorativo, pertanto esse sono prive di una descrizione alternativa.
 \end{itemize}
 
+In seguito ai test eseguiti con HTML Validator Basic, sono stati svolti alcuni test, più semplici e veloci, con l'estensione silktide e Wave con il livello di accessibilità AA. Dalle appena citate estensioni non sono pervenuti errori.
 
-\subsection{Validazione}
-\begin{itemize}
-    \item W3C Markup Validator - N errori, N warning (falsi positivi).
-    \item W3C CSS Validator - N errori.
-\end{itemize}
+\subsection{Validazione CSS}
+Il CSS è stato validato con lo strumento messo a disposizione da w3c: https://jigsaw.w3.org/css-validator/ con esito positivo.
+
+\subsection{Contrasti}
+Oltre ai controlli effettuati con le estensioni Silktide e Wave sono stati effettuati controlli ad hoc anche con l'estensione WCAG Contrast checker. Il livello imposto a questa estensione è stato AA. I test effettuati con questo strumento, senza l'utilizzo di filtri, sono stati passati con successo. Riportiamo inoltre che con i filtri "tritanopia" e "deuteranopia" presentano lievi errori. Di seguito si allegano alcuni esempi dell'appena descritta analisi dei contrasti.
+
+\subsection{Screen Reader}
+Per completare l'analisi di accessibilità del sito, esso viene sottoposto a vari test tramite l'utilizzo di screen reader. Il sito è stato sottoposto a test con lo screen reader di Silktide e uno screen reader esterno al browser: NVDA. Nel corso della navigazione nel sito essi non hanno trovato alcuna difficoltà.
 
 \end{document}
