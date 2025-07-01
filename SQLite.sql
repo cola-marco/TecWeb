@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS Recensioni;
 DROP TABLE IF EXISTS Whishlist;
-DROP TABLE IF EXISTS Prestiti;
 DROP TABLE IF EXISTS Libri;
 DROP TABLE IF EXISTS Clienti;
 
@@ -24,18 +23,6 @@ CREATE TABLE Libri (
     Genere VARCHAR(100) NOT NULL,
     Pubblicazione INT NOT NULL,
     Trama TEXT NOT NULL
-);
-
--- Tabella lista prestiti
-CREATE TABLE Prestiti (
-    ID_Prestito INT AUTO_INCREMENT PRIMARY KEY,
-    Cliente INT NOT NULL,
-    Libro INT NOT NULL,
-    Data_prestito DATE DEFAULT CURRENT_DATE,
-    Data_scadenza DATE NOT NULL,
-    Data_restituzione DATE NULL,
-    FOREIGN KEY (Cliente) REFERENCES Clienti(ID_Cliente) ON DELETE CASCADE,
-    FOREIGN KEY (Libro) REFERENCES Libri(ID_Libro) ON DELETE CASCADE
 );
 
 -- Tabella Wishlist
