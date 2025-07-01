@@ -1,8 +1,8 @@
-ErrorDocument 404 http://localhost:8080/damartin/404.php
-ErrorDocument 500 http://localhost:8080/damartin/500.php
-ErrorDocument 501 http://localhost:8080/damartin/500.php
-ErrorDocument 502 http://localhost:8080/damartin/500.php
-ErrorDocument 503 http://localhost:8080/damartin/500.php
-ErrorDocument 504 http://localhost:8080/damartin/500.php
-ErrorDocument 505 http://localhost:8080/damartin/500.php
-ErrorDocument 507 http://localhost:8080/damartin/500.php
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
+ErrorDocument 501 /500.php
+ErrorDocument 502 /500.php
+ErrorDocument 503 /500.php
+ErrorDocument 504 /500.php
+ErrorDocument 505 /500.php
+ErrorDocument 507 /500.php

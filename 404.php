@@ -2,7 +2,7 @@
 http_response_code(404);
 
 $metaDescription = 'Errore 404 - pagina momentaneamente non disponibile.';
-$metaKeywords    = 'errore 505, pagina non disponibile';
+$metaKeywords    = 'errore 404, pagina non disponibile';
 
 include "templates/header.php"; 
 
