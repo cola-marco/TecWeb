@@ -1,0 +1,36 @@
+<nav id="breadcrumb" aria-label="breadcrumb">
+    <ol>
+        <li><a href="index.php" lang="en">Home</a></li>
+        <li aria-current="page">Area Personale</li>
+    </ol>
+</nav>
+
+<main id="contenuto">
+    <div class="container">
+        <h2>Gestione catalogo</h2>
+        <a id="aggiungi" class="button" href="admin-form.php">Aggiungi libro</a>
+    </div>
+
+    <p id="tabella-libri" class="nascosto">La tabella contiene il catalogo dei libri presenti nella biblioteca</p>
+    <table class="orari" aria-describedby="tabella-libri">
+        <caption>Catalogo</caption>
+        <thead>
+            <tr class="table-head">
+                <th scope="col">Titolo</th>
+                <th scope="col">Autore</th>
+                <th scope="col">Anno di pubblicazione</th>
+                <th scope="col">Modifica</th>
+                <th scope="col">eliminare</th>         
+            </tr>
+        </thead>
+        <tbody>
+
+            ###BODY_TABELLA###
+
+        </tbody>
+    </table>
+
+    <form id="logout-form" class="compilaform" action="logout.php" method="post">
+        <button type="submit" id="logout-btn"><span lang="en">Logout</span></button>
+    </form>
+</main>

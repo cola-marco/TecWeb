@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <title>Biblioteca</title>
+    
+    <meta name="description" content="%%DESCRIPTION%%">
+    <meta name="keywords"    content="%%KEYWORDS%%">
+
+    <link rel="stylesheet" href="style.css" media="screen">
+    <link rel="stylesheet" href="printstyle.css" media="print">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="immagini/open-book-icon.webp" type="image/x-icon">
+    <script src="script.js" defer></script>
+
+    <link rel="icon" type="image/png" href="Immagini/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="Immagini/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="Immagini/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="Immagini/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="Immagini/favicon/site.webmanifest" />
+</head>
+
+<body>
+    <a href="#contenuto" id="skip-to-main">Vai al contenuto</a>
+    <header>
+        <h1>Biblioteca Luzzatti</h1>
+        <div class="menu-container">
+            <button id="hamb-button" onclick="menuToggle()" aria-label="menu">
+                <svg id="hamb-icon" data-open="false" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+                <svg id="close-icon" data-open="false" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </button>
+            
+            <ul id="vertical-menu" data-open="false"></ul>
+        </div>
+    </header>

@@ -1,0 +1,117 @@
+<nav id="breadcrumb" aria-label="breadcrumb">
+    <ol>
+        <li><a href="index.php" lang="en">Home</a></li>
+        <li><a href="login.php">Area Personale</a></li>
+        <li aria-current="page">Gestione Libri</li>
+    </ol>
+</nav>
+
+<main id="contenuto">
+    <div class="container">
+        <h2>Gestione catalogo</h2>
+    </div>
+
+    <div id="add-section" class="contenitoreCompilazione">
+        <h3>{{Azione}} Libro</h3>
+        <form id="add-book-section" class="compilaform" action="{{FormAction}}" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Dati del libro</legend>
+
+            <label for="titolo">Titolo <span aria-hidden="true">*</span></label>
+            <input
+            type="text"
+            id="titolo"
+            name="titolo"
+            value="{{Titolo}}"
+            required
+            minlength="1"
+            maxlength="30"
+            aria-describedby="err-titolo-server err-titolo-client">
+            <div id="err-titolo-server" class="error-msg display-error" aria-live="polite">###titoloError###</div>
+            <p id="err-titolo-client" class="error-msg titolo-error" aria-live="polite"></p>
+
+            <label for="autore">Autore <span aria-hidden="true">*</span></label>
+            <input
+            type="text"
+            id="autore"
+            name="autore"
+            value="{{Autore}}"
+            required
+            minlength="1"
+            maxlength="30"
+            aria-describedby="err-autore-server err-autore1-client err-autore2-client">
+            <div id="err-autore-server" class="error-msg display-error" aria-live="polite">###autoreError###</div>
+            <p id="err-autore1-client" class="error-msg autore1-error" aria-live="polite"></p>
+            <p id="err-autore2-client" class="error-msg autore2-error" aria-live="polite"></p>
+
+            <label for="image_path">Immagine copertina</label>
+            <input
+            type="file"
+            id="image_path"
+            name="image_path"
+            accept=".jpg,.jpeg,.png,.webp"
+            aria-describedby="err-image">
+            <div id="err-image" class="error-msg display-error" aria-live="polite">###imageError###</div>
+
+            <label for="casa_editrice">Casa Editrice <span aria-hidden="true">*</span></label>
+            <input
+            type="text"
+            id="casa_editrice"
+            name="casa_editrice"
+            value="{{Casa_Editrice}}"
+            required
+            minlength="1"
+            maxlength="30"
+            aria-describedby="err-casa-server err-casa-client">
+            <div id="err-casa-server" class="error-msg display-error" aria-live="polite">###casaedError###</div>
+            <p id="err-casa-client" class="error-msg casa-error" aria-live="polite"></p>
+
+            <label for="genere">Genere <span aria-hidden="true">*</span></label>
+            <input
+            type="text"
+            id="genere"
+            name="genere"
+            value="{{Genere}}"
+            required
+            minlength="1"
+            maxlength="30"
+            aria-describedby="err-genere-server err-genere1-client err-genere2-client">
+            <div id="err-genere-server" class="error-msg display-error" aria-live="polite">###genereError###</div>
+            <p id="err-genere1-client" class="error-msg genere1-error" aria-live="polite"></p>
+            <p id="err-genere2-client" class="error-msg genere2-error" aria-live="polite"></p>
+
+            <label for="pubblicazione">Anno di pubblicazione <span aria-hidden="true">*</span></label>
+            <input
+            type="number"
+            id="pubblicazione"
+            name="pubblicazione"
+            value="{{Pubblicazione}}"
+            required
+            min="1000"
+            max="2025"
+            step="1"
+            aria-describedby="err-anno-server err-anno1-client err-anno2-client">
+            <div id="err-anno-server" class="error-msg display-error" aria-live="polite">###annopubbError###</div>
+            <p id="err-anno1-client" class="error-msg anno1-error" aria-live="polite"></p>
+            <p id="err-anno2-client" class="error-msg anno2-error" aria-live="polite"></p>
+
+            <label for="trama">Trama <span aria-hidden="true">*</span></label>
+            <textarea
+            id="trama"
+            name="trama"
+            required
+            rows="4"
+            maxlength="1000"
+            aria-describedby="err-trama-server err-trama-client">{{Trama}}</textarea>
+            <div id="err-trama-server" class="error-msg display-error" aria-live="polite">###tramaError###</div>
+            <p id="err-trama-client" class="error-msg trama-error" aria-live="polite"></p>
+        </fieldset>
+
+        <button type="submit">{{buttonAction}}</button>
+        <p class="required-info">I campi contrassegnati con <span aria-hidden="true">*</span> sono obbligatori.</p>
+        </form>
+
+
+    </div>
+</main>
+

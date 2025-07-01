@@ -1,0 +1,36 @@
+<nav id="breadcrumb" aria-label="breadcrumb">
+    <ol>
+        <li><a href="index.php" lang="en">Home</a></li>
+        <li aria-current="page">Area Personale</li>
+    </ol>
+</nav>
+<main id="contenuto">
+    <div class="login-section">
+        <h1>Accedi alla Biblioteca</h1>
+        <form id="login-form" class="compilaform" action="checkLogin.php" method="post">
+            <label for="username" >Nome utente</label>
+            <input type="text" id="username" name="username"
+                    placeholder="Inserisci il tuo username"
+                    required minlength="3" 
+                    aria-describedby="err-user-server">
+            <div id="err-user-server" class="error-msg display-error" aria-live="polite">###userError###</div>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                    placeholder="Inserisci la tua password"
+                    required minlength="4"
+                    autocomplete="current-password"
+                    aria-describedby="err-pass-server">
+            <div id="err-pass-server" class="error-msg display-error" aria-live="polite">###passError###</div>
+            
+            <button type="submit">Accedi</button>
+
+            <p class="required-info">Tutti i campi sono obbligatori.</p>
+        </form> 
+    </div> 
+
+    <div class="register-prompt">
+        <p>Non sei ancora registrato? <a href="register.php">Clicca qui per registrarti</a></p>
+    </div>
+
+</main>
