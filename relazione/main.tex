@@ -110,7 +110,7 @@ Il sistema distingue tre principali categorie di utenti, ognuna con permessi e f
           \begin{itemize}
               \item Creare e gestire una wishlist personale per organizzare i libri di interesse;
               \item Inserire recensioni e valutazioni per condividere opinioni con la comunità;
-              \item Accedere alla propria cronologia, che include le wishlist passate e le recensioni scritte.
+              \item Visualizzare i libri salvati e le recensioni fatte.
           \end{itemize}
     \item \textbf{Amministratore / Bibliotecario} - oltre alle funzionalità standard, può accedere a una dashboard di gestione per:
           \begin{itemize}
@@ -124,12 +124,11 @@ Il sistema distingue tre principali categorie di utenti, ognuna con permessi e f
 Il sito è progettato per offrire agli utenti un set di funzionalità complete e intuitive:
 \begin{itemize}
     \item \textbf{Sistema di ricerca avanzata} con filtri per titolo, genere e autore, rapido e facilmente accessibile dalla pagina catalogo;
-    \item \textbf{Schede libro} dettagliate, complete di trama, dati editoriali, immagine di copertina e recensioni;
+    \item \textbf{Schede libro} dettagliate, complete di trama, dati editoriali, immagine di copertina. Ogni libro può essere inserito nella propria wishlist, e inoltre, l'utente può eseguire al più una recensione per ogni libro;
     \item Possibilità per gli utenti registrati di gestire \textbf{wishlist e recensioni personali} direttamente dal proprio profilo;
     \item \textbf{Area riservata} per accedere a funzionalità personalizzate e visualizzare la cronologia delle attività;
     \item \textbf{Dashboard amministrativa} dedicata alla gestione dei contenuti e alla moderazione delle recensioni;
-    \item \textbf{Design responsive e accessibile}, pienamente compatibile con dispositivi mobili e conforme alle linee guida WCAG 2.2 livello AA, per garantire un'esperienza inclusiva e coerente su qualsiasi piattaforma;
-    \item Disponibilità di un \textbf{layout di stampa ottimizzato} per consentire agli utenti di stampare schede e contenuti in modo ordinato e leggibile.
+    \item \textbf{Design responsive e accessibile}, pienamente compatibile con dispositivi mobili e conforme alle linee guida WCAG 2.2 livello AA, per garantire un'esperienza inclusiva e coerente su qualsiasi piattaforma.
 \end{itemize}
 
 
@@ -166,7 +165,7 @@ Il lavoro è stato suddiviso come segue:
                 \item testing di accessibilità;
                 \item validazione HTML/CSS, contrast-checker;
                 \item supporto layout di stampa;
-                \item scrittura della relazione progettuale.
+                \item scrittura della relazione.
             \end{itemize}
     \item \textbf{Marco Cola}:
         \begin{itemize}
@@ -174,7 +173,7 @@ Il lavoro è stato suddiviso come segue:
             \item realizzazione pagina "Chi Siamo";
             \item miglioramento stile e struttura CSS;
             \item progettazione schema database;
-            \item scrittura della relazione progettuale.
+            \item scrittura della relazione.
         \end{itemize}
     \item \textbf{Enrico Bianchi} :
             \begin{itemize}
@@ -182,7 +181,7 @@ Il lavoro è stato suddiviso come segue:
                 \item sviluppo di script JavaScript per la validazione dei dati client-side e visualizzazione degli errori;
                 \item sviluppo di script PHP per la validazione dei dati server-side, salvataggio su database e visualizzazione errori;
                 \item controllo degli elementi dei form per verirficare l’uso corretto degli attributi di accessibilità;
-                \item scrittura della relazione progettuale.
+                \item scrittura della relazione.
             \end{itemize}
    \item \textbf{Riccardo Valerio}:
             \begin{itemize}
@@ -190,7 +189,7 @@ Il lavoro è stato suddiviso come segue:
                 \item implementazione della struttura e dello stile CSS;
                 \item validazione HTML/CSS;
                 \item popolamento del database;
-                \item scrittura della relazione progettuale.
+                \item scrittura della relazione.
             \end{itemize}
 \end{itemize}
 
@@ -217,16 +216,6 @@ Il piè di pagina (\texttt{<footer>}) è presente su tutte le pagine e include i
 
 Infine, tutte le pagine sono valide secondo lo standard W3C, scritte in HTML conforme alla sintassi XML e testate per garantire compatibilità e accessibilità su tutti i dispositivi.
 
-\medskip
-
-\noindent
-\textbf{Aspetti di accessibilità e SEO}:
-\begin{itemize}
-    \item Uso sistematico di landmark semantici (\texttt{<header>}, \texttt{<nav>}, \texttt{<main>}, \texttt{<footer>}).
-    \item Titoli gerarchici, link descrittivi e immagini con \texttt{alt} significativo.
-    \item Navigazione da tastiera completa.
-    \item URL descrittivi e contenuti ottimizzati per l’indicizzazione nei motori di ricerca.
-\end{itemize}
 
 \vspace{1em}
 
@@ -349,7 +338,7 @@ In seguito ai test eseguiti con HTML Validator Basic, sono stati svolti alcuni t
 Il CSS è stato validato con lo strumento messo a disposizione da w3c, \url{https://jigsaw.w3.org/css-validator/}, con esito positivo.
 
 \subsection{Contrasti}
-Oltre ai controlli effettuati con le estensioni Silktide e Wave sono stati effettuati controlli ad hoc anche con l'estensione WCAG Contrast checker. Il livello imposto a questa estensione è stato AA. I test effettuati con questo strumento, senza l'utilizzo di filtri, sono stati passati con successo. Riportiamo inoltre che con i filtri "tritanopia" e "deuteranopia" presentano lievi errori. Di seguito si allegano alcuni esempi dell'appena descritta analisi dei contrasti.
+Oltre ai controlli effettuati con le estensioni Silktide e Wave sono stati effettuati controlli ad hoc anche con l'estensione WCAG Contrast checker. Il livello imposto a questa estensione è stato AA. I test effettuati con questo strumento, senza l'utilizzo di filtri, sono stati passati con successo. Riportiamo inoltre che con i filtri "tritanopia" e "deuteranopia" lo strumento evidenzia lievi errori. Di seguito si allegano alcuni esempi dell'appena descritta analisi dei contrasti.
 
 \vspace{1cm}
 
@@ -381,6 +370,6 @@ Oltre ai controlli effettuati con le estensioni Silktide e Wave sono stati effet
 
 
 \subsection{Screen Reader}
-Per completare l'analisi di accessibilità del sito, esso viene sottoposto a vari test tramite l'utilizzo di screen reader. Il sito è stato sottoposto a test con lo screen reader di Silktide e uno screen reader esterno al browser: NVDA. Nel corso della navigazione nel sito essi non hanno trovato alcuna difficoltà.
+Per completare l'analisi di accessibilità del sito, esso viene sottoposto a vari test tramite l'utilizzo di screen reader. Il primo di essi è stato Silktide con il suo screen reader integrato. Seguono i test eseguiti con uno screen reader esterno al browser: NVDA. Nel corso della navigazione nel sito essi non hanno trovato alcuna difficoltà o errore.
 
 \end{document}
